@@ -342,6 +342,25 @@ def validate_lesson(data):
     return errors
 
 
+def load_course_lesson_files():
+    """Add numbered lesson JSON files committed in the lessons folder to the starter course."""
+    lessons_dir = Path(__file__).parent / "lessons"
+    for lesson_path in sorted(lessons_dir.glob("lesson_*.json")):
+        try:
+            lesson = json.loads(lesson_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if validate_lesson(lesson):
+            continue
+        if any(existing["number"] == lesson["number"] for existing in STARTER_COURSE):
+            continue
+        STARTER_COURSE.append(lesson)
+    STARTER_COURSE.sort(key=lambda item: item["number"])
+
+
+load_course_lesson_files()
+
+
 def check_difficulty_order(lesson):
     peers = [l for l in st.session_state.lessons.values() if l["lesson_type"] != "review" and l["number"] != lesson["number"]]
     before = [l for l in peers if l["number"] < lesson["number"]]
