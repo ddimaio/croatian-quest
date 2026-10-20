@@ -386,6 +386,10 @@ def add_lesson_words(lesson):
 
 
 def begin_review(lesson_id=None):
+    # A new review session should start with blank typing and choice widgets.
+    for widget_key in list(st.session_state.keys()):
+        if widget_key.startswith(("answer_review_", "choice_review_")):
+            del st.session_state[widget_key]
     st.session_state.page = "review"
     st.session_state.active_review_lesson = lesson_id
     st.session_state.review_queue = [key for key, _ in due_cards()]
@@ -734,7 +738,7 @@ else:
             if isinstance(answer, list) and all(isinstance(word, str) for word in answer):
                 st.session_state.ordering_words[order_id] = answer
         else:
-            answer = st.text_input("Your answer", key=f"answer_{idx}", placeholder="Type your answer…", disabled=st.session_state.checked is not None)
+            answer = st.text_input("Your answer", key=f"answer_{st.session_state.lesson_id}_{st.session_state.lesson_attempts}_{idx}", placeholder="Type your answer…", disabled=st.session_state.checked is not None)
         if st.session_state.checked is None:
             has_answer = bool(answer) if isinstance(answer, list) else bool(answer.strip())
             if st.button("Check answer", type="primary", use_container_width=True, disabled=not has_answer):
