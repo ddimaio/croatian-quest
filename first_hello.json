@@ -1,0 +1,15 @@
+{
+  "id": "first-hello",
+  "title": "First words",
+  "description": "Say hello, introduce yourself, and be polite.",
+  "level": "Beginner",
+  "exercises": [
+    {"type":"multiple_choice","prompt":"How do you say ‘Hello’ in Croatian?","options":["Bok!","Hvala!","Molim!","Laku noć!"],"answer":"Bok!","hint":"A casual greeting you can use any time."},
+    {"type":"translate_en_to_hr","prompt":"Good morning","answer":"Dobro jutro","hint":"Literally: good + morning."},
+    {"type":"translate_hr_to_en","prompt":"Hvala","answer":"Thank you","hint":"You’ll hear this one often."},
+    {"type":"fill_blank","prompt":"Complete the greeting: Dobro ___ (good evening)","answer":"večer","hint":"The missing word means ‘evening’."},
+    {"type":"multiple_choice","prompt":"What does ‘Molim’ mean?","options":["Please / You’re welcome","Goodbye","Good night","Excuse me"],"answer":"Please / You’re welcome","hint":"A useful polite word with a few meanings."},
+    {"type":"translate_en_to_hr","prompt":"My name is Ana","answer":"Zovem se Ana","hint":"Croatian uses ‘I am called…’"},
+    {"type":"translate_hr_to_en","prompt":"Doviđenja","answer":"Goodbye","hint":"A more formal goodbye."}
+  ]
+}

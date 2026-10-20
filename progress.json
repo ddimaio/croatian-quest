@@ -1,0 +1,835 @@
+{
+  "schema_version": 1,
+  "lessons": {
+    "lesson-01-greetings": {
+      "id": "lesson-01-greetings",
+      "number": 1,
+      "title": "Say hello",
+      "topic": "Greetings",
+      "lesson_type": "vocabulary",
+      "difficulty": 1,
+      "level": "Beginner",
+      "description": "Greet people and use a few polite words.",
+      "vocabulary": [
+        {
+          "hr": "Bok",
+          "en": "Hi / bye"
+        },
+        {
+          "hr": "Dobar dan",
+          "en": "Good day"
+        },
+        {
+          "hr": "Dobro jutro",
+          "en": "Good morning"
+        },
+        {
+          "hr": "Hvala",
+          "en": "Thank you"
+        },
+        {
+          "hr": "Molim",
+          "en": "Please / you’re welcome"
+        },
+        {
+          "hr": "Doviđenja",
+          "en": "Goodbye"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say ‘Hi’ in Croatian?",
+          "options": [
+            "Bok",
+            "Hvala",
+            "Molim",
+            "Doviđenja"
+          ],
+          "answer": "Bok",
+          "hint": "It can mean both hi and bye."
+        },
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "Good morning",
+          "answer": "Dobro jutro"
+        },
+        {
+          "type": "translate_hr_to_en",
+          "prompt": "Hvala",
+          "answer": "Thank you"
+        },
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "Good day",
+          "answer": "Dobar dan"
+        },
+        {
+          "type": "fill_blank",
+          "prompt": "Complete: Do___đenja (goodbye)",
+          "answer": "vi"
+        },
+        {
+          "type": "fill_blank",
+          "prompt": "Complete: Dobar ___ (good day)",
+          "answer": "dan"
+        },
+        {
+          "type": "reorder_words",
+          "prompt": "Build the greeting: ‘Dobar dan, Ana.’",
+          "words": [
+            "dan,",
+            "Ana.",
+            "Dobar"
+          ],
+          "answer": [
+            "Dobar",
+            "dan,",
+            "Ana."
+          ]
+        },
+        {
+          "type": "comprehension",
+          "passage": "Ana: Dobar dan! Marko: Bok, Ana! Ana: Hvala!",
+          "prompt": "Who says ‘Bok’?",
+          "options": [
+            "Ana",
+            "Marko",
+            "They both do"
+          ],
+          "answer": "Marko"
+        }
+      ]
+    },
+    "lesson-02-introductions": {
+      "id": "lesson-02-introductions",
+      "number": 2,
+      "title": "Introduce yourself",
+      "topic": "Names and pronouns",
+      "lesson_type": "grammar",
+      "difficulty": 1,
+      "level": "Beginner",
+      "description": "Learn a first sentence pattern and when Croatian drops pronouns.",
+      "grammar_note": "Zovem se means ‘I am called’. Croatian often leaves out subject pronouns because the verb ending tells you who is speaking. Use Ja sam for emphasis: ‘I am…’.",
+      "vocabulary": [
+        {
+          "hr": "Zovem se",
+          "en": "My name is / I am called"
+        },
+        {
+          "hr": "Ja sam",
+          "en": "I am"
+        },
+        {
+          "hr": "Kako se zoveš?",
+          "en": "What is your name?"
+        },
+        {
+          "hr": "Drago mi je",
+          "en": "Nice to meet you"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "My name is Ana",
+          "answer": "Zovem se Ana"
+        },
+        {
+          "type": "translate_hr_to_en",
+          "prompt": "Kako se zoveš?",
+          "answer": "What is your name?"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does ‘Drago mi je’ mean?",
+          "options": [
+            "Nice to meet you",
+            "Good morning",
+            "Where are you?"
+          ],
+          "answer": "Nice to meet you"
+        },
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "I am Marko",
+          "answer": "Ja sam Marko",
+          "hint": "Use Ja sam to emphasize ‘I am’."
+        },
+        {
+          "type": "reorder_words",
+          "prompt": "Put the words in order: ‘My name is Ana.’",
+          "words": [
+            "Ana.",
+            "se",
+            "Zovem"
+          ],
+          "answer": [
+            "Zovem",
+            "se",
+            "Ana."
+          ]
+        },
+        {
+          "type": "comprehension",
+          "passage": "Zovem se Luka. Drago mi je.",
+          "prompt": "What is his name?",
+          "options": [
+            "Luka",
+            "Ana",
+            "Marko"
+          ],
+          "answer": "Luka"
+        },
+        {
+          "type": "translate_hr_to_en",
+          "prompt": "Drago mi je",
+          "answer": "Nice to meet you"
+        },
+        {
+          "type": "fill_blank",
+          "prompt": "Complete the question: Kako se ___? (What is your name?)",
+          "answer": "zoveš"
+        }
+      ]
+    },
+    "lesson-03-cafe": {
+      "id": "lesson-03-cafe",
+      "number": 3,
+      "title": "At the café",
+      "topic": "Drinks and ordering",
+      "lesson_type": "vocabulary",
+      "difficulty": 2,
+      "level": "Beginner",
+      "description": "A themed vocabulary lesson for ordering a drink.",
+      "vocabulary": [
+        {
+          "hr": "Kava",
+          "en": "Coffee"
+        },
+        {
+          "hr": "Voda",
+          "en": "Water"
+        },
+        {
+          "hr": "Čaj",
+          "en": "Tea"
+        },
+        {
+          "hr": "Sok",
+          "en": "Juice"
+        },
+        {
+          "hr": "Molim",
+          "en": "Please"
+        },
+        {
+          "hr": "Račun, molim",
+          "en": "The bill, please"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "translate_hr_to_en",
+          "prompt": "Kava",
+          "answer": "Coffee"
+        },
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "Water",
+          "answer": "Voda"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does ‘Račun, molim’ mean?",
+          "options": [
+            "The bill, please",
+            "A cup of tea",
+            "Good evening"
+          ],
+          "answer": "The bill, please"
+        },
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "Tea",
+          "answer": "Čaj"
+        },
+        {
+          "type": "translate_hr_to_en",
+          "prompt": "Sok",
+          "answer": "Juice"
+        },
+        {
+          "type": "reorder_words",
+          "prompt": "Put the order together: ‘One coffee, please.’",
+          "words": [
+            "molim.",
+            "kavu,",
+            "Jednu"
+          ],
+          "answer": [
+            "Jednu",
+            "kavu,",
+            "molim."
+          ]
+        },
+        {
+          "type": "comprehension",
+          "passage": "Ana: Jednu kavu, molim. Konobar: Izvolite.",
+          "prompt": "What does Ana order?",
+          "options": [
+            "Coffee",
+            "Tea",
+            "Water"
+          ],
+          "answer": "Coffee"
+        },
+        {
+          "type": "fill_blank",
+          "prompt": "Complete the order: Čaj, ___. (Tea, please.)",
+          "answer": "molim"
+        }
+      ]
+    },
+    "lesson-04-review": {
+      "id": "lesson-04-review",
+      "number": 4,
+      "title": "Review: first conversations",
+      "topic": "Greetings, names, and café words",
+      "lesson_type": "review",
+      "difficulty": 2,
+      "level": "Beginner",
+      "description": "Revisit due words from every lesson you have studied so far.",
+      "vocabulary": [],
+      "exercises": []
+    },
+    "lesson-05-people": {
+      "id": "lesson-05-people",
+      "number": 5,
+      "title": "People around you",
+      "topic": "Family and people",
+      "lesson_type": "vocabulary",
+      "difficulty": 2,
+      "level": "Beginner",
+      "description": "Learn words for family and the people you meet.",
+      "vocabulary": [
+        {
+          "hr": "Obitelj",
+          "en": "Family"
+        },
+        {
+          "hr": "Majka",
+          "en": "Mother"
+        },
+        {
+          "hr": "Otac",
+          "en": "Father"
+        },
+        {
+          "hr": "Prijatelj",
+          "en": "Friend (male)"
+        },
+        {
+          "hr": "Prijateljica",
+          "en": "Friend (female)"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "Mother",
+          "answer": "Majka"
+        },
+        {
+          "type": "translate_hr_to_en",
+          "prompt": "Otac",
+          "answer": "Father"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does ‘obitelj’ mean?",
+          "options": [
+            "Family",
+            "Coffee",
+            "Name"
+          ],
+          "answer": "Family"
+        },
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "Friend (female)",
+          "answer": "Prijateljica"
+        },
+        {
+          "type": "comprehension",
+          "passage": "Ovo je moja obitelj. Majka se zove Ana, a otac Marko.",
+          "prompt": "What is the mother’s name?",
+          "options": [
+            "Ana",
+            "Marko",
+            "Luka"
+          ],
+          "answer": "Ana"
+        },
+        {
+          "type": "reorder_words",
+          "prompt": "Build the sentence: ‘This is my family.’",
+          "words": [
+            "moja",
+            "Ovo",
+            "obitelj.",
+            "je"
+          ],
+          "answer": [
+            "Ovo",
+            "je",
+            "moja",
+            "obitelj."
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "prompt": "Majka i ___. (Mother and father.)",
+          "answer": "otac"
+        },
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "Family",
+          "answer": "Obitelj"
+        }
+      ]
+    },
+    "lesson-06-present-tense": {
+      "id": "lesson-06-present-tense",
+      "number": 6,
+      "title": "I have, you have",
+      "topic": "Present tense: imati",
+      "lesson_type": "grammar",
+      "difficulty": 3,
+      "level": "Beginner → early A1",
+      "description": "Use the present-tense verb imati (to have) in simple sentences.",
+      "grammar_note": "Imati (to have): ja imam, ti imaš, on/ona ima. The ending changes with the subject. Croatian subject pronouns can usually be omitted: Imam kavu = I have coffee.",
+      "vocabulary": [
+        {
+          "hr": "Imam",
+          "en": "I have"
+        },
+        {
+          "hr": "Imaš",
+          "en": "You have"
+        },
+        {
+          "hr": "Ima",
+          "en": "He / she has"
+        },
+        {
+          "hr": "Knjiga",
+          "en": "Book"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "I have coffee",
+          "answer": "Imam kavu"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Choose ‘you have’ (informal).",
+          "options": [
+            "Imam",
+            "Imaš",
+            "Ima"
+          ],
+          "answer": "Imaš"
+        },
+        {
+          "type": "translate_hr_to_en",
+          "prompt": "Ima knjigu",
+          "answer": "He / she has a book"
+        },
+        {
+          "type": "fill_blank",
+          "prompt": "Ti ___ kavu. (You have coffee.)",
+          "answer": "imaš"
+        },
+        {
+          "type": "reorder_words",
+          "prompt": "Build the sentence: ‘I have a book.’",
+          "words": [
+            "knjigu.",
+            "imam",
+            "Ja"
+          ],
+          "answer": [
+            "Ja",
+            "imam",
+            "knjigu."
+          ]
+        },
+        {
+          "type": "comprehension",
+          "passage": "Luka ima knjigu. Ana ima kavu.",
+          "prompt": "What does Luka have?",
+          "options": [
+            "A book",
+            "Coffee",
+            "Water"
+          ],
+          "answer": "A book"
+        },
+        {
+          "type": "fill_blank",
+          "prompt": "Ana ___ kavu. (Ana has coffee.)",
+          "answer": "ima"
+        },
+        {
+          "type": "translate_en_to_hr",
+          "prompt": "You have water",
+          "answer": "Imaš vodu"
+        }
+      ]
+    },
+    "lesson-07-review": {
+      "id": "lesson-07-review",
+      "number": 7,
+      "title": "Review: people and verbs",
+      "topic": "Cumulative course review",
+      "lesson_type": "review",
+      "difficulty": 3,
+      "level": "Beginner → early A1",
+      "description": "Practice due vocabulary from the entire course deck.",
+      "vocabulary": [],
+      "exercises": []
+    }
+  },
+  "xp": 446,
+  "completed_lessons": [
+    "lesson-01-greetings",
+    "lesson-02-introductions",
+    "lesson-03-cafe",
+    "lesson-05-people",
+    "lesson-06-present-tense",
+    "lesson-07-review"
+  ],
+  "cards": {
+    "bok": {
+      "hr": "Bok",
+      "en": "Hi / bye",
+      "interval": 3.0,
+      "ease": 2.3,
+      "reps": 2,
+      "lapses": 0,
+      "due_at": "2026-10-23T14:29:20.192068+00:00"
+    },
+    "dobar dan": {
+      "hr": "Dobar dan",
+      "en": "Good day",
+      "interval": 7.0,
+      "ease": 2.4499999999999997,
+      "reps": 2,
+      "lapses": 0,
+      "due_at": "2026-10-27T14:29:32.031987+00:00"
+    },
+    "dobro jutro": {
+      "hr": "Dobro jutro",
+      "en": "Good morning",
+      "interval": 7.0,
+      "ease": 2.4499999999999997,
+      "reps": 2,
+      "lapses": 0,
+      "due_at": "2026-10-27T14:29:45.117741+00:00"
+    },
+    "hvala": {
+      "hr": "Hvala",
+      "en": "Thank you",
+      "interval": 0.6,
+      "ease": 2.0,
+      "reps": 2,
+      "lapses": 0,
+      "due_at": "2026-10-21T04:52:47.388218+00:00"
+    },
+    "molim": {
+      "hr": "Molim",
+      "en": "Please / you’re welcome",
+      "interval": 0.5,
+      "ease": 1.7499999999999998,
+      "reps": 1,
+      "lapses": 2,
+      "due_at": "2026-10-21T02:45:31.300330+00:00"
+    },
+    "doviđenja": {
+      "hr": "Doviđenja",
+      "en": "Goodbye",
+      "interval": 0.5,
+      "ease": 1.7499999999999998,
+      "reps": 1,
+      "lapses": 2,
+      "due_at": "2026-10-21T02:45:49.536802+00:00"
+    },
+    "zovem se": {
+      "hr": "Zovem se",
+      "en": "My name is / I am called",
+      "interval": 0.5,
+      "ease": 1.9499999999999997,
+      "reps": 1,
+      "lapses": 1,
+      "due_at": "2026-10-21T02:29:01.121560+00:00"
+    },
+    "ja sam": {
+      "hr": "Ja sam",
+      "en": "I am",
+      "interval": 1.0,
+      "ease": 2.3,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T14:23:14.911161+00:00"
+    },
+    "kako se zoveš": {
+      "hr": "Kako se zoveš?",
+      "en": "What is your name?",
+      "interval": 1.0,
+      "ease": 2.3,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T14:23:30.139558+00:00"
+    },
+    "drago mi je": {
+      "hr": "Drago mi je",
+      "en": "Nice to meet you",
+      "interval": 0.5,
+      "ease": 2.15,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T02:25:10.607241+00:00"
+    },
+    "kava": {
+      "hr": "Kava",
+      "en": "Coffee",
+      "interval": 1.0,
+      "ease": 2.3,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T14:25:25.313149+00:00"
+    },
+    "voda": {
+      "hr": "Voda",
+      "en": "Water",
+      "interval": 4.0,
+      "ease": 2.4499999999999997,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-24T14:25:37.757424+00:00"
+    },
+    "čaj": {
+      "hr": "Čaj",
+      "en": "Tea",
+      "interval": 0.5,
+      "ease": 1.9499999999999997,
+      "reps": 1,
+      "lapses": 1,
+      "due_at": "2026-10-21T02:45:22.808048+00:00"
+    },
+    "sok": {
+      "hr": "Sok",
+      "en": "Juice",
+      "interval": 1.0,
+      "ease": 2.3,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T14:26:11.241048+00:00"
+    },
+    "račun molim": {
+      "hr": "Račun, molim",
+      "en": "The bill, please",
+      "interval": 0.5,
+      "ease": 2.15,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T02:26:31.971046+00:00"
+    },
+    "obitelj": {
+      "hr": "Obitelj",
+      "en": "Family",
+      "interval": 0.5,
+      "ease": 2.15,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T02:27:26.930397+00:00"
+    },
+    "majka": {
+      "hr": "Majka",
+      "en": "Mother",
+      "interval": 0.5,
+      "ease": 1.9499999999999997,
+      "reps": 1,
+      "lapses": 1,
+      "due_at": "2026-10-21T02:46:00.825598+00:00"
+    },
+    "otac": {
+      "hr": "Otac",
+      "en": "Father",
+      "interval": 0.5,
+      "ease": 1.9499999999999997,
+      "reps": 1,
+      "lapses": 1,
+      "due_at": "2026-10-21T02:46:07.972159+00:00"
+    },
+    "prijatelj": {
+      "hr": "Prijatelj",
+      "en": "Friend (male)",
+      "interval": 0.5,
+      "ease": 1.9499999999999997,
+      "reps": 1,
+      "lapses": 1,
+      "due_at": "2026-10-21T02:46:21.906776+00:00"
+    },
+    "prijateljica": {
+      "hr": "Prijateljica",
+      "en": "Friend (female)",
+      "interval": 0.5,
+      "ease": 1.9499999999999997,
+      "reps": 1,
+      "lapses": 1,
+      "due_at": "2026-10-21T02:46:32.469137+00:00"
+    },
+    "imam": {
+      "hr": "Imam",
+      "en": "I have",
+      "interval": 1.0,
+      "ease": 2.3,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T14:44:17.353583+00:00"
+    },
+    "imaš": {
+      "hr": "Imaš",
+      "en": "You have",
+      "interval": 1.0,
+      "ease": 2.3,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T14:44:31.920410+00:00"
+    },
+    "ima": {
+      "hr": "Ima",
+      "en": "He / she has",
+      "interval": 1.0,
+      "ease": 2.3,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T14:44:40.187693+00:00"
+    },
+    "knjiga": {
+      "hr": "Knjiga",
+      "en": "Book",
+      "interval": 0.5,
+      "ease": 2.15,
+      "reps": 1,
+      "lapses": 0,
+      "due_at": "2026-10-21T02:44:58.749413+00:00"
+    }
+  },
+  "page": "home",
+  "lesson_id": null,
+  "lesson_attempts": 8,
+  "index": 8,
+  "checked": null,
+  "widget_values": {
+    "choice_review_19": "Dobro jutro",
+    "choice_review_0": "Ja sam",
+    "answer_4": "Coffee",
+    "answer_7": "ana",
+    "choice_5": "Luka",
+    "choice_review_17": "Obitelj",
+    "choice_review_4": "Čaj",
+    "answer_2": "thank you",
+    "choice_review_7": "Majka",
+    "choice_review_15": "Hvala",
+    "choice_review_5": "Molim",
+    "choice_review_14": "Prijateljica",
+    "choice_4": "Ana",
+    "answer_0": "coffee",
+    "choice_review_13": "Prijatelj",
+    "choice_review_11": "Majka",
+    "choice_review_3": "Knjiga",
+    "choice_0": "Bok",
+    "choice_review_8": "Otac",
+    "answer_1": "dobro jutrio",
+    "answer_3": "molim",
+    "choice_review_9": "Prijatelj",
+    "choice_1": "Imaš",
+    "choice_review_1": "Kako se zoveš?",
+    "choice_7": "Marko",
+    "choice_review_2": "Drago mi je",
+    "choice_review_6": "Doviđenja",
+    "choice_2": "The bill, please",
+    "choice_review_10": "Kako se zoveš?",
+    "answer_5": "dan",
+    "choice_review_12": "Otac",
+    "choice_6": "Coffee",
+    "choice_review_18": "Dobar dan",
+    "answer_6": "nice to meet you",
+    "choice_review_16": "Zovem se"
+  },
+  "ordering_words": {
+    "lesson-01-greetings-1-6": [
+      "Dobar",
+      "dan,",
+      "Ana."
+    ],
+    "lesson-02-introductions-2-4": [
+      "se",
+      "Zovem",
+      "Ana."
+    ],
+    "lesson-03-cafe-3-5": [
+      "Jednu",
+      "molim.",
+      "kavu,"
+    ],
+    "lesson-05-people-4-5": [
+      "Ovo",
+      "je",
+      "moja",
+      "obitelj."
+    ],
+    "lesson-01-greetings-5-6": [
+      "Dobar",
+      "dan,",
+      "Ana."
+    ],
+    "lesson-01-greetings-6-6": [
+      "dan,",
+      "Dobar",
+      "Ana."
+    ],
+    "lesson-02-introductions-7-4": [
+      "Zovem",
+      "se",
+      "Ana."
+    ],
+    "lesson-06-present-tense-8-4": [
+      "Ja",
+      "imam",
+      "knjigu."
+    ]
+  },
+  "review_queue": [
+    "imam",
+    "imaš",
+    "ima",
+    "knjiga",
+    "čaj",
+    "molim",
+    "doviđenja",
+    "majka",
+    "otac",
+    "prijatelj",
+    "prijateljica"
+  ],
+  "review_index": 11,
+  "review_revealed": false,
+  "review_correct": null,
+  "active_review_lesson": null
+}
