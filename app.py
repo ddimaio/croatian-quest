@@ -44,8 +44,13 @@ hr { border-color:var(--line); }
 .stProgress>div>div>div { background:var(--green); }
 [data-testid="stRadio"] [role="radiogroup"] label {
   box-sizing:border-box; width:100%; min-height:56px; display:flex; align-items:center;
-  padding:10px 14px; gap:12px; white-space:normal;
+  padding:10px 14px; gap:12px; white-space:normal; color:#193b35 !important;
   border:1px solid var(--line); border-radius:14px; background:#fff;
+}
+[data-testid="stRadio"] [role="radiogroup"] label *,
+[data-testid="stRadio"] [role="radiogroup"] label p,
+[data-testid="stRadio"] [role="radiogroup"] label span {
+  color:#193b35 !important;
 }
 [data-testid="stRadio"] [role="radiogroup"] label p {
   font-size:1rem !important; line-height:1.45 !important; margin:0;
