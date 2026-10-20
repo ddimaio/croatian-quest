@@ -1,0 +1,104 @@
+{
+  "id": "lesson-15-getting-around",
+  "number": 15,
+  "title": "Getting around",
+  "topic": "Transport and travel",
+  "lesson_type": "vocabulary",
+  "difficulty": 4,
+  "level": "Early A1",
+  "description": "Understand essential words for buses, trains, and tickets.",
+  "vocabulary": [
+    {
+      "hr": "Autobus",
+      "en": "Bus"
+    },
+    {
+      "hr": "Vlak",
+      "en": "Train"
+    },
+    {
+      "hr": "Karta",
+      "en": "Ticket"
+    },
+    {
+      "hr": "Kolodvor",
+      "en": "Station"
+    },
+    {
+      "hr": "Putovati",
+      "en": "To travel"
+    },
+    {
+      "hr": "Kamo?",
+      "en": "Where to?"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘vlak’ mean?",
+      "options": [
+        "Train",
+        "Bus",
+        "Ticket",
+        "Station"
+      ],
+      "answer": "Train"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Bus",
+      "answer": "Autobus"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Karta",
+      "answer": "Ticket"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Autobus je na ___. (The bus is at the station.)",
+      "answer": "kolodvoru"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘A ticket, please.’",
+      "words": [
+        "molim.",
+        "kartu,",
+        "Jednu"
+      ],
+      "answer": [
+        "Jednu",
+        "kartu,",
+        "molim."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Kamo ide ovaj vlak? Marko: U Split.",
+      "prompt": "Where is this train going?",
+      "options": [
+        "To Split",
+        "To Zagreb",
+        "To the station"
+      ],
+      "answer": "To Split"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "To travel",
+      "answer": "Putovati"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Which word asks ‘Where to?’?",
+      "options": [
+        "Kamo?",
+        "Koliko?",
+        "Kada?"
+      ],
+      "answer": "Kamo?"
+    }
+  ]
+}
