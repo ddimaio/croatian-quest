@@ -1,0 +1,99 @@
+{
+  "id": "lesson-10-at-the-market",
+  "number": 10,
+  "title": "At the market",
+  "topic": "Food and shopping",
+  "lesson_type": "vocabulary",
+  "difficulty": 3,
+  "level": "Early A1",
+  "description": "Recognize familiar foods and simple market words.",
+  "vocabulary": [
+    {
+      "hr": "Kruh",
+      "en": "Bread"
+    },
+    {
+      "hr": "Mlijeko",
+      "en": "Milk"
+    },
+    {
+      "hr": "Jabuka",
+      "en": "Apple"
+    },
+    {
+      "hr": "Sir",
+      "en": "Cheese"
+    },
+    {
+      "hr": "Tržnica",
+      "en": "Market"
+    },
+    {
+      "hr": "Koliko?",
+      "en": "How much?"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘mlijeko’ mean?",
+      "options": [
+        "Milk",
+        "Cheese",
+        "Bread",
+        "Apple"
+      ],
+      "answer": "Milk"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Bread",
+      "answer": "Kruh"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Jabuka",
+      "answer": "Apple"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Koliko košta ___? (How much does the cheese cost?)",
+      "answer": "sir"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘An apple, please.’",
+      "words": [
+        "molim.",
+        "jabuku,",
+        "Jednu"
+      ],
+      "answer": [
+        "Jednu",
+        "jabuku,",
+        "molim."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Na tržnici: ‘Dobar dan. Kruh i mlijeko, molim.’",
+      "prompt": "What does the customer ask for?",
+      "options": [
+        "Bread and milk",
+        "Coffee and water",
+        "Cheese and an apple"
+      ],
+      "answer": "Bread and milk"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Market",
+      "answer": "Tržnica"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Koliko?",
+      "answer": "How much?"
+    }
+  ]
+}
