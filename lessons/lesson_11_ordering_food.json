@@ -1,0 +1,104 @@
+{
+  "id": "lesson-11-ordering-food",
+  "number": 11,
+  "title": "Ordering food",
+  "topic": "Grammar: want + direct object",
+  "lesson_type": "grammar",
+  "difficulty": 4,
+  "level": "Early A1",
+  "description": "Use ‘želim’ to ask for food and notice a common Croatian noun ending.",
+  "grammar_note": "Želim means ‘I want’. When the wanted item is the direct object, many feminine nouns ending in -a change to -u: kava → kavu, voda → vodu, jabuka → jabuku. Common masculine inanimate nouns often keep the same form: kruh → kruh. ‘Molim’ makes an order polite.",
+  "vocabulary": [
+    {
+      "hr": "Želim",
+      "en": "I want"
+    },
+    {
+      "hr": "Kavu",
+      "en": "Coffee (as the thing wanted)"
+    },
+    {
+      "hr": "Vodu",
+      "en": "Water (as the thing wanted)"
+    },
+    {
+      "hr": "Jabuku",
+      "en": "Apple (as the thing wanted)"
+    },
+    {
+      "hr": "Želim kavu",
+      "en": "I want coffee"
+    },
+    {
+      "hr": "Želim kruh",
+      "en": "I want bread"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "Choose the natural way to say ‘I want water.’",
+      "options": [
+        "Želim vodu",
+        "Želim voda",
+        "Želim vode"
+      ],
+      "answer": "Želim vodu"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I want coffee",
+      "answer": "Želim kavu"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Želim kruh",
+      "answer": "I want bread"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Želim ___. (I want an apple.)",
+      "answer": "jabuku"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build the polite order: ‘I want water, please.’",
+      "words": [
+        "molim.",
+        "Želim",
+        "vodu,"
+      ],
+      "answer": [
+        "Želim",
+        "vodu,",
+        "molim."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Marko: Dobar dan. Želim kavu i kruh, molim. Konobar: Izvolite.",
+      "prompt": "What does Marko want?",
+      "options": [
+        "Coffee and bread",
+        "Tea and milk",
+        "Water and an apple"
+      ],
+      "answer": "Coffee and bread"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I want water",
+      "answer": "Želim vodu"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Which form belongs in ‘Želim ___’? (I want coffee.)",
+      "options": [
+        "kavu",
+        "kava",
+        "kavi"
+      ],
+      "answer": "kavu"
+    }
+  ]
+}
