@@ -1,0 +1,101 @@
+{
+  "id": "lesson-08-home",
+  "number": 8,
+  "title": "At home",
+  "topic": "Rooms and furniture",
+  "lesson_type": "vocabulary",
+  "difficulty": 3,
+  "level": "Beginner → early A1",
+  "description": "Learn the names of common rooms and things around the home.",
+  "vocabulary": [
+    {
+      "hr": "Kuća",
+      "en": "House"
+    },
+    {
+      "hr": "Stan",
+      "en": "Apartment"
+    },
+    {
+      "hr": "Soba",
+      "en": "Room"
+    },
+    {
+      "hr": "Kuhinja",
+      "en": "Kitchen"
+    },
+    {
+      "hr": "Kupaonica",
+      "en": "Bathroom"
+    },
+    {
+      "hr": "Stol",
+      "en": "Table"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘kuhinja’ mean?",
+      "options": [
+        "Kitchen",
+        "Bathroom",
+        "Table",
+        "Apartment"
+      ],
+      "answer": "Kitchen"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "House",
+      "answer": "Kuća"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Soba",
+      "answer": "Room"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Ovo je moja ___. (This is my house.)",
+      "answer": "kuća"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build the sentence: ‘This is my room.’",
+      "words": [
+        "moja",
+        "Ovo",
+        "soba.",
+        "je"
+      ],
+      "answer": [
+        "Ovo",
+        "je",
+        "moja",
+        "soba."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ovo je moj stan. Kuhinja je velika. Stol je u sobi.",
+      "prompt": "Where is the table?",
+      "options": [
+        "In the room",
+        "In the bathroom",
+        "In the kitchen"
+      ],
+      "answer": "In the room"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Bathroom",
+      "answer": "Kupaonica"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Stol",
+      "answer": "Table"
+    }
+  ]
+}
