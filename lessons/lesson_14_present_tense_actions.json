@@ -1,0 +1,106 @@
+{
+  "id": "lesson-14-present-tense-actions",
+  "number": 14,
+  "title": "What do you do?",
+  "topic": "Present tense: everyday verbs",
+  "lesson_type": "grammar",
+  "difficulty": 4,
+  "level": "Early A1",
+  "description": "Conjugate three regular verbs to talk about simple daily activities.",
+  "grammar_note": "Many Croatian present-tense verbs change their ending with the subject. For these examples: ja radim / ti radiš / on radi (I/you/he works); ja učim / ti učiš / ona uči (study); ja čitam / ti čitaš / on čita (read). The pronoun is often optional because the verb ending shows who is acting.",
+  "vocabulary": [
+    {
+      "hr": "Radim",
+      "en": "I work"
+    },
+    {
+      "hr": "Radiš",
+      "en": "You work"
+    },
+    {
+      "hr": "Radi",
+      "en": "He / she works"
+    },
+    {
+      "hr": "Učim",
+      "en": "I study"
+    },
+    {
+      "hr": "Učiš",
+      "en": "You study"
+    },
+    {
+      "hr": "Čitam",
+      "en": "I read"
+    },
+    {
+      "hr": "Čitaš",
+      "en": "You read"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "Choose ‘you work’.",
+      "options": [
+        "Radim",
+        "Radiš",
+        "Radi"
+      ],
+      "answer": "Radiš"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I work",
+      "answer": "Radim"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Čitaš",
+      "answer": "You read"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Ti ___ hrvatski. (You study Croatian.)",
+      "answer": "učiš"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘I read a book.’",
+      "words": [
+        "knjigu.",
+        "Čitam"
+      ],
+      "answer": [
+        "Čitam",
+        "knjigu."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Luka radi. Ana uči hrvatski. Marko čita knjigu.",
+      "prompt": "Who studies Croatian?",
+      "options": [
+        "Ana",
+        "Luka",
+        "Marko"
+      ],
+      "answer": "Ana"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "You read",
+      "answer": "Čitaš"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Complete: Ona ___ knjigu. (She reads a book.)",
+      "options": [
+        "čitam",
+        "čitaš",
+        "čita"
+      ],
+      "answer": "čita"
+    }
+  ]
+}
