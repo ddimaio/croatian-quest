@@ -1,0 +1,105 @@
+{
+  "id": "lesson-13-daily-life",
+  "number": 13,
+  "title": "Daily life",
+  "topic": "Everyday actions and time",
+  "lesson_type": "vocabulary",
+  "difficulty": 4,
+  "level": "Early A1",
+  "description": "Learn useful words for describing an ordinary day.",
+  "vocabulary": [
+    {
+      "hr": "Danas",
+      "en": "Today"
+    },
+    {
+      "hr": "Ujutro",
+      "en": "In the morning"
+    },
+    {
+      "hr": "Svaki dan",
+      "en": "Every day"
+    },
+    {
+      "hr": "Raditi",
+      "en": "To work"
+    },
+    {
+      "hr": "Učiti",
+      "en": "To study / learn"
+    },
+    {
+      "hr": "Čitati",
+      "en": "To read"
+    },
+    {
+      "hr": "Spavati",
+      "en": "To sleep"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘svaki dan’ mean?",
+      "options": [
+        "Every day",
+        "Today",
+        "In the morning"
+      ],
+      "answer": "Every day"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Today",
+      "answer": "Danas"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Ujutro",
+      "answer": "In the morning"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "___ učim hrvatski. (Every day I study Croatian.)",
+      "answer": "Svaki dan"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘I read in the morning.’",
+      "words": [
+        "ujutro.",
+        "Čitam"
+      ],
+      "answer": [
+        "Čitam",
+        "ujutro."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana radi ujutro. Navečer čita knjigu.",
+      "prompt": "What does Ana do in the morning?",
+      "options": [
+        "She works",
+        "She reads",
+        "She sleeps"
+      ],
+      "answer": "She works"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "To sleep",
+      "answer": "Spavati"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Choose the Croatian verb meaning ‘to learn / study’.",
+      "options": [
+        "Učiti",
+        "Čitati",
+        "Raditi"
+      ],
+      "answer": "Učiti"
+    }
+  ]
+}
