@@ -68,9 +68,9 @@
       "type": "reorder_words",
       "prompt": "Build: ‘I read a book.’",
       "words": [
-        "knjigu.",
+        "knjigu",
         "Čitam",
-        "danas"
+        "danas."
       ],
       "answer": [
         "Čitam",
