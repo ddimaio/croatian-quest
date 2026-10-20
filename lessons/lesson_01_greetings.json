@@ -1,0 +1,100 @@
+{
+  "id": "lesson-01-greetings",
+  "number": 1,
+  "title": "Say hello",
+  "topic": "Greetings",
+  "lesson_type": "vocabulary",
+  "difficulty": 1,
+  "level": "Beginner",
+  "description": "Greet people and use a few polite words.",
+  "vocabulary": [
+    {
+      "hr": "Bok",
+      "en": "Hi / bye"
+    },
+    {
+      "hr": "Dobar dan",
+      "en": "Good day"
+    },
+    {
+      "hr": "Dobro jutro",
+      "en": "Good morning"
+    },
+    {
+      "hr": "Hvala",
+      "en": "Thank you"
+    },
+    {
+      "hr": "Molim",
+      "en": "Please / you’re welcome"
+    },
+    {
+      "hr": "Doviđenja",
+      "en": "Goodbye"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "How do you say ‘Hi’ in Croatian?",
+      "options": [
+        "Bok",
+        "Hvala",
+        "Molim",
+        "Doviđenja"
+      ],
+      "answer": "Bok",
+      "hint": "It can mean both hi and bye."
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Good morning",
+      "answer": "Dobro jutro"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Hvala",
+      "answer": "Thank you"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Good day",
+      "answer": "Dobar dan"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: Do___đenja (goodbye)",
+      "answer": "vi"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: Dobar ___ (good day)",
+      "answer": "dan"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build the greeting: ‘Dobar dan, Ana.’",
+      "words": [
+        "dan,",
+        "Ana.",
+        "Dobar"
+      ],
+      "answer": [
+        "Dobar",
+        "dan,",
+        "Ana."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Dobar dan! Marko: Bok, Ana! Ana: Hvala!",
+      "prompt": "Who says ‘Bok’?",
+      "options": [
+        "Ana",
+        "Marko",
+        "They both do"
+      ],
+      "answer": "Marko"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "lesson-03-cafe",
+  "number": 3,
+  "title": "At the café",
+  "topic": "Drinks and ordering",
+  "lesson_type": "vocabulary",
+  "difficulty": 2,
+  "level": "Beginner",
+  "description": "A themed vocabulary lesson for ordering a drink.",
+  "vocabulary": [
+    {
+      "hr": "Kava",
+      "en": "Coffee"
+    },
+    {
+      "hr": "Voda",
+      "en": "Water"
+    },
+    {
+      "hr": "Čaj",
+      "en": "Tea"
+    },
+    {
+      "hr": "Sok",
+      "en": "Juice"
+    },
+    {
+      "hr": "Molim",
+      "en": "Please"
+    },
+    {
+      "hr": "Račun, molim",
+      "en": "The bill, please"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Kava",
+      "answer": "Coffee"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Water",
+      "answer": "Voda"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘Račun, molim’ mean?",
+      "options": [
+        "The bill, please",
+        "A cup of tea",
+        "Good evening"
+      ],
+      "answer": "The bill, please"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Tea",
+      "answer": "Čaj"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Sok",
+      "answer": "Juice"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Put the order together: ‘One coffee, please.’",
+      "words": [
+        "molim.",
+        "kavu,",
+        "Jednu"
+      ],
+      "answer": [
+        "Jednu",
+        "kavu,",
+        "molim."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Jednu kavu, molim. Konobar: Izvolite.",
+      "prompt": "What does Ana order?",
+      "options": [
+        "Coffee",
+        "Tea",
+        "Water"
+      ],
+      "answer": "Coffee"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete the order: Čaj, ___. (Tea, please.)",
+      "answer": "molim"
+    }
+  ]
+}

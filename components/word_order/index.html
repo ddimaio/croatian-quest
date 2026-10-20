@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 600 15px Arial, sans-serif; color: #193b35; }
+    .help { color: #75847e; font-size: 12px; margin: 0 0 7px 2px; }
+    .words { display: flex; flex-wrap: wrap; gap: 8px; }
+    .word { display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 5px 7px 5px 12px; border: 1px solid #c9ebd2; border-radius: 12px; background: #fff; cursor: grab; }
+    .word.dragging { opacity: .45; }
+    .word span { user-select: none; }
+    .move { border: 0; border-radius: 7px; min-width: 26px; height: 28px; background: #e4f8e9; color: #193b35; font-size: 16px; cursor: pointer; }
+    .move:disabled { opacity: .35; cursor: default; }
+  </style>
+</head>
+<body>
+  <div class="help">Drag the words into the correct order. On touch screens, use the arrows.</div>
+  <div id="words" class="words" role="list"></div>
+  <script>
+    const list = document.getElementById("words");
+    let items = [];
+    let seed = "";
+    let dragged = null;
+
+    function notify(type, extra = {}) {
+      window.parent.postMessage({isStreamlitMessage: true, type, ...extra}, "*");
+    }
+    function sendValue() {
+      notify("streamlit:setComponentValue", {value: items.map(item => item.text), dataType: "json"});
+    }
+    function move(from, to) {
+      if (to < 0 || to >= items.length || from === to) return;
+      const [item] = items.splice(from, 1);
+      items.splice(to, 0, item);
+      draw();
+      sendValue();
+    }
+    function draw() {
+      list.replaceChildren();
+      items.forEach((item, index) => {
+        const row = document.createElement("div");
+        row.className = "word";
+        row.draggable = true;
+        row.setAttribute("role", "listitem");
+        row.dataset.index = index;
+        const text = document.createElement("span");
+        text.textContent = item.text;
+        row.appendChild(text);
+        const up = document.createElement("button");
+        up.className = "move"; up.type = "button"; up.textContent = "↑"; up.title = "Move left"; up.disabled = index === 0;
+        up.addEventListener("click", event => { event.stopPropagation(); move(index, index - 1); });
+        const down = document.createElement("button");
+        down.className = "move"; down.type = "button"; down.textContent = "↓"; down.title = "Move right"; down.disabled = index === items.length - 1;
+        down.addEventListener("click", event => { event.stopPropagation(); move(index, index + 1); });
+        row.append(up, down);
+        row.addEventListener("dragstart", event => {
+          dragged = index; row.classList.add("dragging");
+          event.dataTransfer.effectAllowed = "move";
+          event.dataTransfer.setData("text/plain", String(index));
+        });
+        row.addEventListener("dragend", () => { row.classList.remove("dragging"); dragged = null; });
+        row.addEventListener("dragover", event => { event.preventDefault(); event.dataTransfer.dropEffect = "move"; });
+        row.addEventListener("drop", event => {
+          event.preventDefault();
+          const source = dragged ?? Number(event.dataTransfer.getData("text/plain"));
+          move(source, index);
+        });
+        list.appendChild(row);
+      });
+      notify("streamlit:setFrameHeight", {height: Math.max(76, 47 * Math.ceil(items.length / 3) + 38)});
+    }
+    window.addEventListener("message", event => {
+      const data = event.data || {};
+      if (data.type !== "streamlit:render") return;
+      const words = (data.args && data.args.words) || [];
+      const nextSeed = JSON.stringify(words);
+      if (nextSeed !== seed) {
+        seed = nextSeed;
+        items = words.map((text, index) => ({id: index, text}));
+        draw();
+      }
+    });
+    notify("streamlit:componentReady", {apiVersion: 1});
+    notify("streamlit:setFrameHeight", {height: 76});
+  </script>
+</body>
+</html>

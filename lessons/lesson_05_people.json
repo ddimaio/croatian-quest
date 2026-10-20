@@ -1,0 +1,96 @@
+{
+  "id": "lesson-05-people",
+  "number": 5,
+  "title": "People around you",
+  "topic": "Family and people",
+  "lesson_type": "vocabulary",
+  "difficulty": 2,
+  "level": "Beginner",
+  "description": "Learn words for family and the people you meet.",
+  "vocabulary": [
+    {
+      "hr": "Obitelj",
+      "en": "Family"
+    },
+    {
+      "hr": "Majka",
+      "en": "Mother"
+    },
+    {
+      "hr": "Otac",
+      "en": "Father"
+    },
+    {
+      "hr": "Prijatelj",
+      "en": "Friend (male)"
+    },
+    {
+      "hr": "Prijateljica",
+      "en": "Friend (female)"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Mother",
+      "answer": "Majka"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Otac",
+      "answer": "Father"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘obitelj’ mean?",
+      "options": [
+        "Family",
+        "Coffee",
+        "Name"
+      ],
+      "answer": "Family"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Friend (female)",
+      "answer": "Prijateljica"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ovo je moja obitelj. Majka se zove Ana, a otac Marko.",
+      "prompt": "What is the mother’s name?",
+      "options": [
+        "Ana",
+        "Marko",
+        "Luka"
+      ],
+      "answer": "Ana"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build the sentence: ‘This is my family.’",
+      "words": [
+        "moja",
+        "Ovo",
+        "obitelj.",
+        "je"
+      ],
+      "answer": [
+        "Ovo",
+        "je",
+        "moja",
+        "obitelj."
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Majka i ___. (Mother and father.)",
+      "answer": "otac"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Family",
+      "answer": "Obitelj"
+    }
+  ]
+}

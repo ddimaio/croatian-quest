@@ -1,0 +1,92 @@
+{
+  "id": "lesson-02-introductions",
+  "number": 2,
+  "title": "Introduce yourself",
+  "topic": "Names and pronouns",
+  "lesson_type": "grammar",
+  "difficulty": 1,
+  "level": "Beginner",
+  "description": "Learn a first sentence pattern and when Croatian drops pronouns.",
+  "grammar_note": "Zovem se means ‘I am called’. Croatian often leaves out subject pronouns because the verb ending tells you who is speaking. Use Ja sam for emphasis: ‘I am…’.",
+  "vocabulary": [
+    {
+      "hr": "Zovem se",
+      "en": "My name is / I am called"
+    },
+    {
+      "hr": "Ja sam",
+      "en": "I am"
+    },
+    {
+      "hr": "Kako se zoveš?",
+      "en": "What is your name?"
+    },
+    {
+      "hr": "Drago mi je",
+      "en": "Nice to meet you"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "My name is Ana",
+      "answer": "Zovem se Ana"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Kako se zoveš?",
+      "answer": "What is your name?"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘Drago mi je’ mean?",
+      "options": [
+        "Nice to meet you",
+        "Good morning",
+        "Where are you?"
+      ],
+      "answer": "Nice to meet you"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I am Marko",
+      "answer": "Ja sam Marko",
+      "hint": "Use Ja sam to emphasize ‘I am’."
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Put the words in order: ‘My name is Ana.’",
+      "words": [
+        "Ana.",
+        "se",
+        "Zovem"
+      ],
+      "answer": [
+        "Zovem",
+        "se",
+        "Ana."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Zovem se Luka. Drago mi je.",
+      "prompt": "What is his name?",
+      "options": [
+        "Luka",
+        "Ana",
+        "Marko"
+      ],
+      "answer": "Luka"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Drago mi je",
+      "answer": "Nice to meet you"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete the question: Kako se ___? (What is your name?)",
+      "answer": "zoveš"
+    }
+  ]
+}

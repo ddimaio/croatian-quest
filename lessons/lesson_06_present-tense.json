@@ -1,0 +1,91 @@
+{
+  "id": "lesson-06-present-tense",
+  "number": 6,
+  "title": "I have, you have",
+  "topic": "Present tense: imati",
+  "lesson_type": "grammar",
+  "difficulty": 3,
+  "level": "Beginner → early A1",
+  "description": "Use the present-tense verb imati (to have) in simple sentences.",
+  "grammar_note": "Imati (to have): ja imam, ti imaš, on/ona ima. The ending changes with the subject. Croatian subject pronouns can usually be omitted: Imam kavu = I have coffee.",
+  "vocabulary": [
+    {
+      "hr": "Imam",
+      "en": "I have"
+    },
+    {
+      "hr": "Imaš",
+      "en": "You have"
+    },
+    {
+      "hr": "Ima",
+      "en": "He / she has"
+    },
+    {
+      "hr": "Knjiga",
+      "en": "Book"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I have coffee",
+      "answer": "Imam kavu"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Choose ‘you have’ (informal).",
+      "options": [
+        "Imam",
+        "Imaš",
+        "Ima"
+      ],
+      "answer": "Imaš"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Ima knjigu",
+      "answer": "He / she has a book"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Ti ___ kavu. (You have coffee.)",
+      "answer": "imaš"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build the sentence: ‘I have a book.’",
+      "words": [
+        "knjigu.",
+        "imam",
+        "Ja"
+      ],
+      "answer": [
+        "Ja",
+        "imam",
+        "knjigu."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Luka ima knjigu. Ana ima kavu.",
+      "prompt": "What does Luka have?",
+      "options": [
+        "A book",
+        "Coffee",
+        "Water"
+      ],
+      "answer": "A book"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Ana ___ kavu. (Ana has coffee.)",
+      "answer": "ima"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "You have water",
+      "answer": "Imaš vodu"
+    }
+  ]
+}
