@@ -42,7 +42,21 @@ hr { border-color:var(--line); }
 .stButton>button[kind="primary"] { background:var(--green); border-color:var(--green); color:#123624; }
 .stButton>button[kind="primary"]:hover { background:var(--deep); border-color:var(--deep); color:white; }
 .stProgress>div>div>div { background:var(--green); }
-</style>
+[data-testid="stRadio"] [role="radiogroup"] label {
+  box-sizing:border-box; width:100%; min-height:56px; display:flex; align-items:center;
+  padding:10px 14px; gap:12px; white-space:normal;
+  border:1px solid var(--line); border-radius:14px; background:#fff;
+}
+[data-testid="stRadio"] [role="radiogroup"] label p {
+  font-size:1rem !important; line-height:1.45 !important; margin:0;
+  white-space:normal; overflow-wrap:anywhere;
+}
+@media (max-width:640px) {
+  .block-container { padding-left:1rem; padding-right:1rem; }
+  [data-testid="stRadio"] [role="radiogroup"] label { min-height:60px; padding:12px; }
+  [data-testid="stRadio"] [role="radiogroup"] label p { font-size:1.1rem !important; }
+  .lesson-card { padding:16px; }
+}
 """
 st.markdown(CSS, unsafe_allow_html=True)
 
