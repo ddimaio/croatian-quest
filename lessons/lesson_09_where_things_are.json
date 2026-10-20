@@ -1,0 +1,98 @@
+{
+  "id": "lesson-09-where-things-are",
+  "number": 9,
+  "title": "Where is it?",
+  "topic": "Location: u + locative",
+  "lesson_type": "grammar",
+  "difficulty": 3,
+  "level": "Early A1",
+  "description": "Say where familiar things are using ‘u’ with the locative case.",
+  "grammar_note": "To say where something is, use u (in) + the locative form. For example: soba → u sobi, kuhinja → u kuhinji, kuća → u kući, stan → u stanu. This describes a location (‘in the room’), not movement into it.",
+  "vocabulary": [
+    {
+      "hr": "U sobi",
+      "en": "In the room"
+    },
+    {
+      "hr": "U kuhinji",
+      "en": "In the kitchen"
+    },
+    {
+      "hr": "U kući",
+      "en": "In the house"
+    },
+    {
+      "hr": "U stanu",
+      "en": "In the apartment"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "How do you say ‘in the kitchen’?",
+      "options": [
+        "U kuhinji",
+        "U kuću",
+        "U kuhinja"
+      ],
+      "answer": "U kuhinji"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "In the room",
+      "answer": "U sobi"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "U kući",
+      "answer": "In the house"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Knjiga je ___ ___. (The book is in the apartment.)",
+      "answer": "u stanu"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘The coffee is in the kitchen.’",
+      "words": [
+        "kuhinji.",
+        "je",
+        "Kava",
+        "u"
+      ],
+      "answer": [
+        "Kava",
+        "je",
+        "u",
+        "kuhinji."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Knjiga je u sobi. Kava je u kuhinji.",
+      "prompt": "Where is the coffee?",
+      "options": [
+        "In the kitchen",
+        "In the room",
+        "In the house"
+      ],
+      "answer": "In the kitchen"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "In the house",
+      "answer": "U kući"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Complete: Stol je ___ stanu. (The table is in the apartment.)",
+      "options": [
+        "u",
+        "na",
+        "iz"
+      ],
+      "answer": "u"
+    }
+  ]
+}
