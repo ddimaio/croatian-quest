@@ -69,11 +69,13 @@
       "prompt": "Build: ‘I read a book.’",
       "words": [
         "knjigu.",
-        "Čitam"
+        "Čitam",
+        "danas"
       ],
       "answer": [
         "Čitam",
-        "knjigu."
+        "knjigu",
+        "danas."
       ]
     },
     {
