@@ -5,14 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; font: 600 15px Arial, sans-serif; color: #193b35; }
-    .help { color: #75847e; font-size: 12px; margin: 0 0 7px 2px; }
-    .words { display: flex; flex-wrap: wrap; gap: 8px; }
-    .word { display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 5px 7px 5px 12px; border: 1px solid #c9ebd2; border-radius: 12px; background: #fff; cursor: grab; }
+    body { margin: 0; padding: 3px 2px 8px; font: 600 16px/1.4 Arial, sans-serif; color: #193b35; }
+    .help { color: #52635d; font-size: 14px; line-height: 1.45; margin: 0 0 9px 2px; }
+    .words { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; width: 100%; }
+    .word { display: flex; align-items: center; gap: 8px; min-width: 0; max-width: 100%; min-height: 48px; padding: 5px 7px 5px 12px; border: 1px solid #c9ebd2; border-radius: 12px; background: #fff; cursor: grab; }
     .word.dragging { opacity: .45; }
-    .word span { user-select: none; }
-    .move { border: 0; border-radius: 7px; min-width: 26px; height: 28px; background: #e4f8e9; color: #193b35; font-size: 16px; cursor: pointer; }
-    .move:disabled { opacity: .35; cursor: default; }
+    .word span { flex: 1; min-width: 0; overflow-wrap: anywhere; white-space: normal; user-select: none; }
+    .move { flex: none; border: 0; border-radius: 9px; min-width: 40px; height: 40px; background: #e4f8e9; color: #193b35; font-size: 20px; cursor: pointer; touch-action: manipulation; }
+    .move:disabled { opacity: .4; cursor: default; }
+    @media (max-width: 520px) {
+      .words { display: grid; grid-template-columns: minmax(0, 1fr); }
+      .word { width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -37,7 +41,7 @@
       draw();
       sendValue();
     }
-    function draw() {
+    function updateHeight() {\n      const height = Math.ceil(document.documentElement.getBoundingClientRect().height);\n      notify("streamlit:setFrameHeight", {height: Math.max(90, height)});\n    }\n    function draw() {
       list.replaceChildren();
       items.forEach((item, index) => {
         const row = document.createElement("div");
@@ -69,7 +73,7 @@
         });
         list.appendChild(row);
       });
-      notify("streamlit:setFrameHeight", {height: Math.max(76, 47 * Math.ceil(items.length / 3) + 38)});
+      requestAnimationFrame(updateHeight);
     }
     window.addEventListener("message", event => {
       const data = event.data || {};
