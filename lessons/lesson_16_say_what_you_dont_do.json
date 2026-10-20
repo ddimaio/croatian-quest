@@ -1,0 +1,100 @@
+{
+  "id": "lesson-16-say-what-you-dont-do",
+  "number": 16,
+  "title": "Say what you don’t do",
+  "topic": "Grammar: present-tense negation",
+  "lesson_type": "grammar",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Make simple negative sentences with ne before a present-tense verb.",
+  "grammar_note": "To make a simple present-tense sentence negative, put ne immediately before the verb: Radim. → Ne radim. (I work. → I don’t work.) The verb keeps the same ending. For example: Ne razumijem. (I don’t understand.) Ne govorim hrvatski. (I don’t speak Croatian.)",
+  "vocabulary": [
+    {
+      "hr": "Ne razumijem",
+      "en": "I don’t understand"
+    },
+    {
+      "hr": "Ne govorim",
+      "en": "I don’t speak"
+    },
+    {
+      "hr": "Ne radim",
+      "en": "I don’t work"
+    },
+    {
+      "hr": "Ne učim",
+      "en": "I don’t study"
+    },
+    {
+      "hr": "Hrvatski",
+      "en": "Croatian (language)"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "How do you say ‘I don’t understand’?",
+      "options": [
+        "Ne razumijem",
+        "Razumijem ne",
+        "Ne razumiješ"
+      ],
+      "answer": "Ne razumijem"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I don’t work",
+      "answer": "Ne radim"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Ne govorim hrvatski",
+      "answer": "I don’t speak Croatian"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "___ učim danas. (I am not studying today.)",
+      "answer": "Ne"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘I don’t speak Croatian.’",
+      "words": [
+        "hrvatski.",
+        "Ne",
+        "govorim"
+      ],
+      "answer": [
+        "Ne",
+        "govorim",
+        "hrvatski."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Marko radi svaki dan. Danas ne radi. Ana uči hrvatski, ali Luka ne uči.",
+      "prompt": "Who is not studying Croatian?",
+      "options": [
+        "Luka",
+        "Ana",
+        "Marko"
+      ],
+      "answer": "Luka"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I don’t speak",
+      "answer": "Ne govorim"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Where does ‘ne’ go in a simple negative sentence?",
+      "options": [
+        "Before the verb",
+        "After the verb",
+        "At the end of the sentence"
+      ],
+      "answer": "Before the verb"
+    }
+  ]
+}
