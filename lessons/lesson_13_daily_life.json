@@ -68,10 +68,12 @@
       "prompt": "Build: ‘I read in the morning.’",
       "words": [
         "ujutro.",
+        "knjigu",
         "Čitam"
       ],
       "answer": [
         "Čitam",
+        "knjigu",
         "ujutro."
       ]
     },
