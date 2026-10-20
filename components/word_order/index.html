@@ -41,7 +41,11 @@
       draw();
       sendValue();
     }
-    function updateHeight() {\n      const height = Math.ceil(Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.getBoundingClientRect().height));\n      notify("streamlit:setFrameHeight", {height: Math.max(90, height)});\n    }\n    function draw() {
+    function updateHeight() {
+      const height = Math.ceil(Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.getBoundingClientRect().height));
+      notify("streamlit:setFrameHeight", {height: Math.max(90, height)});
+    }
+    function draw() {
       list.replaceChildren();
       items.forEach((item, index) => {
         const row = document.createElement("div");
