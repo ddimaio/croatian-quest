@@ -38,9 +38,23 @@ h1,h2,h3 { font-family:'Manrope',sans-serif !important; color:var(--ink); }
 .pill { display:inline-block; background:#eef8f0; color:#268447; font-size:.75rem; font-weight:800; padding:5px 10px; border-radius:99px; }
 hr { border-color:var(--line); }
 [data-testid="stMetric"] { background:white; padding:12px 16px; border-radius:16px; border:1px solid var(--line); }
-.stButton>button { border-radius:13px; font-weight:800; min-height:48px; border:1px solid var(--line); }
-.stButton>button[kind="primary"] { background:var(--green); border-color:var(--green); color:#123624; }
-.stButton>button[kind="primary"]:hover { background:var(--deep); border-color:var(--deep); color:white; }
+.stButton>button, [data-testid^="stBaseButton-"], [data-testid="stFormSubmitButton"] button {
+  border-radius:13px; font-weight:800; min-height:48px;
+  border:1px solid #c9d8cd !important; background-color:#ffffff !important;
+  color:#193b35 !important; opacity:1;
+}
+.stButton>button[kind="primary"], [data-testid="stBaseButton-primary"] {
+  background-color:#58cc7a !important; border-color:#58cc7a !important; color:#123624 !important;
+}
+.stButton>button[kind="primary"]:hover, [data-testid="stBaseButton-primary"]:hover {
+  background-color:#2eaa58 !important; border-color:#2eaa58 !important; color:#ffffff !important;
+}
+.stButton>button:not(:disabled):hover, [data-testid="stBaseButton-secondary"]:not(:disabled):hover {
+  background-color:#e4f8e9 !important; border-color:#58cc7a !important; color:#193b35 !important;
+}
+.stButton>button:disabled, [data-testid^="stBaseButton-"]:disabled {
+  background-color:#edf1ee !important; border-color:#dfe6e1 !important; color:#68756f !important; opacity:1 !important;
+}
 .stProgress>div>div>div { background:var(--green); }
 [data-testid="stRadio"] [role="radiogroup"] label {
   box-sizing:border-box; width:100%; min-height:56px; display:flex; align-items:center;
