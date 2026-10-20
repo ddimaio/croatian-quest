@@ -49,7 +49,7 @@ hr { border-color:var(--line); }
 .stButton>button[kind="primary"]:hover, [data-testid="stBaseButton-primary"]:hover {
   background-color:#2eaa58 !important; border-color:#2eaa58 !important; color:#ffffff !important;
 }
-.stButton>button:not(:disabled):hover, [data-testid="stBaseButton-secondary"]:not(:disabled):hover {
+.stButton>button:not([kind="primary"]):not(:disabled):hover, [data-testid="stBaseButton-secondary"]:not(:disabled):hover {
   background-color:#e4f8e9 !important; border-color:#58cc7a !important; color:#193b35 !important;
 }
 .stButton>button:disabled, [data-testid^="stBaseButton-"]:disabled {
