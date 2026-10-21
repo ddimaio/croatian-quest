@@ -461,10 +461,12 @@ def supabase_config():
 SUPABASE = supabase_config()
 
 
-def supabase_request(path, method="POST", payload=None, token=None, params=None):
+def supabase_request(path, method="POST", payload=None, token=None, params=None, prefer=None):
     headers = {"apikey": SUPABASE["anon_key"], "Content-Type": "application/json"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
+    if prefer:
+        headers["Prefer"] = prefer
     try:
         return requests.request(
             method,
@@ -800,6 +802,7 @@ def save_progress():
         payload=payload,
         params={"on_conflict": "user_id"},
         token=st.session_state.auth_session["access_token"],
+        prefer="resolution=merge-duplicates,return=minimal",
     )
     if response is None or not response.ok:
         st.session_state.progress_save_error = "Progress could not be saved to your account. Check the database setup and try again."
