@@ -927,14 +927,7 @@ with st.sidebar:
     st.markdown("### Your journey")
     st.metric("⭐ Total XP", st.session_state.xp)
     st.metric("✅ Lessons finished", len(st.session_state.completed_lessons))
-    total_course_words = {
-        normalize(word["hr"])
-        for lesson in st.session_state.lessons.values()
-        for word in lesson.get("vocabulary", [])
-        if isinstance(word, dict) and isinstance(word.get("hr"), str)
-    }
-    st.metric("📚 Total words in course", len(total_course_words))
-    st.metric("🧠 Words learned", len(st.session_state.cards))
+    st.metric("🧠 Words encountered", len(st.session_state.cards))
     if st.session_state.progress_save_error:
         st.warning(st.session_state.progress_save_error)
     else:
