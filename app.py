@@ -44,6 +44,8 @@ h1,h2,h3 { font-family:'Manrope',sans-serif !important; color:var(--ink); }
 .stat-label { color:var(--muted); font-size:.75rem; font-weight:700; }
 .lesson-card { background:white; border:1px solid var(--line); border-radius:22px; padding:22px; margin:12px 0; }
 .prompt { font-family:'Manrope'; font-size:1.45rem; font-weight:800; letter-spacing:-.03em; line-height:1.3; }
+.dialogue-turn { padding:9px 12px; margin:7px 0; background:#f4fbf5; border-left:4px solid #58cc7a; border-radius:8px; line-height:1.55; }
+.dialogue-speaker { color:#268447; font-weight:800; }
 .pill { display:inline-block; background:#eef8f0; color:#268447; font-size:.75rem; font-weight:800; padding:5px 10px; border-radius:99px; }
 hr { border-color:var(--line); }
 [data-testid="stMetric"] { background:white; padding:12px 16px; border-radius:16px; border:1px solid var(--line); }
@@ -1190,7 +1192,39 @@ else:
         label, prompt = prompt_map[ex["type"]]
         st.markdown(f'<span class="pill">{label}</span>', unsafe_allow_html=True)
         if ex["type"] == "comprehension":
-            st.markdown(f'<div class="lesson-card"><div class="eyebrow">Read this</div><div>{html.escape(ex["passage"]).replace(chr(10), "<br>")}</div></div>', unsafe_allow_html=True)
+            passage = ex["passage"]
+            is_final_dialogue = (
+                idx == total - 1
+                and ":" in passage
+                and any(line.strip() for line in passage.splitlines())
+            )
+            if is_final_dialogue:
+                turns = []
+                for line in passage.splitlines():
+                    line = line.strip()
+                    if not line:
+                        continue
+                    if ":" in line:
+                        speaker, words = line.split(":", 1)
+                        turns.append(
+                            f'<div class="dialogue-turn"><span class="dialogue-speaker">'
+                            f'{html.escape(speaker)}:</span>{html.escape(words)}</div>'
+                        )
+                    else:
+                        turns.append(f'<div class="dialogue-turn">{html.escape(line)}</div>')
+                st.markdown(
+                    '<div class="lesson-card"><div class="eyebrow">🎭 Final mini-dialogue · Croatian</div>'
+                    + "".join(turns)
+                    + '</div>',
+                    unsafe_allow_html=True,
+                )
+                st.caption("Read the conversation, then answer the question below.")
+            else:
+                st.markdown(
+                    f'<div class="lesson-card"><div class="eyebrow">Read this</div>'
+                    f'<div>{html.escape(passage).replace(chr(10), "<br>")}</div></div>',
+                    unsafe_allow_html=True,
+                )
         st.markdown(f'<div class="lesson-card"><div class="prompt">{html.escape(prompt)}</div></div>', unsafe_allow_html=True)
         if ex["type"] == "translate_hr_to_en": pronunciation_button(ex["prompt"], f"prompt-{idx}")
         typed_form_submitted = False
