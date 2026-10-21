@@ -22,6 +22,9 @@ word_order_component = st.components.v1.declare_component(
 speech_component = st.components.v1.declare_component(
     "croatian_speech", path=str(Path(__file__).parent / "components" / "speech")
 )
+auth_callback_component = st.components.v1.declare_component(
+    "croatian_auth_callback", path=str(Path(__file__).parent / "components" / "auth_callback")
+)
 
 CSS = """
 <style>
@@ -640,6 +643,40 @@ def handle_password_recovery():
     return True
 
 
+def handle_default_recovery_callback():
+    """Accept Supabase's standard recovery redirect, which returns tokens in the URL fragment."""
+    result = auth_callback_component(key="default-auth-callback")
+    if not isinstance(result, dict) or result.get("type") != "recovery":
+        return
+    if st.session_state.get("_default_recovery_handled"):
+        return
+
+    st.session_state["_default_recovery_handled"] = True
+    access_token = result.get("access_token")
+    refresh_token = result.get("refresh_token")
+    if not isinstance(access_token, str) or not access_token or not isinstance(refresh_token, str) or not refresh_token:
+        st.session_state.auth_message = "That reset link is invalid or expired. Request a new one."
+        return
+
+    response = supabase_request("auth/v1/user", method="GET", token=access_token)
+    try:
+        user = response.json() if response is not None and response.ok else None
+    except ValueError:
+        user = None
+    if not isinstance(user, dict) or not user.get("id"):
+        st.session_state.auth_message = "That reset link is invalid or expired. Request a new one."
+        return
+
+    st.session_state.pop("auth_session", None)
+    st.session_state.pop("_saved_progress", None)
+    st.session_state.recovery_session = {
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "expires_at": time.time() + 3500,
+        "user": user,
+    }
+
+
 def authenticate_user():
     if st.session_state.pop("_clear_auth_password_fields", False):
         for key in ("login_password", "signup_password", "signup_confirm", "new_password", "new_password_confirm"):
@@ -747,6 +784,7 @@ def lesson_is_unlocked(lesson, course_lessons, completed_ids):
     return lesson["id"] in completed_ids or all(item["id"] in completed_ids for item in prior_content)
 
 
+handle_default_recovery_callback()
 authenticate_user()
 if "_saved_progress" not in st.session_state:
     st.session_state["_saved_progress"] = load_user_progress()
