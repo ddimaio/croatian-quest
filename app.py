@@ -362,6 +362,34 @@ def validate_lesson(data):
             if not isinstance(words, list) or len(words) < 3 or not all(isinstance(w, str) and w.strip() for w in words): errors.append(f"Exercise {i}: reorder_words needs at least three ‘words’ strings.")
             if not isinstance(answer, list) or not all(isinstance(w, str) for w in answer): errors.append(f"Exercise {i}: reorder_words ‘answer’ must be an ordered array of words.")
             elif isinstance(words, list) and sorted(normalize(w) for w in words) != sorted(normalize(w) for w in answer): errors.append(f"Exercise {i}: ‘answer’ must use the same words as ‘words’.")
+    dialogue = data.get("dialogue")
+    if dialogue is not None:
+        if not isinstance(dialogue, dict):
+            errors.append("‘dialogue’ must be an object.")
+        else:
+            if not isinstance(dialogue.get("context"), str) or not dialogue["context"].strip():
+                errors.append("A dialogue needs a short ‘context’.")
+            lines = dialogue.get("lines")
+            if not isinstance(lines, list) or not lines:
+                errors.append("A dialogue needs a non-empty ‘lines’ array.")
+            elif any(
+                not isinstance(line, dict)
+                or not isinstance(line.get("speaker"), str) or not line["speaker"].strip()
+                or not isinstance(line.get("text"), str) or not line["text"].strip()
+                for line in lines
+            ):
+                errors.append("Each dialogue line needs a ‘speaker’ and Croatian ‘text’.")
+            question = dialogue.get("question")
+            if not isinstance(question, dict):
+                errors.append("A dialogue needs one related ‘question’ object.")
+            else:
+                if not isinstance(question.get("prompt"), str) or not question["prompt"].strip():
+                    errors.append("A dialogue question needs a ‘prompt’.")
+                options = question.get("options")
+                if not isinstance(options, list) or len(options) < 2:
+                    errors.append("A dialogue question needs at least two ‘options’.")
+                elif question.get("answer") not in options:
+                    errors.append("A dialogue question’s ‘answer’ must match one of its options.")
     return errors
 
 
@@ -439,6 +467,8 @@ def begin_review(lesson_id=None):
             del st.session_state[widget_key]
     st.session_state.page = "review"
     st.session_state.active_review_lesson = lesson_id
+    st.session_state.index = 0
+    st.session_state.checked = None
     st.session_state.review_queue = [key for key, _ in due_cards()]
     st.session_state.review_index = 0
     st.session_state.review_revealed = False
@@ -1000,13 +1030,52 @@ elif st.session_state.page == "review":
     st.markdown(f'<div class="hero"><div class="eyebrow">{title}</div><h1>Bring words back<br>at the right time.</h1><p>Type well-known words; choose from options while they’re still new.</p></div>', unsafe_allow_html=True)
     idx = st.session_state.review_index
     if idx >= len(queue):
-        st.success("Review complete — you’re all caught up for this session! 🎉")
-        st.markdown(f"### {len(queue)} cards reviewed")
-        if st.session_state.active_review_lesson and st.session_state.active_review_lesson not in st.session_state.completed_lessons:
-            st.session_state.completed_lessons.add(st.session_state.active_review_lesson)
-            save_progress()
-        if st.button("Back to course", type="primary"):
-            st.session_state.page = "home"; st.session_state.active_review_lesson = None; save_progress(); st.rerun()
+        active_lesson = st.session_state.lessons.get(st.session_state.active_review_lesson)
+        dialogue = active_lesson.get("dialogue") if active_lesson else None
+        if dialogue and st.session_state.index == 0:
+            st.markdown("### 💬 Short conversation in Croatian")
+            st.caption(dialogue["context"])
+            st.markdown(
+                '<div class="lesson-card">' +
+                "<br>".join(
+                    f"<strong>{html.escape(line['speaker'])}:</strong> {html.escape(line['text'])}"
+                    for line in dialogue["lines"]
+                ) +
+                "</div>",
+                unsafe_allow_html=True,
+            )
+            question = dialogue["question"]
+            st.markdown(f"**{question['prompt']}**")
+            if st.session_state.checked is None:
+                response = st.radio(
+                    "Choose one",
+                    question["options"],
+                    key=f"review_dialogue_choice_{active_lesson['id']}",
+                    label_visibility="collapsed",
+                )
+                if st.button("Check answer", type="primary", use_container_width=True):
+                    correct = normalize(response) == normalize(question["answer"])
+                    st.session_state.checked = {"correct": correct, "given": response}
+                    if correct:
+                        st.session_state.xp += 10
+                    save_progress(); st.rerun()
+            else:
+                if st.session_state.checked["correct"]:
+                    st.success("Correct! +10 XP 🎉")
+                else:
+                    st.error(f"The answer is **{question['answer']}**.")
+                if st.button("Continue →", type="primary", use_container_width=True):
+                    st.session_state.index = 1
+                    st.session_state.checked = None
+                    save_progress(); st.rerun()
+        else:
+            st.success("Review complete — you’re all caught up for this session! 🎉")
+            st.markdown(f"### {len(queue)} cards reviewed")
+            if st.session_state.active_review_lesson and st.session_state.active_review_lesson not in st.session_state.completed_lessons:
+                st.session_state.completed_lessons.add(st.session_state.active_review_lesson)
+                save_progress()
+            if st.button("Back to course", type="primary"):
+                st.session_state.page = "home"; st.session_state.active_review_lesson = None; save_progress(); st.rerun()
     else:
         key = queue[idx]
         card = st.session_state.cards.get(key)
