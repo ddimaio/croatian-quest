@@ -760,18 +760,39 @@ def save_progress():
 
 
 def restore_progress(saved):
-    """Restore valid saved course data over the built-in starter course."""
+    """Merge bundled, saved, and server-uploaded lessons into the course."""
     lessons = {lesson["id"]: lesson for lesson in STARTER_COURSE}
+
+    def merge_lesson(lesson_id, lesson):
+        if not isinstance(lesson_id, str) or not isinstance(lesson, dict) or lesson.get("id") != lesson_id:
+            return
+        if validate_lesson(lesson):
+            return
+        conflict = next(
+            (key for key, existing in lessons.items()
+             if existing["number"] == lesson["number"] and key != lesson_id),
+            None,
+        )
+        if conflict is None:
+            lessons[lesson_id] = lesson
+
     saved_lessons = saved.get("lessons", {})
     if isinstance(saved_lessons, dict):
         for lesson_id, lesson in saved_lessons.items():
-            if not isinstance(lesson_id, str) or not isinstance(lesson, dict) or lesson.get("id") != lesson_id:
+            merge_lesson(lesson_id, lesson)
+
+    lesson_dir = Path(__file__).parent / "lessons"
+    if lesson_dir.is_dir():
+        for lesson_path in sorted(lesson_dir.glob("*.json")):
+            try:
+                lesson = json.loads(lesson_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
                 continue
-            if validate_lesson(lesson):
-                continue
-            conflict = next((key for key, existing in lessons.items() if existing["number"] == lesson["number"] and key != lesson_id), None)
-            if conflict is None:
-                lessons[lesson_id] = lesson
+            lesson_id = lesson.get("id") if isinstance(lesson, dict) else None
+            if not lesson_id and isinstance(lesson, dict) and isinstance(lesson.get("number"), int):
+                lesson_id = f"lesson-{lesson['number']:02d}"
+                lesson["id"] = lesson_id
+            merge_lesson(lesson_id, lesson)
     return lessons
 
 
@@ -857,7 +878,14 @@ with st.sidebar:
     st.markdown("### Your journey")
     st.metric("⭐ Total XP", st.session_state.xp)
     st.metric("✅ Lessons finished", len(st.session_state.completed_lessons))
-    st.metric("🧠 Words in course deck", len(st.session_state.cards))
+    total_course_words = {
+        normalize(word["hr"])
+        for lesson in st.session_state.lessons.values()
+        for word in lesson.get("vocabulary", [])
+        if isinstance(word, dict) and isinstance(word.get("hr"), str)
+    }
+    st.metric("📚 Total words in course", len(total_course_words))
+    st.metric("🧠 Words learned", len(st.session_state.cards))
     if st.session_state.progress_save_error:
         st.warning(st.session_state.progress_save_error)
     else:
@@ -869,47 +897,7 @@ with st.sidebar:
             supabase_request("auth/v1/logout", token=session["access_token"], params={"scope": "global"})
         st.session_state.clear()
     st.button("Log out", key="sidebar_logout", on_click=logout_callback, use_container_width=True)
-    st.markdown("---")
-    st.markdown("### Add a numbered lesson")
-    uploaded = st.file_uploader("Upload one lesson JSON", type=["json"], help="Lessons are added to this course for your current session.")
-    if uploaded:
-        try:
-            lesson = json.load(uploaded)
-            errs = validate_lesson(lesson)
-            if not errs:
-                lid = str(lesson.get("id") or f"lesson-{lesson['number']:02d}")
-                lesson["id"] = lid
-                for existing in st.session_state.lessons.values():
-                    if existing["number"] == lesson["number"] and existing["id"] != lid:
-                        errs.append(f"Lesson number {lesson['number']} is already used by ‘{existing['title']}’.")
-                        break
-                order_error = check_difficulty_order(lesson)
-                if order_error: errs.append(order_error)
-            if errs:
-                for error in errs: st.error(error)
-            else:
-                st.session_state.lessons[lesson["id"]] = lesson
-                st.success(f"Added lesson {lesson['number']:02d}: {lesson['title']}")
-        except (json.JSONDecodeError, UnicodeDecodeError):
-            st.error("That file isn’t valid JSON. Check its syntax and try again.")
-    with st.expander("Lesson JSON format"):
-        st.code('''{
-  "id": "lesson-08-shopping",
-  "number": 8,
-  "title": "At the market",
-  "topic": "Food and shopping",
-  "lesson_type": "vocabulary",
-  "difficulty": 3,
-  "description": "Learn words for fruit and prices.",
-  "vocabulary": [
-    {"hr": "Jabuka", "en": "Apple"},
-    {"hr": "Koliko košta?", "en": "How much does it cost?"}
-  ],
-  "exercises": [
-    {"type": "translate_en_to_hr", "prompt": "Apple", "answer": "Jabuka"}
-  ]
-}''', language="json")
-        st.caption("lesson_type: vocabulary, grammar, or review. Vocabulary/grammar lessons have exercises; vocabulary lessons need vocabulary entries; grammar lessons need grammar_note. Difficulty 1–5 should rise as numbered content lessons advance. Review lessons use the shared due-word deck and need no exercises.")
+
 
 header_left, header_right = st.columns([4, 1])
 with header_left:
