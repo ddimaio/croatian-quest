@@ -96,6 +96,11 @@
       "type": "translate_hr_to_en",
       "prompt": "Stol",
       "answer": "Table"
+    },
+    {
+      "type": "speak",
+      "prompt": "Say ‘Kuhinja’ aloud.",
+      "answer": "Kuhinja"
     }
   ]
 }
