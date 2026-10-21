@@ -537,8 +537,8 @@ def show_auth_page():
     login_tab, signup_tab, reset_tab = st.tabs(["Log in", "Create account", "Forgot password"])
     with login_tab:
         with st.form("login_form"):
-            email = st.text_input("Email", key="login_email")
-            password = st.text_input("Password", type="password", key="login_password")
+            email = st.text_input("Email", key="login_email", autocomplete="username")
+            password = st.text_input("Password", type="password", key="login_password", autocomplete="current-password")
             submitted = st.form_submit_button("Log in", type="primary", use_container_width=True)
         if submitted:
             response = supabase_request(
@@ -555,8 +555,8 @@ def show_auth_page():
     with signup_tab:
         with st.form("signup_form"):
             email = st.text_input("Email", key="signup_email")
-            password = st.text_input("Password (at least 8 characters)", type="password", key="signup_password")
-            confirm = st.text_input("Confirm password", type="password", key="signup_confirm")
+            password = st.text_input("Password (at least 8 characters)", type="password", key="signup_password", autocomplete="new-password")
+            confirm = st.text_input("Confirm password", type="password", key="signup_confirm", autocomplete="new-password")
             submitted = st.form_submit_button("Create account", type="primary", use_container_width=True)
         if submitted:
             if len(password) < 8:
@@ -616,8 +616,8 @@ def handle_password_recovery():
         return False
     st.title("Choose a new password")
     with st.form("set_new_password_form"):
-        password = st.text_input("New password (at least 8 characters)", type="password", key="new_password")
-        confirm = st.text_input("Confirm new password", type="password", key="new_password_confirm")
+        password = st.text_input("New password (at least 8 characters)", type="password", key="new_password", autocomplete="new-password")
+        confirm = st.text_input("Confirm new password", type="password", key="new_password_confirm", autocomplete="new-password")
         submitted = st.form_submit_button("Save new password", type="primary", use_container_width=True)
     if submitted:
         if len(password) < 8:
