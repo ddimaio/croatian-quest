@@ -1,0 +1,115 @@
+{
+  "id": "lesson-19-accusative-objects",
+  "number": 19,
+  "title": "Objects in a sentence",
+  "topic": "Grammar: the accusative case",
+  "lesson_type": "grammar",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Notice how common nouns change when they are the object of a sentence.",
+  "grammar_note": "A direct object answers ‘what?’ or ‘whom?’ after the verb. Many feminine nouns ending in -a change to -u: knjiga → knjigu, voda → vodu. Masculine animate nouns often take -a: prijatelj → prijatelja. Masculine inanimate nouns often keep the same form: grad → grad. These are common patterns; other noun groups have their own forms.",
+  "vocabulary": [
+    {
+      "hr": "Knjiga",
+      "en": "Book"
+    },
+    {
+      "hr": "Voda",
+      "en": "Water"
+    },
+    {
+      "hr": "Prijatelj",
+      "en": "Friend (male)"
+    },
+    {
+      "hr": "Grad",
+      "en": "City"
+    },
+    {
+      "hr": "Vidim",
+      "en": "I see"
+    },
+    {
+      "hr": "Imam",
+      "en": "I have"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I have a book",
+      "answer": "Imam knjigu"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Choose the correct form: ‘I have water.’",
+      "options": [
+        "Imam vodu",
+        "Imam voda",
+        "Imam vode"
+      ],
+      "answer": "Imam vodu"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Vidim prijatelja",
+      "answer": "I see a friend"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Imam ___ (book).",
+      "answer": "knjigu"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘I see the city.’",
+      "words": [
+        "grad.",
+        "Vidim",
+        "Ja"
+      ],
+      "answer": [
+        "Ja",
+        "vidim",
+        "grad."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Luka ima knjigu i vodu. Zatim vidi prijatelja u gradu.",
+      "prompt": "What does Luka have?",
+      "options": [
+        "A book and water",
+        "A bus ticket",
+        "Coffee and tea"
+      ],
+      "answer": "A book and water"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Which form is used for ‘I see a male friend’?",
+      "options": [
+        "Vidim prijatelja",
+        "Vidim prijatelj",
+        "Vidim prijatelju"
+      ],
+      "answer": "Vidim prijatelja"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I see the city",
+      "answer": "Vidim grad"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Imaš li knjigu?\\nMarko: Da, imam knjigu. Imam i vodu.\\nAna: Vidiš li prijatelja?\\nMarko: Da, vidim prijatelja u gradu.",
+      "prompt": "What does Marko see in the city?",
+      "options": [
+        "A friend",
+        "A bookshop",
+        "A train"
+      ],
+      "answer": "A friend"
+    }
+  ]
+}

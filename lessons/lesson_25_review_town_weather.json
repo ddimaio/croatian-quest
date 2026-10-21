@@ -1,0 +1,42 @@
+{
+  "id": "lesson-25-review-town-weather",
+  "number": 25,
+  "title": "Review: town and weather",
+  "topic": "Cumulative course review",
+  "lesson_type": "review",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Review the course-wide vocabulary deck and consolidate directions and weather.",
+  "vocabulary": [],
+  "exercises": [],
+  "dialogue": {
+    "context": "Asking for directions before the rain starts.",
+    "lines": [
+      {
+        "speaker": "Turist",
+        "text": "Oprostite, gdje je kolodvor?"
+      },
+      {
+        "speaker": "Ana",
+        "text": "Idite ravno, zatim desno. Kolodvor je blizu trga."
+      },
+      {
+        "speaker": "Turist",
+        "text": "Hvala! Pada kiša."
+      },
+      {
+        "speaker": "Ana",
+        "text": "Izvolite moj kišobran."
+      }
+    ],
+    "question": {
+      "prompt": "Where is the station?",
+      "options": [
+        "Near the square",
+        "Far from the town",
+        "On the left of the bridge"
+      ],
+      "answer": "Near the square"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "id": "lesson-22-around-town",
+  "number": 22,
+  "title": "Find your way around town",
+  "topic": "Directions and places",
+  "lesson_type": "vocabulary",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Ask where places are and understand simple directions.",
+  "vocabulary": [
+    {
+      "hr": "Lijevo",
+      "en": "Left"
+    },
+    {
+      "hr": "Desno",
+      "en": "Right"
+    },
+    {
+      "hr": "Ravno",
+      "en": "Straight ahead"
+    },
+    {
+      "hr": "Blizu",
+      "en": "Near"
+    },
+    {
+      "hr": "Daleko",
+      "en": "Far"
+    },
+    {
+      "hr": "Ulica",
+      "en": "Street"
+    },
+    {
+      "hr": "Trg",
+      "en": "Square"
+    },
+    {
+      "hr": "Most",
+      "en": "Bridge"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘ravno’ mean?",
+      "options": [
+        "Straight ahead",
+        "Left",
+        "Far"
+      ],
+      "answer": "Straight ahead"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Left",
+      "answer": "Lijevo"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Blizu",
+      "answer": "Near"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Stanica je ___. (The station is near.)",
+      "answer": "blizu"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘The square is on the right.’",
+      "words": [
+        "desno.",
+        "Trg",
+        "je",
+        "na"
+      ],
+      "answer": [
+        "Trg",
+        "je",
+        "na",
+        "desno."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Oprostite, gdje je trg?\\nMarko: Idite ravno, zatim lijevo. Trg je blizu mosta.",
+      "prompt": "Where is the square?",
+      "options": [
+        "Near the bridge",
+        "Far from the bridge",
+        "On the right of the station"
+      ],
+      "answer": "Near the bridge"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Which word means ‘street’?",
+      "options": [
+        "Ulica",
+        "Most",
+        "Trg"
+      ],
+      "answer": "Ulica"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Right",
+      "answer": "Desno"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Turist: Oprostite, gdje je most?\\nAna: Idite ravno ovom ulicom. Most je desno, blizu trga.\\nTurist: Hvala vam!\\nAna: Nema na čemu.",
+      "prompt": "Where is the bridge?",
+      "options": [
+        "On the right, near the square",
+        "On the left, far away",
+        "Straight ahead at the station"
+      ],
+      "answer": "On the right, near the square"
+    }
+  ]
+}

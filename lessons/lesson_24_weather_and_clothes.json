@@ -1,0 +1,126 @@
+{
+  "id": "lesson-24-weather-and-clothes",
+  "number": 24,
+  "title": "Weather and what to wear",
+  "topic": "Weather vocabulary",
+  "lesson_type": "vocabulary",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Describe simple weather and choose what you need for the day.",
+  "vocabulary": [
+    {
+      "hr": "Sunce",
+      "en": "Sun"
+    },
+    {
+      "hr": "Kiša",
+      "en": "Rain"
+    },
+    {
+      "hr": "Vjetar",
+      "en": "Wind"
+    },
+    {
+      "hr": "Oblak",
+      "en": "Cloud"
+    },
+    {
+      "hr": "Sunčano",
+      "en": "Sunny"
+    },
+    {
+      "hr": "Hladno",
+      "en": "Cold"
+    },
+    {
+      "hr": "Toplo",
+      "en": "Warm"
+    },
+    {
+      "hr": "Jakna",
+      "en": "Jacket"
+    },
+    {
+      "hr": "Kišobran",
+      "en": "Umbrella"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘hladno’ mean?",
+      "options": [
+        "Cold",
+        "Warm",
+        "Sunny"
+      ],
+      "answer": "Cold"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Rain",
+      "answer": "Kiša"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Sunčano",
+      "answer": "Sunny"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Pada ___. (It is raining.)",
+      "answer": "kiša"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘It is warm today.’",
+      "words": [
+        "danas.",
+        "Toplo",
+        "je"
+      ],
+      "answer": [
+        "Toplo",
+        "je",
+        "danas."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Danas je hladno i puše vjetar. Ana nosi jaknu. Sutra će biti sunčano.",
+      "prompt": "What does Ana wear today?",
+      "options": [
+        "A jacket",
+        "An umbrella",
+        "A hat"
+      ],
+      "answer": "A jacket"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "What do you need when it rains?",
+      "options": [
+        "Kišobran",
+        "Knjiga",
+        "Karta"
+      ],
+      "answer": "Kišobran"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Wind",
+      "answer": "Vjetar"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Marko: Kakvo je vrijeme danas?\\nAna: Pada kiša i hladno je. Ponesi jaknu i kišobran.\\nMarko: A sutra?\\nAna: Sutra će biti sunčano i toplo.",
+      "prompt": "What will the weather be like tomorrow?",
+      "options": [
+        "Sunny and warm",
+        "Cold and windy",
+        "Rainy and cold"
+      ],
+      "answer": "Sunny and warm"
+    }
+  ]
+}

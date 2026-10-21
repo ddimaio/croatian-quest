@@ -1,0 +1,123 @@
+{
+  "id": "lesson-26-can-and-want",
+  "number": 26,
+  "title": "What can you do?",
+  "topic": "Grammar: mogu and želim",
+  "lesson_type": "grammar",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Say what you can do and what you want to do using an infinitive.",
+  "grammar_note": "Use mogu (I can) or želim (I want) followed by an infinitive: mogu govoriti (I can speak), želim učiti (I want to study). The verb changes with the subject: ja mogu / ti možeš / on može; ja želim / ti želiš / ona želi.",
+  "vocabulary": [
+    {
+      "hr": "Mogu",
+      "en": "I can"
+    },
+    {
+      "hr": "Možeš",
+      "en": "You can"
+    },
+    {
+      "hr": "Može",
+      "en": "He / she can"
+    },
+    {
+      "hr": "Želim",
+      "en": "I want"
+    },
+    {
+      "hr": "Želiš",
+      "en": "You want"
+    },
+    {
+      "hr": "Govoriti",
+      "en": "To speak"
+    },
+    {
+      "hr": "Učiti",
+      "en": "To study / learn"
+    },
+    {
+      "hr": "Razumjeti",
+      "en": "To understand"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "Choose ‘you can’.",
+      "options": [
+        "Mogu",
+        "Možeš",
+        "Može"
+      ],
+      "answer": "Možeš"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I can speak Croatian",
+      "answer": "Mogu govoriti hrvatski"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Želim učiti",
+      "answer": "I want to study"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Želim ___ hrvatski. (I want to learn Croatian.)",
+      "answer": "učiti"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘You can speak Croatian.’",
+      "words": [
+        "hrvatski.",
+        "govoriti",
+        "Možeš"
+      ],
+      "answer": [
+        "Možeš",
+        "govoriti",
+        "hrvatski."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana može govoriti engleski. Želi učiti hrvatski. Luka može čitati hrvatski, ali želi više vježbati.",
+      "prompt": "What does Ana want to do?",
+      "options": [
+        "Learn Croatian",
+        "Travel by train",
+        "Buy a book"
+      ],
+      "answer": "Learn Croatian"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Which verb form means ‘he/she wants’?",
+      "options": [
+        "Želi",
+        "Želim",
+        "Želiš"
+      ],
+      "answer": "Želi"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "You want to learn",
+      "answer": "Želiš učiti"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Luka: Možeš li govoriti hrvatski?\\nAna: Malo. Mogu čitati, ali želim bolje govoriti.\\nLuka: Možeš učiti sa mnom.\\nAna: Hvala! Želim učiti svaki dan.",
+      "prompt": "What can Ana do?",
+      "options": [
+        "She can read",
+        "She can drive",
+        "She can cook"
+      ],
+      "answer": "She can read"
+    }
+  ]
+}

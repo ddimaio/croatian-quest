@@ -1,0 +1,42 @@
+{
+  "id": "lesson-21-review-weekdays-shopping",
+  "number": 21,
+  "title": "Review: time and shopping",
+  "topic": "Cumulative course review",
+  "lesson_type": "review",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Review due vocabulary from the whole course, including days, objects, and shopping.",
+  "vocabulary": [],
+  "exercises": [],
+  "dialogue": {
+    "context": "At a small shop on Monday morning.",
+    "lines": [
+      {
+        "speaker": "Ana",
+        "text": "Dobar dan. Koliko košta kruh?"
+      },
+      {
+        "speaker": "Prodavač",
+        "text": "Dva eura."
+      },
+      {
+        "speaker": "Ana",
+        "text": "Trebam kruh i vodu, molim."
+      },
+      {
+        "speaker": "Prodavač",
+        "text": "Izvolite. Jeftino je danas!"
+      }
+    ],
+    "question": {
+      "prompt": "What does Ana need?",
+      "options": [
+        "Bread and water",
+        "A book and milk",
+        "A train ticket"
+      ],
+      "answer": "Bread and water"
+    }
+  }
+}

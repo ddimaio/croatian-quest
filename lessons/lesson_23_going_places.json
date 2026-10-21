@@ -1,0 +1,119 @@
+{
+  "id": "lesson-23-going-places",
+  "number": 23,
+  "title": "Where are you going?",
+  "topic": "Grammar: the verb ići",
+  "lesson_type": "grammar",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Use the present tense of ići (to go) to talk about destinations.",
+  "grammar_note": "The present-tense forms used here are: ja idem (I go/am going), ti ideš (you go), on/ona ide (he/she goes), and mi idemo (we go). Use u with many destinations: idem u grad (I’m going to town), ideš u školu (you’re going to school).",
+  "vocabulary": [
+    {
+      "hr": "Idem",
+      "en": "I go / I am going"
+    },
+    {
+      "hr": "Ideš",
+      "en": "You go / you are going"
+    },
+    {
+      "hr": "Ide",
+      "en": "He / she goes"
+    },
+    {
+      "hr": "Idemo",
+      "en": "We go / we are going"
+    },
+    {
+      "hr": "Grad",
+      "en": "Town / city"
+    },
+    {
+      "hr": "Škola",
+      "en": "School"
+    },
+    {
+      "hr": "Kuća",
+      "en": "Home / house"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "Choose ‘you are going’.",
+      "options": [
+        "Idem",
+        "Ideš",
+        "Idemo"
+      ],
+      "answer": "Ideš"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I am going to town",
+      "answer": "Idem u grad"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Idemo u školu",
+      "answer": "We are going to school"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Ana ___ u grad. (Ana is going to town.)",
+      "answer": "ide"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘I am going home.’",
+      "words": [
+        "kući.",
+        "Idem",
+        "Ja"
+      ],
+      "answer": [
+        "Ja",
+        "idem",
+        "kući."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Luka ide u školu. Ana ide u grad. Marko i Ivan idu kući.",
+      "prompt": "Where is Ana going?",
+      "options": [
+        "To town",
+        "To school",
+        "Home"
+      ],
+      "answer": "To town"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Choose ‘we are going’.",
+      "options": [
+        "Idemo",
+        "Ideš",
+        "Ide"
+      ],
+      "answer": "Idemo"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "We are going to school",
+      "answer": "Idemo u školu"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Kamo ideš?\\nLuka: Idem u grad. A ti?\\nAna: Idem u školu. Marko i Ivan idu kući.\\nLuka: Vidimo se kasnije!",
+      "prompt": "Where is Luka going?",
+      "options": [
+        "To town",
+        "To school",
+        "Home"
+      ],
+      "answer": "To town"
+    }
+  ]
+}

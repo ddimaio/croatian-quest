@@ -1,0 +1,109 @@
+{
+  "id": "lesson-18-days-and-routines",
+  "number": 18,
+  "title": "Days and daily routines",
+  "topic": "Days and parts of the day",
+  "lesson_type": "vocabulary",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Talk about when you do things during a typical week.",
+  "vocabulary": [
+    {
+      "hr": "Danas",
+      "en": "Today"
+    },
+    {
+      "hr": "Sutra",
+      "en": "Tomorrow"
+    },
+    {
+      "hr": "Ponedjeljak",
+      "en": "Monday"
+    },
+    {
+      "hr": "Utorak",
+      "en": "Tuesday"
+    },
+    {
+      "hr": "Ujutro",
+      "en": "In the morning"
+    },
+    {
+      "hr": "Navečer",
+      "en": "In the evening"
+    },
+    {
+      "hr": "Svaki dan",
+      "en": "Every day"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘sutra’ mean?",
+      "options": [
+        "Tomorrow",
+        "Today",
+        "Every day"
+      ],
+      "answer": "Tomorrow"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Today",
+      "answer": "Danas"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Ujutro",
+      "answer": "In the morning"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "___ idem na posao. (On Monday I go to work.)",
+      "answer": "Ponedjeljak"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘I study Croatian every day.’",
+      "words": [
+        "hrvatski.",
+        "Svaki",
+        "učim",
+        "dan"
+      ],
+      "answer": [
+        "Svaki",
+        "dan",
+        "učim",
+        "hrvatski."
+      ]
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Which phrase means ‘in the evening’?",
+      "options": [
+        "Navečer",
+        "Ujutro",
+        "Sutra"
+      ],
+      "answer": "Navečer"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Tuesday",
+      "answer": "Utorak"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Što radiš u ponedjeljak?\\nLuka: Ujutro radim, a navečer učim hrvatski.\\nAna: A sutra?\\nLuka: Sutra čitam knjigu.",
+      "prompt": "When does Luka study Croatian?",
+      "options": [
+        "In the evening on Monday",
+        "Tomorrow morning",
+        "Every Tuesday"
+      ],
+      "answer": "In the evening on Monday"
+    }
+  ]
+}

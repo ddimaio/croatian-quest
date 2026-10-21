@@ -1,0 +1,42 @@
+{
+  "id": "lesson-27-review-a1",
+  "number": 27,
+  "title": "Review: everyday A1 Croatian",
+  "topic": "Cumulative course review",
+  "lesson_type": "review",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Review due words from all course topics and practice a complete everyday conversation.",
+  "vocabulary": [],
+  "exercises": [],
+  "dialogue": {
+    "context": "Making a plan to go into town and study together.",
+    "lines": [
+      {
+        "speaker": "Ana",
+        "text": "Što želiš raditi danas?"
+      },
+      {
+        "speaker": "Luka",
+        "text": "Želim ići u grad i kupiti knjigu."
+      },
+      {
+        "speaker": "Ana",
+        "text": "Možemo učiti hrvatski u kafiću."
+      },
+      {
+        "speaker": "Luka",
+        "text": "Odlično. Idemo zajedno!"
+      }
+    ],
+    "question": {
+      "prompt": "Where will they study Croatian?",
+      "options": [
+        "In a café",
+        "At the station",
+        "At the shop"
+      ],
+      "answer": "In a café"
+    }
+  }
+}

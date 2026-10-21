@@ -1,0 +1,122 @@
+{
+  "id": "lesson-20-at-the-shop",
+  "number": 20,
+  "title": "At the shop",
+  "topic": "Shopping and prices",
+  "lesson_type": "vocabulary",
+  "difficulty": 5,
+  "level": "A1",
+  "description": "Ask for everyday items and understand simple prices.",
+  "vocabulary": [
+    {
+      "hr": "Cijena",
+      "en": "Price"
+    },
+    {
+      "hr": "Koliko košta?",
+      "en": "How much does it cost?"
+    },
+    {
+      "hr": "Skupo",
+      "en": "Expensive"
+    },
+    {
+      "hr": "Jeftino",
+      "en": "Inexpensive"
+    },
+    {
+      "hr": "Jabuka",
+      "en": "Apple"
+    },
+    {
+      "hr": "Kruh",
+      "en": "Bread"
+    },
+    {
+      "hr": "Mlijeko",
+      "en": "Milk"
+    },
+    {
+      "hr": "Trebam",
+      "en": "I need"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "What does ‘Koliko košta?’ mean?",
+      "options": [
+        "How much does it cost?",
+        "Where is the station?",
+        "What time is it?"
+      ],
+      "answer": "How much does it cost?"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Bread",
+      "answer": "Kruh"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Jeftino",
+      "answer": "Inexpensive"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Trebam ___ i mlijeko. (I need bread and milk.)",
+      "answer": "kruh"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: ‘I need an apple.’",
+      "words": [
+        "jabuku.",
+        "Trebam",
+        "Ja"
+      ],
+      "answer": [
+        "Ja",
+        "trebam",
+        "jabuku."
+      ]
+    },
+    {
+      "type": "comprehension",
+      "passage": "Kupac: Dobar dan. Koliko košta jabuka?\\nProdavač: Jedan euro.\\nKupac: Dobro. Trebam i kruh.\\nProdavač: Izvolite.",
+      "prompt": "How much is the apple?",
+      "options": [
+        "One euro",
+        "Two euros",
+        "It is free"
+      ],
+      "answer": "One euro"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Milk",
+      "answer": "Mlijeko"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Which word means ‘expensive’?",
+      "options": [
+        "Skupo",
+        "Jeftino",
+        "Danas"
+      ],
+      "answer": "Skupo"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Kupac: Dobar dan! Koliko košta kruh?\\nProdavač: Dva eura.\\nKupac: Trebam kruh i mlijeko, molim.\\nProdavač: Izvolite.\\nKupac: Hvala!",
+      "prompt": "What does the customer buy?",
+      "options": [
+        "Bread and milk",
+        "Apples and water",
+        "Coffee and tea"
+      ],
+      "answer": "Bread and milk"
+    }
+  ]
+}
