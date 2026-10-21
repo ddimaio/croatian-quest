@@ -102,7 +102,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Ana: Imaš li knjigu?\\nMarko: Da, imam knjigu. Imam i vodu.\\nAna: Vidiš li prijatelja?\\nMarko: Da, vidim prijatelja u gradu.",
+      "passage": "Ana: Imaš li knjigu?\nMarko: Da, imam knjigu. Imam i vodu.\nAna: Vidiš li prijatelja?\nMarko: Da, vidim prijatelja u gradu.",
       "prompt": "What does Marko see in the city?",
       "options": [
         "A friend",

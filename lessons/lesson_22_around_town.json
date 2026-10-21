@@ -83,7 +83,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Ana: Oprostite, gdje je trg?\\nMarko: Idite ravno, zatim lijevo. Trg je blizu mosta.",
+      "passage": "Ana: Oprostite, gdje je trg?\nMarko: Idite ravno, zatim lijevo. Trg je blizu mosta.",
       "prompt": "Where is the square?",
       "options": [
         "Near the bridge",
@@ -109,7 +109,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Turist: Oprostite, gdje je most?\\nAna: Idite ravno ovom ulicom. Most je desno, blizu trga.\\nTurist: Hvala vam!\\nAna: Nema na čemu.",
+      "passage": "Turist: Oprostite, gdje je most?\nAna: Idite ravno ovom ulicom. Most je desno, blizu trga.\nTurist: Hvala vam!\nAna: Nema na čemu.",
       "prompt": "Where is the bridge?",
       "options": [
         "On the right, near the square",

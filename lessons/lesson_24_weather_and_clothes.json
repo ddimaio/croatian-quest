@@ -113,7 +113,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Marko: Kakvo je vrijeme danas?\\nAna: Pada kiša i hladno je. Ponesi jaknu i kišobran.\\nMarko: A sutra?\\nAna: Sutra je sunčano i toplo.",
+      "passage": "Marko: Kakvo je vrijeme danas?\nAna: Pada kiša i hladno je. Ponesi jaknu i kišobran.\nMarko: A sutra?\nAna: Sutra je sunčano i toplo.",
       "prompt": "What will the weather be like tomorrow?",
       "options": [
         "Sunny and warm",

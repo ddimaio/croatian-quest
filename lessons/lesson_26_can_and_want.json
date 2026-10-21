@@ -110,7 +110,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Luka: Možeš li govoriti hrvatski?\\nAna: Malo. Mogu čitati, ali želim bolje govoriti.\\nLuka: Možeš učiti sa mnom.\\nAna: Hvala! Želim učiti svaki dan.",
+      "passage": "Luka: Možeš li govoriti hrvatski?\nAna: Malo. Mogu čitati, ali želim bolje govoriti.\nLuka: Možeš učiti sa mnom.\nAna: Hvala! Želim učiti svaki dan.",
       "prompt": "What can Ana do?",
       "options": [
         "She can read",

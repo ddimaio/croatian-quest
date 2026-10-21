@@ -83,7 +83,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Kupac: Dobar dan. Koliko košta jabuka?\\nProdavač: Jedan euro.\\nKupac: Dobro. Trebam i kruh.\\nProdavač: Izvolite.",
+      "passage": "Kupac: Dobar dan. Koliko košta jabuka?\nProdavač: Jedan euro.\nKupac: Dobro. Trebam i kruh.\nProdavač: Izvolite.",
       "prompt": "How much is the apple?",
       "options": [
         "One euro",
@@ -109,7 +109,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Kupac: Dobar dan! Koliko košta kruh?\\nProdavač: Dva eura.\\nKupac: Trebam kruh i mlijeko, molim.\\nProdavač: Izvolite.\\nKupac: Hvala!",
+      "passage": "Kupac: Dobar dan! Koliko košta kruh?\nProdavač: Dva eura.\nKupac: Trebam kruh i mlijeko, molim.\nProdavač: Izvolite.\nKupac: Hvala!",
       "prompt": "What does the customer buy?",
       "options": [
         "Bread and milk",

@@ -96,7 +96,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Ana: Što radiš u ponedjeljak?\\nLuka: Ujutro radim, a navečer učim hrvatski.\\nAna: A sutra?\\nLuka: Sutra čitam knjigu.",
+      "passage": "Ana: Što radiš u ponedjeljak?\nLuka: Ujutro radim, a navečer učim hrvatski.\nAna: A sutra?\nLuka: Sutra čitam knjigu.",
       "prompt": "When does Luka study Croatian?",
       "options": [
         "In the evening on Monday",

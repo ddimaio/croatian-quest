@@ -110,7 +110,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Ana: Kamo ideš?\\nLuka: Idem u grad. A ti?\\nAna: Idem u školu. Marko i Ivan idu kući.\\nLuka: Vidimo se kasnije!",
+      "passage": "Ana: Kamo ideš?\nLuka: Idem u grad. A ti?\nAna: Idem u školu. Marko i Ivan idu kući.\nLuka: Vidimo se kasnije!",
       "prompt": "Where is Luka going?",
       "options": [
         "To town",
