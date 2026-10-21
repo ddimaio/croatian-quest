@@ -95,6 +95,11 @@
         "At the end of the sentence"
       ],
       "answer": "Before the verb"
+    },
+    {
+      "type": "speak",
+      "prompt": "Say ‘Ne razumijem’ aloud.",
+      "answer": "Ne razumijem"
     }
   ]
 }
