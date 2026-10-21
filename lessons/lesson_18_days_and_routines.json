@@ -60,8 +60,8 @@
     },
     {
       "type": "fill_blank",
-      "prompt": "___ idem na posao. (On Monday I go to work.)",
-      "answer": "Ponedjeljak"
+      "prompt": "U ___ idem na posao. (On Monday I go to work.)",
+      "answer": "ponedjeljak"
     },
     {
       "type": "reorder_words",

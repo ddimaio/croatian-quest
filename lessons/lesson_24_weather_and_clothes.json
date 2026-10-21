@@ -87,7 +87,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Danas je hladno i puše vjetar. Ana nosi jaknu. Sutra će biti sunčano.",
+      "passage": "Danas je hladno i puše vjetar. Ana nosi jaknu. Sutra je sunčano.",
       "prompt": "What does Ana wear today?",
       "options": [
         "A jacket",
@@ -113,7 +113,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Marko: Kakvo je vrijeme danas?\\nAna: Pada kiša i hladno je. Ponesi jaknu i kišobran.\\nMarko: A sutra?\\nAna: Sutra će biti sunčano i toplo.",
+      "passage": "Marko: Kakvo je vrijeme danas?\\nAna: Pada kiša i hladno je. Ponesi jaknu i kišobran.\\nMarko: A sutra?\\nAna: Sutra je sunčano i toplo.",
       "prompt": "What will the weather be like tomorrow?",
       "options": [
         "Sunny and warm",
