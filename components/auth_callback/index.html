@@ -3,54 +3,100 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Authentication callback</title>
+  <title>Authentication session bridge</title>
 </head>
 <body>
   <script>
-    function notify(type, extra = {}) {
-      window.parent.postMessage({isStreamlitMessage: true, type, ...extra}, "*");
+    const STORAGE_KEY = "croatian_quest_supabase_refresh_token_v1";
+    let lastActionSignature = null;
+    let restoreHandled = false;
+
+    function notify(value) {
+      window.parent.postMessage({
+        isStreamlitMessage: true,
+        type: "streamlit:setComponentValue",
+        value,
+        dataType: "json"
+      }, "*");
     }
 
-    let initialized = false;
-    let handled = false;
-
-    function captureRecoverySession() {
-      if (handled) return;
+    function readRecoveryLink() {
       try {
         const parentWindow = window.parent;
         const hash = parentWindow.location.hash || "";
-        if (!hash.startsWith("#")) return;
+        if (!hash.startsWith("#")) return null;
         const params = new URLSearchParams(hash.slice(1));
-        const type = params.get("type");
+        if (params.get("type") !== "recovery") return null;
         const accessToken = params.get("access_token");
         const refreshToken = params.get("refresh_token");
-        if (type !== "recovery" || !accessToken || !refreshToken) return;
+        if (!accessToken || !refreshToken) return null;
 
-        handled = true;
-        // Remove credentials from the address bar before sending them to Streamlit.
         parentWindow.history.replaceState(
           parentWindow.history.state,
           "",
           parentWindow.location.pathname + parentWindow.location.search
         );
-        notify("streamlit:setComponentValue", {
-          value: {type: "recovery", access_token: accessToken, refresh_token: refreshToken},
-          dataType: "json"
-        });
+        return {type: "recovery", access_token: accessToken, refresh_token: refreshToken};
       } catch (error) {
-        // Keep the component quiet; the app will remain on its normal sign-in page.
+        return null;
       }
     }
 
-    window.addEventListener("message", event => {
+    function handleRender(event) {
       const data = event.data || {};
-      if (data.type !== "streamlit:render" || initialized) return;
-      initialized = true;
-      captureRecoverySession();
-    });
+      if (data.type !== "streamlit:render") return;
+      const args = data.args || {};
+      const action = args.action || "restore";
 
-    notify("streamlit:componentReady", {apiVersion: 1});
-    notify("streamlit:setFrameHeight", {height: 1});
+      try {
+        const store = window.parent.localStorage;
+        if (action === "restore" && !restoreHandled) {
+          restoreHandled = true;
+          const recovery = readRecoveryLink();
+          if (recovery) {
+            notify(recovery);
+            return;
+          }
+          notify({
+            status: "ready",
+            refresh_token: store.getItem(STORAGE_KEY) || ""
+          });
+          return;
+        }
+
+        const signature = action + ":" + (args.refresh_token || "");
+        if (signature === lastActionSignature) return;
+        lastActionSignature = signature;
+
+        if (action === "save") {
+          if (args.refresh_token) store.setItem(STORAGE_KEY, args.refresh_token);
+          notify({status: "saved"});
+        } else if (action === "clear") {
+          store.removeItem(STORAGE_KEY);
+          restoreHandled = true;
+          notify({status: "cleared"});
+        }
+      } catch (error) {
+        if (action === "restore" && !restoreHandled) {
+          restoreHandled = true;
+          notify({status: "ready", refresh_token: "", storage_error: true});
+        } else if (action === "clear") {
+          notify({status: "cleared", storage_error: true});
+        }
+      }
+    }
+
+    window.addEventListener("message", handleRender);
+    window.parent.postMessage({
+      isStreamlitMessage: true,
+      type: "streamlit:componentReady",
+      apiVersion: 1
+    }, "*");
+    window.parent.postMessage({
+      isStreamlitMessage: true,
+      type: "streamlit:setFrameHeight",
+      height: 1
+    }, "*");
   </script>
 </body>
 </html>
