@@ -403,9 +403,20 @@ def load_course_lesson_files():
             continue
         if validate_lesson(lesson):
             continue
-        if any(existing["number"] == lesson["number"] for existing in STARTER_COURSE):
-            continue
-        STARTER_COURSE.append(lesson)
+        existing_index = next(
+            (
+                index for index, existing in enumerate(STARTER_COURSE)
+                if existing["id"] == lesson.get("id")
+                or existing["number"] == lesson["number"]
+            ),
+            None,
+        )
+        if existing_index is None:
+            STARTER_COURSE.append(lesson)
+        elif STARTER_COURSE[existing_index]["id"] == lesson.get("id"):
+            # The JSON file is the source of truth for numbered lessons, including
+            # newly added dialogue exercises.
+            STARTER_COURSE[existing_index] = lesson
     STARTER_COURSE.sort(key=lambda item: item["number"])
 
 
@@ -894,6 +905,20 @@ if "_saved_progress" not in st.session_state:
 saved_progress = st.session_state._saved_progress
 if "lessons" not in st.session_state:
     st.session_state.lessons = restore_progress(saved_progress)
+
+# Streamlit can keep an existing browser session alive during a redeploy.
+# Refresh bundled lesson content on each run while keeping learner progress separate.
+for bundled_lesson in STARTER_COURSE:
+    existing_number = next(
+        (
+            current for current in st.session_state.lessons.values()
+            if current.get("number") == bundled_lesson["number"]
+        ),
+        None,
+    )
+    if existing_number is None or existing_number.get("id") == bundled_lesson["id"]:
+        st.session_state.lessons[bundled_lesson["id"]] = bundled_lesson
+
 try:
     saved_xp = max(0, int(saved_progress.get("xp", 0)))
 except (TypeError, ValueError):
