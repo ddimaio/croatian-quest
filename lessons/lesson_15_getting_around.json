@@ -99,6 +99,11 @@
         "Kada?"
       ],
       "answer": "Kamo?"
+    },
+    {
+      "type": "speak",
+      "prompt": "Say ‘Autobus’ aloud.",
+      "answer": "Autobus"
     }
   ]
 }
