@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authentication callback</title>
+</head>
+<body>
+  <script>
+    function notify(type, extra = {}) {
+      window.parent.postMessage({isStreamlitMessage: true, type, ...extra}, "*");
+    }
+
+    let initialized = false;
+    let handled = false;
+
+    function captureRecoverySession() {
+      if (handled) return;
+      try {
+        const parentWindow = window.parent;
+        const hash = parentWindow.location.hash || "";
+        if (!hash.startsWith("#")) return;
+        const params = new URLSearchParams(hash.slice(1));
+        const type = params.get("type");
+        const accessToken = params.get("access_token");
+        const refreshToken = params.get("refresh_token");
+        if (type !== "recovery" || !accessToken || !refreshToken) return;
+
+        handled = true;
+        // Remove credentials from the address bar before sending them to Streamlit.
+        parentWindow.history.replaceState(
+          parentWindow.history.state,
+          "",
+          parentWindow.location.pathname + parentWindow.location.search
+        );
+        notify("streamlit:setComponentValue", {
+          value: {type: "recovery", access_token: accessToken, refresh_token: refreshToken},
+          dataType: "json"
+        });
+      } catch (error) {
+        // Keep the component quiet; the app will remain on its normal sign-in page.
+      }
+    }
+
+    window.addEventListener("message", event => {
+      const data = event.data || {};
+      if (data.type !== "streamlit:render" || initialized) return;
+      initialized = true;
+      captureRecoverySession();
+    });
+
+    notify("streamlit:componentReady", {apiVersion: 1});
+    notify("streamlit:setFrameHeight", {height: 1});
+  </script>
+</body>
+</html>
