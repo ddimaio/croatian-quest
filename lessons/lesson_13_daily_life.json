@@ -102,6 +102,11 @@
         "Raditi"
       ],
       "answer": "Učiti"
+    },
+    {
+      "type": "speak",
+      "prompt": "Say ‘Svaki dan’ aloud.",
+      "answer": "Svaki dan"
     }
   ]
 }
