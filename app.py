@@ -439,21 +439,239 @@ def begin_review(lesson_id=None):
     st.session_state.review_correct = None
 
 
-PROGRESS_PATH = Path(__file__).with_name("progress.json")
-
-
-def read_progress_file():
+def supabase_config():
     try:
-        saved = json.loads(PROGRESS_PATH.read_text(encoding="utf-8"))
-        if not isinstance(saved, dict) or saved.get("schema_version") != 1:
-            return {}
-        return saved
-    except (OSError, json.JSONDecodeError):
+        section = st.secrets["supabase"]
+        config = {
+            "url": str(section["url"]).rstrip("/"),
+            "anon_key": str(section["anon_key"]),
+            "site_url": str(section["site_url"]).rstrip("/"),
+        }
+        return config if all(config.values()) else None
+    except Exception:
+        return None
+
+
+SUPABASE = supabase_config()
+
+
+def supabase_request(path, method="POST", payload=None, token=None, params=None):
+    headers = {"apikey": SUPABASE["anon_key"], "Content-Type": "application/json"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    try:
+        return requests.request(
+            method,
+            f"{SUPABASE['url']}/{path.lstrip('/')}",
+            headers=headers,
+            json=payload,
+            params=params,
+            timeout=20,
+        )
+    except requests.RequestException:
+        return None
+
+
+def response_error(response, fallback):
+    if response is None:
+        return "Could not connect to the account service. Check your internet connection and try again."
+    try:
+        data = response.json()
+        if isinstance(data, dict):
+            return str(data.get("msg") or data.get("message") or data.get("error_description") or data.get("error") or fallback)
+    except ValueError:
+        pass
+    return fallback
+
+
+def auth_success(response):
+    if response is None or not response.ok:
+        return False
+    try:
+        data = response.json()
+        if not data.get("access_token") or not data.get("user", {}).get("id"):
+            return False
+        st.session_state.auth_session = {
+            "access_token": data["access_token"],
+            "refresh_token": data.get("refresh_token", ""),
+            "expires_at": time.time() + int(data.get("expires_in", 3600)),
+            "user": data["user"],
+        }
+        return True
+    except (ValueError, AttributeError, TypeError):
+        return False
+
+
+def refresh_auth_session():
+    session = st.session_state.get("auth_session")
+    if not session:
+        return False
+    if float(session.get("expires_at", 0)) > time.time() + 60:
+        return True
+    refresh_token = session.get("refresh_token")
+    if not refresh_token:
+        st.session_state.pop("auth_session", None)
+        return False
+    response = supabase_request(
+        "auth/v1/token",
+        payload={"refresh_token": refresh_token},
+        params={"grant_type": "refresh_token"},
+    )
+    if not auth_success(response):
+        st.session_state.pop("auth_session", None)
+        st.session_state.auth_message = "Your session expired. Please sign in again."
+        return False
+    return True
+
+
+def show_auth_page():
+    st.markdown('<div class="hero"><div class="eyebrow">Croatian Quest</div><h1>Your own learning journey.</h1><p>Create an account or sign in to keep your course progress private and synced.</p></div>', unsafe_allow_html=True)
+    if st.session_state.get("auth_message"):
+        st.info(st.session_state.pop("auth_message"))
+    login_tab, signup_tab, reset_tab = st.tabs(["Log in", "Create account", "Forgot password"])
+    with login_tab:
+        with st.form("login_form"):
+            email = st.text_input("Email", key="login_email")
+            password = st.text_input("Password", type="password", key="login_password")
+            submitted = st.form_submit_button("Log in", type="primary", use_container_width=True)
+        if submitted:
+            response = supabase_request(
+                "auth/v1/token",
+                payload={"email": email.strip(), "password": password},
+                params={"grant_type": "password"},
+            )
+            if auth_success(response):
+                st.session_state.pop("_saved_progress", None)
+                st.rerun()
+            else:
+                st.error(response_error(response, "We couldn't sign you in. Check your email and password."))
+    with signup_tab:
+        with st.form("signup_form"):
+            email = st.text_input("Email", key="signup_email")
+            password = st.text_input("Password (at least 8 characters)", type="password", key="signup_password")
+            confirm = st.text_input("Confirm password", type="password", key="signup_confirm")
+            submitted = st.form_submit_button("Create account", type="primary", use_container_width=True)
+        if submitted:
+            if len(password) < 8:
+                st.error("Choose a password with at least 8 characters.")
+            elif password != confirm:
+                st.error("The passwords don't match.")
+            else:
+                response = supabase_request(
+                    "auth/v1/signup",
+                    payload={"email": email.strip(), "password": password},
+                    params={"redirect_to": SUPABASE["site_url"]},
+                )
+                if response is not None and response.ok:
+                    if auth_success(response):
+                        st.session_state.pop("_saved_progress", None)
+                        st.rerun()
+                    else:
+                        st.success("Account created. Check your email to confirm it, then log in.")
+                else:
+                    st.error(response_error(response, "We couldn't create the account. Check the email and try again."))
+    with reset_tab:
+        st.write("We'll email you a secure link to choose a new password.")
+        with st.form("recovery_email_form"):
+            email = st.text_input("Account email", key="recovery_email_input")
+            submitted = st.form_submit_button("Send reset link", use_container_width=True)
+        if submitted:
+            response = supabase_request(
+                "auth/v1/recover",
+                payload={"email": email.strip()},
+                params={"redirect_to": SUPABASE["site_url"]},
+            )
+            if response is not None and response.ok:
+                st.success("If an account exists for that email, a password reset link has been sent.")
+            else:
+                st.error(response_error(response, "We couldn't request a reset link. Try again later."))
+
+
+def handle_password_recovery():
+    token_hash = st.query_params.get("token_hash")
+    recovery_type = st.query_params.get("type")
+    if token_hash and recovery_type == "recovery" and not st.session_state.get("recovery_session"):
+        response = supabase_request(
+            "auth/v1/verify",
+            payload={"type": "recovery", "token_hash": token_hash},
+        )
+        if auth_success(response):
+            st.session_state.recovery_session = st.session_state.pop("auth_session")
+            st.query_params.clear()
+        else:
+            st.query_params.clear()
+            st.session_state.auth_message = "That reset link is invalid or expired. Request a new one."
+            return False
+
+    recovery = st.session_state.get("recovery_session")
+    if not recovery:
+        return False
+    st.title("Choose a new password")
+    with st.form("set_new_password_form"):
+        password = st.text_input("New password (at least 8 characters)", type="password", key="new_password")
+        confirm = st.text_input("Confirm new password", type="password", key="new_password_confirm")
+        submitted = st.form_submit_button("Save new password", type="primary", use_container_width=True)
+    if submitted:
+        if len(password) < 8:
+            st.error("Choose a password with at least 8 characters.")
+        elif password != confirm:
+            st.error("The passwords don't match.")
+        else:
+            response = supabase_request(
+                "auth/v1/user",
+                method="PATCH",
+                payload={"password": password},
+                token=recovery["access_token"],
+            )
+            if response is not None and response.ok:
+                st.session_state.auth_session = recovery
+                st.session_state.pop("recovery_session", None)
+                st.session_state.pop("_saved_progress", None)
+                st.success("Password updated. You're signed in.")
+                st.rerun()
+            else:
+                st.error(response_error(response, "We couldn't update your password. Request another reset link."))
+    return True
+
+
+def authenticate_user():
+    if not SUPABASE:
+        st.title("Account setup required")
+        st.error("Add your Supabase project settings to Streamlit secrets to enable accounts.")
+        st.code('[supabase]\\nurl = "https://YOUR_PROJECT.supabase.co"\\nanon_key = "YOUR_SUPABASE_ANON_KEY"\\nsite_url = "https://YOUR-APP.streamlit.app"')
+        st.info("Follow the Supabase setup steps in README.md, then restart the app.")
+        st.stop()
+
+    if handle_password_recovery():
+        st.stop()
+
+    if st.session_state.get("auth_session") and refresh_auth_session():
+        return
+    show_auth_page()
+    st.stop()
+
+
+def load_user_progress():
+    user_id = st.session_state.auth_session["user"]["id"]
+    response = supabase_request(
+        "rest/v1/learner_progress",
+        method="GET",
+        params={"select": "progress", "user_id": f"eq.{user_id}"},
+        token=st.session_state.auth_session["access_token"],
+    )
+    if response is None or not response.ok:
+        st.session_state.progress_save_error = "Could not load progress from the account database."
+        return {}
+    try:
+        rows = response.json()
+        return rows[0].get("progress", {}) if rows and isinstance(rows, list) else {}
+    except (ValueError, AttributeError, TypeError):
+        st.session_state.progress_save_error = "The account database returned invalid progress data."
         return {}
 
 
 def save_progress():
-    """Atomically save this local learner's course and session progress."""
+    """Save course progress to the signed-in learner's private database row."""
     data = {
         "schema_version": 1,
         "lessons": st.session_state.lessons,
@@ -473,13 +691,26 @@ def save_progress():
         "review_correct": st.session_state.review_correct,
         "active_review_lesson": st.session_state.active_review_lesson,
     }
-    try:
-        temp_path = PROGRESS_PATH.with_name(PROGRESS_PATH.name + ".tmp")
-        temp_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-        temp_path.replace(PROGRESS_PATH)
-        st.session_state.progress_save_error = None
-    except OSError as exc:
-        st.session_state.progress_save_error = str(exc)
+    serialized = json.dumps(data, ensure_ascii=False, sort_keys=True)
+    if st.session_state.get("_last_saved_progress") == serialized:
+        return
+    session = st.session_state.get("auth_session")
+    if not session or not refresh_auth_session():
+        st.session_state.progress_save_error = "Your session expired. Sign in again to save progress."
+        return
+    payload = {"user_id": session["user"]["id"], "progress": data}
+    response = supabase_request(
+        "rest/v1/learner_progress",
+        method="POST",
+        payload=payload,
+        params={"on_conflict": "user_id"},
+        token=st.session_state.auth_session["access_token"],
+    )
+    if response is None or not response.ok:
+        st.session_state.progress_save_error = "Progress could not be saved to your account. Check the database setup and try again."
+        return
+    st.session_state._last_saved_progress = serialized
+    st.session_state.progress_save_error = None
 
 
 def restore_progress(saved):
@@ -507,7 +738,10 @@ def lesson_is_unlocked(lesson, course_lessons, completed_ids):
     return lesson["id"] in completed_ids or all(item["id"] in completed_ids for item in prior_content)
 
 
-saved_progress = read_progress_file()
+authenticate_user()
+if "_saved_progress" not in st.session_state:
+    st.session_state._saved_progress = load_user_progress()
+saved_progress = st.session_state._saved_progress
 if "lessons" not in st.session_state:
     st.session_state.lessons = restore_progress(saved_progress)
 try:
@@ -578,9 +812,13 @@ with st.sidebar:
     st.metric("✅ Lessons finished", len(st.session_state.completed_lessons))
     st.metric("🧠 Words in course deck", len(st.session_state.cards))
     if st.session_state.progress_save_error:
-        st.warning("Progress could not be saved here. Check that the project folder is writable.")
+        st.warning(st.session_state.progress_save_error)
     else:
-        st.caption("Progress auto-saves on this computer.")
+        st.caption("Progress auto-saves to your private account.")
+    st.caption(f"Signed in as {st.session_state.auth_session['user'].get('email', 'learner')}")
+    def logout_callback():
+        st.session_state.clear()
+    st.button("Log out", on_click=logout_callback, use_container_width=True)
     st.markdown("---")
     st.markdown("### Add a numbered lesson")
     uploaded = st.file_uploader("Upload one lesson JSON", type=["json"], help="Lessons are added to this course for your current session.")
