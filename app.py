@@ -1241,13 +1241,16 @@ else:
             )
             if revealed_count:
                 shown_letters = 0
-                clue = "".join(
-                    character if character.isspace() else (
-                        character if shown_letters < revealed_count else "＿"
-                    )
-                    for character in answer_text
-                    if character.isspace() or not (shown_letters := shown_letters + 1) or True
-                )
+                clue_characters = []
+                for character in answer_text:
+                    if character.isspace():
+                        clue_characters.append(character)
+                    else:
+                        clue_characters.append(
+                            character if shown_letters < revealed_count else "＿"
+                        )
+                        shown_letters += 1
+                clue = "".join(clue_characters)
                 st.info(f"Clue: **{clue}**")
             if revealed_count < letter_count and st.session_state.checked is None:
                 if st.button("💡 Add a letter clue", key=f"hint_{idx}", use_container_width=True):
