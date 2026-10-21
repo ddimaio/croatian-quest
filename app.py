@@ -503,6 +503,7 @@ def auth_success(response):
             "expires_at": time.time() + int(data.get("expires_in", 3600)),
             "user": data["user"],
         }
+        st.session_state["_auth_storage_synced_token"] = None
         return True
     except (ValueError, AttributeError, TypeError):
         return False
@@ -527,6 +528,9 @@ def refresh_auth_session():
         st.session_state.pop("auth_session", None)
         st.session_state.auth_message = "Your session expired. Please sign in again."
         return False
+    if st.session_state.auth_session.get("refresh_token") != refresh_token:
+        # Persist a rotated refresh token to browser storage on the next render.
+        st.rerun()
     return True
 
 
@@ -644,14 +648,55 @@ def handle_password_recovery():
 
 
 def handle_default_recovery_callback():
-    """Accept Supabase's standard recovery redirect, which returns tokens in the URL fragment."""
-    result = auth_callback_component(key="default-auth-callback")
-    if not isinstance(result, dict) or result.get("type") != "recovery":
-        return
-    if st.session_state.get("_default_recovery_handled"):
+    """Restore a saved Supabase session and process Supabase recovery redirects."""
+    storage_action = st.session_state.pop("_auth_storage_action", None)
+    if storage_action == "clear":
+        auth_callback_component(action="clear", key="auth-browser-bridge")
+        st.session_state["_auth_storage_synced_token"] = None
+        st.session_state["_auth_storage_ready"] = True
         return
 
-    st.session_state["_default_recovery_handled"] = True
+    session = st.session_state.get("auth_session")
+    if session:
+        refresh_token = session.get("refresh_token", "")
+        if refresh_token and st.session_state.get("_auth_storage_synced_token") != refresh_token:
+            auth_callback_component(action="save", refresh_token=refresh_token, key="auth-browser-bridge")
+            st.session_state["_auth_storage_synced_token"] = refresh_token
+        else:
+            auth_callback_component(action="idle", key="auth-browser-bridge")
+        st.session_state["_auth_storage_ready"] = True
+        return
+
+    result = auth_callback_component(action="restore", key="auth-browser-bridge")
+    if not isinstance(result, dict):
+        st.session_state["_auth_storage_ready"] = False
+        return
+
+    if result.get("type") == "recovery":
+        if st.session_state.get("_default_recovery_handled"):
+            return
+        st.session_state["_default_recovery_handled"] = True
+    elif result.get("status") == "ready":
+        st.session_state["_auth_storage_ready"] = True
+        refresh_token = result.get("refresh_token", "")
+        if not isinstance(refresh_token, str) or not refresh_token:
+            return
+        response = supabase_request(
+            "auth/v1/token",
+            payload={"refresh_token": refresh_token},
+            params={"grant_type": "refresh_token"},
+        )
+        if auth_success(response):
+            st.session_state["_auth_storage_ready"] = True
+            st.rerun()
+        else:
+            st.session_state["_auth_storage_action"] = "clear"
+            st.session_state.auth_message = "Your saved sign-in expired. Please log in again."
+            st.rerun()
+        return
+    else:
+        st.session_state["_auth_storage_ready"] = False
+        return
     access_token = result.get("access_token")
     refresh_token = result.get("refresh_token")
     if not isinstance(access_token, str) or not access_token or not isinstance(refresh_token, str) or not refresh_token:
@@ -689,6 +734,10 @@ def authenticate_user():
         st.stop()
 
     if handle_password_recovery():
+        st.stop()
+
+    if not st.session_state.get("_auth_storage_ready"):
+        st.caption("Restoring your sign-in…")
         st.stop()
 
     if st.session_state.get("auth_session") and refresh_auth_session():
@@ -896,6 +945,8 @@ with st.sidebar:
         if session and session.get("access_token"):
             supabase_request("auth/v1/logout", token=session["access_token"], params={"scope": "global"})
         st.session_state.clear()
+        st.session_state["_auth_storage_action"] = "clear"
+        st.session_state["_auth_storage_ready"] = False
     st.button("Log out", key="sidebar_logout", on_click=logout_callback, use_container_width=True)
 
 
