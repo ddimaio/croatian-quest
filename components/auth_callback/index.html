@@ -73,7 +73,7 @@
           notify({status: "saved"});
         } else if (action === "clear") {
           store.removeItem(STORAGE_KEY);
-          restoreHandled = true;
+          restoreHandled = false;
           notify({status: "cleared"});
         }
       } catch (error) {
