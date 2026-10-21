@@ -91,6 +91,17 @@
       "type": "translate_en_to_hr",
       "prompt": "Family",
       "answer": "Obitelj"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Ovo je moja obitelj.\nLuka: Tko je ovo?\nAna: Ovo je moja majka, a ovo je moj otac.\nLuka: A ovo?\nAna: Ovo je moja prijateljica Mia.",
+      "prompt": "Who is Mia?",
+      "options": [
+        "Ana’s friend",
+        "Ana’s mother",
+        "Ana’s father"
+      ],
+      "answer": "Ana’s friend"
     }
   ]
 }

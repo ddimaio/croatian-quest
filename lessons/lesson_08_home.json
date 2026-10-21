@@ -101,6 +101,17 @@
       "type": "speak",
       "prompt": "Say ‘Kuhinja’ aloud.",
       "answer": "Kuhinja"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Gdje je stol?\nMarko: Stol je u kuhinji.\nAna: A knjiga?\nMarko: Knjiga je u sobi.",
+      "prompt": "Where is the table?",
+      "options": [
+        "In the kitchen",
+        "In the room",
+        "In the bathroom"
+      ],
+      "answer": "In the kitchen"
     }
   ]
 }

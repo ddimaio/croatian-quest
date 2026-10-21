@@ -104,6 +104,17 @@
       "type": "speak",
       "prompt": "Say ‘Želim kavu’ aloud.",
       "answer": "Želim kavu"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Dobar dan. Želim kavu i kruh, molim.\nKonobar: Izvolite.\nAna: Hvala. Želim i vodu.",
+      "prompt": "What does Ana want to drink?",
+      "options": [
+        "Coffee and water",
+        "Tea and milk",
+        "Juice"
+      ],
+      "answer": "Coffee and water"
     }
   ]
 }

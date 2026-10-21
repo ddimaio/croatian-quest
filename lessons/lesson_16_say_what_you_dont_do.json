@@ -100,6 +100,17 @@
       "type": "speak",
       "prompt": "Say ‘Ne razumijem’ aloud.",
       "answer": "Ne razumijem"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Marko: Govoriš li hrvatski?\nAna: Ne govorim dobro hrvatski.\nMarko: Razumiješ li?\nAna: Ne razumijem. Učim hrvatski.",
+      "prompt": "Does Ana understand?",
+      "options": [
+        "No, she doesn’t understand",
+        "Yes, everything",
+        "She doesn’t study"
+      ],
+      "answer": "No, she doesn’t understand"
     }
   ]
 }

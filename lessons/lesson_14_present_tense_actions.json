@@ -108,6 +108,17 @@
       "type": "speak",
       "prompt": "Say ‘Čitam knjigu’ aloud.",
       "answer": "Čitam knjigu"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Luka: Što radiš svaki dan?\nAna: Radim i učim hrvatski.\nLuka: Čitaš li navečer?\nAna: Da, čitam.",
+      "prompt": "What does Ana do every day?",
+      "options": [
+        "She works and studies Croatian",
+        "She travels and sleeps",
+        "She orders coffee"
+      ],
+      "answer": "She works and studies Croatian"
     }
   ]
 }

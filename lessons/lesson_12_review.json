@@ -8,5 +8,35 @@
   "level": "Early A1",
   "description": "Review due words from the whole course, including home and food vocabulary.",
   "vocabulary": [],
-  "exercises": []
+  "exercises": [],
+  "dialogue": {
+    "context": "A cumulative review at home.",
+    "lines": [
+      {
+        "speaker": "Marko",
+        "text": "Gdje je mlijeko?"
+      },
+      {
+        "speaker": "Ana",
+        "text": "Mlijeko je u kuhinji."
+      },
+      {
+        "speaker": "Marko",
+        "text": "Imaš li kruh?"
+      },
+      {
+        "speaker": "Ana",
+        "text": "Da, imam kruh."
+      }
+    ],
+    "question": {
+      "prompt": "Where is the milk?",
+      "options": [
+        "In the kitchen",
+        "In the room",
+        "At the market"
+      ],
+      "answer": "In the kitchen"
+    }
+  }
 }

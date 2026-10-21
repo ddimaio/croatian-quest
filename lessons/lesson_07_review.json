@@ -8,5 +8,39 @@
   "level": "Beginner → early A1",
   "description": "Practice due vocabulary from the entire course deck.",
   "vocabulary": [],
-  "exercises": []
+  "exercises": [],
+  "dialogue": {
+    "context": "A cumulative review conversation.",
+    "lines": [
+      {
+        "speaker": "Ana",
+        "text": "Ovo je moja obitelj."
+      },
+      {
+        "speaker": "Marko",
+        "text": "Imaš li kavu?"
+      },
+      {
+        "speaker": "Ana",
+        "text": "Da, imam kavu."
+      },
+      {
+        "speaker": "Marko",
+        "text": "A knjigu?"
+      },
+      {
+        "speaker": "Ana",
+        "text": "Da, imam knjigu."
+      }
+    ],
+    "question": {
+      "prompt": "Which two things does Ana have?",
+      "options": [
+        "Coffee and a book",
+        "Tea and water",
+        "Juice and a ticket"
+      ],
+      "answer": "Coffee and a book"
+    }
+  }
 }

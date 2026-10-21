@@ -93,6 +93,17 @@
       "type": "fill_blank",
       "prompt": "Complete the order: Čaj, ___. (Tea, please.)",
       "answer": "molim"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Dobar dan. Jednu kavu, molim.\nKonobar: Izvolite.\nAna: Hvala. Račun, molim.",
+      "prompt": "What does Ana order?",
+      "options": [
+        "Coffee",
+        "Tea",
+        "Water"
+      ],
+      "answer": "Coffee"
     }
   ]
 }

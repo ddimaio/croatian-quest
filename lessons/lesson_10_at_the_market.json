@@ -99,6 +99,17 @@
       "type": "speak",
       "prompt": "Say ‘Kruh’ aloud.",
       "answer": "Kruh"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Dobar dan. Koliko košta jabuka?\nProdavač: Jedan euro.\nAna: Želim jabuku, molim.\nProdavač: Izvolite.",
+      "prompt": "What does Ana buy?",
+      "options": [
+        "An apple",
+        "Bread",
+        "Cheese"
+      ],
+      "answer": "An apple"
     }
   ]
 }

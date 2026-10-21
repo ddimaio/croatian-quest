@@ -107,6 +107,17 @@
       "type": "speak",
       "prompt": "Say ‘Svaki dan’ aloud.",
       "answer": "Svaki dan"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Marko: Što radiš ujutro?\nAna: Učim hrvatski i čitam.\nMarko: A svaki dan?\nAna: Radim i učim.",
+      "prompt": "What does Ana do in the morning?",
+      "options": [
+        "She studies Croatian and reads",
+        "She sleeps and travels",
+        "She works at a café"
+      ],
+      "answer": "She studies Croatian and reads"
     }
   ]
 }

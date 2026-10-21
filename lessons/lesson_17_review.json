@@ -8,5 +8,35 @@
   "level": "A1",
   "description": "Review due words from every topic in the course so far.",
   "vocabulary": [],
-  "exercises": []
+  "exercises": [],
+  "dialogue": {
+    "context": "A final review conversation about daily life and travel.",
+    "lines": [
+      {
+        "speaker": "Marko",
+        "text": "Što radiš danas?"
+      },
+      {
+        "speaker": "Ana",
+        "text": "Učim hrvatski, a zatim putujem vlakom."
+      },
+      {
+        "speaker": "Marko",
+        "text": "Govoriš li dobro hrvatski?"
+      },
+      {
+        "speaker": "Ana",
+        "text": "Ne govorim dobro, ali učim svaki dan."
+      }
+    ],
+    "question": {
+      "prompt": "How does Ana travel?",
+      "options": [
+        "By train",
+        "By bus",
+        "On foot"
+      ],
+      "answer": "By train"
+    }
+  }
 }

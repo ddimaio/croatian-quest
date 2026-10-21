@@ -95,6 +95,17 @@
         "They both do"
       ],
       "answer": "Marko"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Dobar dan, Marko!\nMarko: Bok, Ana!\nAna: Hvala. Doviđenja!\nMarko: Bok!",
+      "prompt": "Which word does Marko use at the end?",
+      "options": [
+        "Bok",
+        "Hvala",
+        "Dobar dan"
+      ],
+      "answer": "Bok"
     }
   ]
 }

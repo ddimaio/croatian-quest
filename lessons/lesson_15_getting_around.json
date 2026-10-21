@@ -104,6 +104,17 @@
       "type": "speak",
       "prompt": "Say ‘Autobus’ aloud.",
       "answer": "Autobus"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Dobar dan. Kamo putuje vlak?\nSlužbenik: Vlak putuje u Split.\nAna: Želim kartu, molim.\nSlužbenik: Izvolite.",
+      "prompt": "Where is the train going?",
+      "options": [
+        "To Split",
+        "To the market",
+        "To the café"
+      ],
+      "answer": "To Split"
     }
   ]
 }

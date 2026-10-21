@@ -87,6 +87,17 @@
       "type": "fill_blank",
       "prompt": "Complete the question: Kako se ___? (What is your name?)",
       "answer": "zoveš"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Bok! Kako se zoveš?\nLuka: Zovem se Luka.\nAna: Drago mi je.\nLuka: Drago mi je.",
+      "prompt": "What is the boy’s name?",
+      "options": [
+        "Luka",
+        "Ana",
+        "Marko"
+      ],
+      "answer": "Luka"
     }
   ]
 }

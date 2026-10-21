@@ -8,5 +8,39 @@
   "level": "Beginner",
   "description": "Revisit due words from every lesson you have studied so far.",
   "vocabulary": [],
-  "exercises": []
+  "exercises": [],
+  "dialogue": {
+    "context": "A short review conversation at a café.",
+    "lines": [
+      {
+        "speaker": "Ana",
+        "text": "Bok, Marko!"
+      },
+      {
+        "speaker": "Marko",
+        "text": "Dobar dan, Ana. Kako se zoveš?"
+      },
+      {
+        "speaker": "Ana",
+        "text": "Zovem se Ana. Jednu kavu, molim."
+      },
+      {
+        "speaker": "Konobar",
+        "text": "Izvolite."
+      },
+      {
+        "speaker": "Ana",
+        "text": "Hvala. Doviđenja!"
+      }
+    ],
+    "question": {
+      "prompt": "What does Ana order?",
+      "options": [
+        "Coffee",
+        "Juice",
+        "Water"
+      ],
+      "answer": "Coffee"
+    }
+  }
 }

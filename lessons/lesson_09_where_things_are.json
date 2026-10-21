@@ -98,6 +98,17 @@
       "type": "speak",
       "prompt": "Say ‘U kuhinji’ aloud.",
       "answer": "U kuhinji"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Ana: Gdje je knjiga?\nMarko: Knjiga je u sobi.\nAna: A voda?\nMarko: Voda je u kuhinji.",
+      "prompt": "Where is the book?",
+      "options": [
+        "In the room",
+        "In the kitchen",
+        "In the house"
+      ],
+      "answer": "In the room"
     }
   ]
 }

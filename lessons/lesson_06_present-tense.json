@@ -86,6 +86,17 @@
       "type": "translate_en_to_hr",
       "prompt": "You have water",
       "answer": "Imaš vodu"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Marko: Imaš li knjigu?\nAna: Da, imam knjigu.\nMarko: Imaš li kavu?\nAna: Da, imam kavu.",
+      "prompt": "What does Ana have?",
+      "options": [
+        "A book and coffee",
+        "A book and water",
+        "Coffee and tea"
+      ],
+      "answer": "A book and coffee"
     }
   ]
 }
