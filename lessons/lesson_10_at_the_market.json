@@ -94,6 +94,11 @@
       "type": "translate_hr_to_en",
       "prompt": "Koliko?",
       "answer": "How much?"
+    },
+    {
+      "type": "speak",
+      "prompt": "Say ‘Kruh’ aloud.",
+      "answer": "Kruh"
     }
   ]
 }
