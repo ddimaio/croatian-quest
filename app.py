@@ -823,6 +823,7 @@ def save_progress():
         "lesson_attempts": st.session_state.lesson_attempts,
         "index": st.session_state.index,
         "checked": st.session_state.checked,
+        "hint_counts": st.session_state.hint_counts,
         "widget_values": {key: value for key, value in st.session_state.items() if key.startswith(("answer_", "choice_")) and isinstance(value, str)},
         "ordering_words": st.session_state.ordering_words,
         "review_queue": st.session_state.review_queue,
@@ -939,6 +940,9 @@ if "lesson_attempts" not in st.session_state: st.session_state.lesson_attempts =
 if "ordering_words" not in st.session_state: st.session_state.ordering_words = saved_progress.get("ordering_words", {})
 if "index" not in st.session_state: st.session_state.index = saved_progress.get("index", 0)
 if "checked" not in st.session_state: st.session_state.checked = saved_progress.get("checked")
+if "hint_counts" not in st.session_state:
+    saved_hint_counts = saved_progress.get("hint_counts", {})
+    st.session_state.hint_counts = saved_hint_counts if isinstance(saved_hint_counts, dict) else {}
 saved_widgets = saved_progress.get("widget_values", {})
 if not isinstance(saved_widgets, dict): saved_widgets = {}
 for widget_key, widget_value in saved_widgets.items():
@@ -1227,6 +1231,31 @@ else:
                 )
         st.markdown(f'<div class="lesson-card"><div class="prompt">{html.escape(prompt)}</div></div>', unsafe_allow_html=True)
         if ex["type"] == "translate_hr_to_en": pronunciation_button(ex["prompt"], f"prompt-{idx}")
+        if ex["type"] == "translate_en_to_hr":
+            hint_key = f"{lesson['id']}:{st.session_state.lesson_attempts}:{idx}"
+            answer_text = str(ex["answer"])
+            letter_count = sum(not character.isspace() for character in answer_text)
+            revealed_count = min(
+                letter_count,
+                max(0, int(st.session_state.hint_counts.get(hint_key, 0))),
+            )
+            if revealed_count:
+                shown_letters = 0
+                clue = "".join(
+                    character if character.isspace() else (
+                        character if shown_letters < revealed_count else "＿"
+                    )
+                    for character in answer_text
+                    if character.isspace() or not (shown_letters := shown_letters + 1) or True
+                )
+                st.info(f"Clue: **{clue}**")
+            if revealed_count < letter_count and st.session_state.checked is None:
+                if st.button("💡 Add a letter clue", key=f"hint_{idx}", use_container_width=True):
+                    st.session_state.hint_counts[hint_key] = revealed_count + 1
+                    save_progress()
+                    st.rerun()
+            elif revealed_count >= letter_count:
+                st.caption("All letters revealed.")
         typed_form_submitted = False
         typed_input_form = False
         if ex["type"] in ("multiple_choice", "comprehension"):
