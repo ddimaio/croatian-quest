@@ -16,6 +16,9 @@ st.set_page_config(page_title="Bok! — Croatian Quest", page_icon="🇭🇷", l
 word_order_component = st.components.v1.declare_component(
     "croatian_word_order", path=str(Path(__file__).parent / "components" / "word_order")
 )
+speech_component = st.components.v1.declare_component(
+    "croatian_speech", path=str(Path(__file__).parent / "components" / "speech")
+)
 
 CSS = """
 <style>
@@ -267,7 +270,7 @@ STARTER_COURSE = [{'id': 'lesson-01-greetings',
   'description': 'Practice due vocabulary from the entire course deck.',
   'vocabulary': [],
   'exercises': []}]
-EXERCISE_TYPES = {"multiple_choice", "translate_en_to_hr", "translate_hr_to_en", "fill_blank", "reorder_words", "comprehension"}
+EXERCISE_TYPES = {"multiple_choice", "translate_en_to_hr", "translate_hr_to_en", "fill_blank", "reorder_words", "comprehension", "speak"}
 LESSON_TYPES = {"vocabulary", "grammar", "review"}
 
 
@@ -754,7 +757,8 @@ else:
             "multiple_choice": ("Choose the right answer", ex["prompt"]),
             "fill_blank": ("Fill in the blank", ex["prompt"]),
             "comprehension": ("Read and understand", ex["prompt"]),
-            "reorder_words": ("Arrange the words", ex["prompt"])
+            "reorder_words": ("Arrange the words", ex["prompt"]),
+            "speak": ("Speak in Croatian", ex["prompt"])
         }
         label, prompt = prompt_map[ex["type"]]
         st.markdown(f'<span class="pill">{label}</span>', unsafe_allow_html=True)
@@ -764,6 +768,25 @@ else:
         if ex["type"] == "translate_hr_to_en": pronunciation_button(ex["prompt"], f"prompt-{idx}")
         if ex["type"] in ("multiple_choice", "comprehension"):
             answer = st.radio("Choose one", ex["options"], key=f"choice_{idx}", label_visibility="collapsed", disabled=st.session_state.checked is not None)
+        elif ex["type"] == "speak":
+            speech_key = f"speech-{st.session_state.lesson_id}-{st.session_state.lesson_attempts}-{idx}"
+            speech_result = speech_component(lang="hr-HR", key=speech_key)
+            speech_result = speech_result if isinstance(speech_result, dict) else {}
+            transcript = str(speech_result.get("transcript", "")).strip()
+            if transcript:
+                st.markdown(f"**I heard:** {html.escape(transcript)}")
+            if speech_result.get("error"):
+                st.info(speech_result["error"])
+            if speech_result.get("supported") is False or speech_result.get("error"):
+                answer = st.text_input(
+                    "Type the Croatian phrase instead",
+                    key=f"answer_{st.session_state.lesson_id}_{st.session_state.lesson_attempts}_{idx}",
+                    placeholder="Type your answer…",
+                    disabled=st.session_state.checked is not None,
+                )
+            else:
+                answer = transcript
+            st.caption("Speech recognition availability depends on your browser. You can type if it is unavailable.")
         elif ex["type"] == "reorder_words":
             order_id = f"{st.session_state.lesson_id}-{st.session_state.lesson_attempts}-{idx}"
             if order_id not in st.session_state.ordering_words:
@@ -795,7 +818,7 @@ else:
                 st.error(f"Not quite. The answer is: **{expected}**")
             if ex.get("hint"): st.caption(f"💡 {ex['hint']}")
             spoken = None
-            if ex["type"] in ("translate_en_to_hr", "fill_blank"): spoken = ex["answer"]
+            if ex["type"] in ("translate_en_to_hr", "fill_blank", "speak"): spoken = ex["answer"]
             elif ex["type"] == "translate_hr_to_en": spoken = ex["prompt"]
             elif ex["type"] == "reorder_words": spoken = " ".join(ex["answer"])
             if spoken: pronunciation_button(spoken, f"answer-{idx}")
