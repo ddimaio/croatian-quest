@@ -99,6 +99,11 @@
         "kavi"
       ],
       "answer": "kavu"
+    },
+    {
+      "type": "speak",
+      "prompt": "Say ‘Želim kavu’ aloud.",
+      "answer": "Želim kavu"
     }
   ]
 }
