@@ -1017,14 +1017,20 @@ elif st.session_state.page == "review":
             st.caption("Type the Croatian word" if typing_mode else "Choose the Croatian word")
             if not st.session_state.review_revealed:
                 if typing_mode:
-                    response = st.text_input("Your answer", key=f"answer_review_{idx}", label_visibility="collapsed", placeholder="Type in Croatian…")
+                    with st.form(f"review_answer_form_{idx}"):
+                        response = st.text_input("Your answer", key=f"answer_review_{idx}", label_visibility="collapsed", placeholder="Type in Croatian…")
+                        submitted = st.form_submit_button("Check answer", type="primary", use_container_width=True)
                 else:
                     options = review_choices(key, card, st.session_state.cards, idx)
                     response = st.radio("Choose the Croatian translation", options, key=f"choice_review_{idx}", label_visibility="collapsed")
-                if st.button("Check answer", key=f"check_review_{idx}", type="primary", use_container_width=True):
-                    st.session_state.review_correct = normalize(response) == normalize(card["hr"])
-                    st.session_state.review_revealed = True
-                    save_progress(); st.rerun()
+                    submitted = st.button("Check answer", key=f"check_review_{idx}", type="primary", use_container_width=True)
+                if submitted:
+                    if not response.strip():
+                        st.warning("Type an answer or choose an option first.")
+                    else:
+                        st.session_state.review_correct = normalize(response) == normalize(card["hr"])
+                        st.session_state.review_revealed = True
+                        save_progress(); st.rerun()
             else:
                 if st.session_state.review_correct is True:
                     st.success("Correct! Lijepo! 🎉")
@@ -1090,6 +1096,8 @@ else:
             st.markdown(f'<div class="lesson-card"><div class="eyebrow">Read this</div><div>{html.escape(ex["passage"]).replace(chr(10), "<br>")}</div></div>', unsafe_allow_html=True)
         st.markdown(f'<div class="lesson-card"><div class="prompt">{html.escape(prompt)}</div></div>', unsafe_allow_html=True)
         if ex["type"] == "translate_hr_to_en": pronunciation_button(ex["prompt"], f"prompt-{idx}")
+        typed_form_submitted = False
+        typed_input_form = False
         if ex["type"] in ("multiple_choice", "comprehension"):
             answer = st.radio("Choose one", ex["options"], key=f"choice_{idx}", label_visibility="collapsed", disabled=st.session_state.checked is not None)
         elif ex["type"] == "speak":
@@ -1102,12 +1110,17 @@ else:
             if speech_result.get("error"):
                 st.info(speech_result["error"])
             if speech_result.get("supported") is False or speech_result.get("error"):
-                answer = st.text_input(
-                    "Type the Croatian phrase instead",
-                    key=f"answer_{st.session_state.lesson_id}_{st.session_state.lesson_attempts}_{idx}",
-                    placeholder="Type your answer…",
-                    disabled=st.session_state.checked is not None,
-                )
+                if st.session_state.checked is None:
+                    with st.form(f"typed_speech_form_{idx}"):
+                        answer = st.text_input(
+                            "Type the Croatian phrase instead",
+                            key=f"answer_{st.session_state.lesson_id}_{st.session_state.lesson_attempts}_{idx}",
+                            placeholder="Type your answer…",
+                        )
+                        typed_form_submitted = st.form_submit_button("Check answer", type="primary", use_container_width=True)
+                    typed_input_form = True
+                else:
+                    answer = ""
             else:
                 answer = transcript
             st.caption("Speech recognition availability depends on your browser. You can type if it is unavailable.")
@@ -1123,17 +1136,31 @@ else:
             if isinstance(answer, list) and all(isinstance(word, str) for word in answer):
                 st.session_state.ordering_words[order_id] = answer
         else:
-            answer = st.text_input("Your answer", key=f"answer_{st.session_state.lesson_id}_{st.session_state.lesson_attempts}_{idx}", placeholder="Type your answer…", disabled=st.session_state.checked is not None)
+            if st.session_state.checked is None:
+                with st.form(f"typed_answer_form_{idx}"):
+                    answer = st.text_input(
+                        "Your answer",
+                        key=f"answer_{st.session_state.lesson_id}_{st.session_state.lesson_attempts}_{idx}",
+                        placeholder="Type your answer…",
+                    )
+                    typed_form_submitted = st.form_submit_button("Check answer", type="primary", use_container_width=True)
+                typed_input_form = True
+            else:
+                answer = ""
         if st.session_state.checked is None:
             has_answer = bool(answer) if isinstance(answer, list) else bool(answer.strip())
-            if st.button("Check answer", type="primary", use_container_width=True, disabled=not has_answer):
-                if ex["type"] == "reorder_words":
-                    correct = [normalize(word) for word in answer] == [normalize(word) for word in ex["answer"]]
+            submitted = typed_form_submitted if typed_input_form else st.button("Check answer", type="primary", use_container_width=True, disabled=not has_answer)
+            if submitted:
+                if not has_answer:
+                    st.warning("Type an answer or complete the exercise first.")
                 else:
-                    correct = normalize(answer) == normalize(ex["answer"])
-                st.session_state.checked = {"correct": correct, "given": answer}
-                if correct: st.session_state.xp += 10
-                save_progress(); st.rerun()
+                    if ex["type"] == "reorder_words":
+                        correct = [normalize(word) for word in answer] == [normalize(word) for word in ex["answer"]]
+                    else:
+                        correct = normalize(answer) == normalize(ex["answer"])
+                    st.session_state.checked = {"correct": correct, "given": answer}
+                    if correct: st.session_state.xp += 10
+                    save_progress(); st.rerun()
         else:
             result = st.session_state.checked
             if result["correct"]: st.success("Correct! +10 XP 🎉")
