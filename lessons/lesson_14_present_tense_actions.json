@@ -103,6 +103,11 @@
         "čita"
       ],
       "answer": "čita"
+    },
+    {
+      "type": "speak",
+      "prompt": "Say ‘Čitam knjigu’ aloud.",
+      "answer": "Čitam knjigu"
     }
   ]
 }
