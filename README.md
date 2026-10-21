@@ -50,14 +50,7 @@ The app uses Supabase Auth for email/password accounts and stores each learner's
 1. Create a Supabase project.
 2. In the Supabase SQL Editor, run the SQL in `supabase_setup.sql`.
 3. In **Authentication → URL Configuration**, set the Site URL to your deployed Streamlit app URL and add that URL to the Redirect URLs allow list. Email confirmation can remain enabled.
-4. In **Authentication → Email Templates → Reset Password**, set the link to:
-
-   ```html
-   <a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=recovery">Reset your password</a>
-   ```
-
-   The app verifies the one-time token hash on the server, then lets the learner set a new password.
-5. In Streamlit Cloud, open **App settings → Secrets** and add:
+4. In Streamlit Cloud, open **App settings → Secrets** and add:
 
    ```toml
    [supabase]
@@ -68,4 +61,4 @@ The app uses Supabase Auth for email/password accounts and stores each learner's
 
    Use the project's public anon/publishable key, never the service-role key. Restart or reboot the app after saving secrets.
 
-Progress is saved to the signed-in user's row. Database access uses the user's auth token, and the SQL policies prevent users from reading or changing another user's row. The old local `progress.json` is not automatically assigned to an account; each new account starts with its own course progress.
+The app accepts Supabase's default password-recovery email link, so editing the Reset Password email template is optional. After clicking the link, the app opens a form to set a new password. For public signups, configure a custom SMTP provider; Supabase's built-in sender is limited to authorized project team addresses.\n\nProgress is saved to the signed-in user's row. Database access uses the user's auth token, and the SQL policies prevent users from reading or changing another user's row. The old local `progress.json` is not automatically assigned to an account; each new account starts with its own course progress.
