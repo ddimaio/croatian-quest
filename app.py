@@ -3,6 +3,8 @@ import base64
 import html
 import json
 import random
+
+import requests
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
