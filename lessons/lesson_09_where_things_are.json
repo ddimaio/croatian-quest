@@ -93,6 +93,11 @@
         "iz"
       ],
       "answer": "u"
+    },
+    {
+      "type": "speak",
+      "prompt": "Say ‘U kuhinji’ aloud.",
+      "answer": "U kuhinji"
     }
   ]
 }
