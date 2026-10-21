@@ -1,6 +1,6 @@
 # Bok! Croatian Quest
 
-A Duolingo-inspired Croatian course built with Python and Streamlit. The numbered course mixes themed vocabulary, grammar explanations, and course-wide review. Most content lessons have eight short activities and combine typing, multiple choice, reading comprehension, fill-in-the-blank, and drag-to-order sentence building. On touch devices, arrow controls are available for word ordering.
+A Duolingo-inspired Croatian course built with Python and Streamlit. The numbered course mixes themed vocabulary, grammar explanations, and course-wide review. Most content lessons have eight or nine short activities, including typing, multiple choice, reading comprehension, fill-in-the-blank, word ordering, and Croatian speaking practice where browser speech recognition is available. Speaking exercises use the browser microphone, request Croatian (hr-HR), and offer typing when recognition or microphone access is unavailable. On touch devices, arrow controls are available for word ordering.
 
 ## Run on Windows
 
