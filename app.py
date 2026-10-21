@@ -541,6 +541,7 @@ def show_auth_page():
                 params={"grant_type": "password"},
             )
             if auth_success(response):
+                st.session_state["_clear_auth_password_fields"] = True
                 st.session_state.pop("_saved_progress", None)
                 st.rerun()
             else:
@@ -564,6 +565,7 @@ def show_auth_page():
                 )
                 if response is not None and response.ok:
                     if auth_success(response):
+                        st.session_state["_clear_auth_password_fields"] = True
                         st.session_state.pop("_saved_progress", None)
                         st.rerun()
                     else:
@@ -624,6 +626,7 @@ def handle_password_recovery():
                 token=recovery["access_token"],
             )
             if response is not None and response.ok:
+                st.session_state["_clear_auth_password_fields"] = True
                 st.session_state.auth_session = recovery
                 st.session_state.pop("recovery_session", None)
                 st.session_state.pop("_saved_progress", None)
@@ -635,6 +638,9 @@ def handle_password_recovery():
 
 
 def authenticate_user():
+    if st.session_state.pop("_clear_auth_password_fields", False):
+        for key in ("login_password", "signup_password", "signup_confirm", "new_password", "new_password_confirm"):
+            st.session_state.pop(key, None)
     if not SUPABASE:
         st.title("Account setup required")
         st.error("Add your Supabase project settings to Streamlit secrets to enable accounts.")
@@ -709,7 +715,7 @@ def save_progress():
     if response is None or not response.ok:
         st.session_state.progress_save_error = "Progress could not be saved to your account. Check the database setup and try again."
         return
-    st.session_state._last_saved_progress = serialized
+    st.session_state["_last_saved_progress"] = serialized
     st.session_state.progress_save_error = None
 
 
@@ -740,7 +746,7 @@ def lesson_is_unlocked(lesson, course_lessons, completed_ids):
 
 authenticate_user()
 if "_saved_progress" not in st.session_state:
-    st.session_state._saved_progress = load_user_progress()
+    st.session_state["_saved_progress"] = load_user_progress()
 saved_progress = st.session_state._saved_progress
 if "lessons" not in st.session_state:
     st.session_state.lessons = restore_progress(saved_progress)
