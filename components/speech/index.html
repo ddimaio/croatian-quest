@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 4px; color: #193b35; font: 15px/1.45 Arial, sans-serif; }
+    .panel { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+    button { min-height: 48px; padding: 10px 16px; border: 1px solid #58cc7a; border-radius: 13px; background: #58cc7a; color: #123624; font: 700 16px Arial, sans-serif; cursor: pointer; touch-action: manipulation; }
+    button:hover { background: #2eaa58; border-color: #2eaa58; color: #fff; }
+    button:disabled { opacity: .6; cursor: wait; }
+    #status { color: #52635d; font-size: 14px; }
+    .hint { margin-top: 8px; color: #75847e; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <button id="speak" type="button">🎙️ Start speaking</button>
+    <span id="status" role="status" aria-live="polite">Preparing Croatian speech recognition…</span>
+  </div>
+  <div class="hint">Allow microphone access when your browser asks.</div>
+  <script>
+    const button = document.getElementById("speak");
+    const status = document.getElementById("status");
+    let initialized = false;
+    let recognition = null;
+    let listening = false;
+    let lastTranscript = "";
+
+    function notify(type, extra = {}) {
+      window.parent.postMessage({isStreamlitMessage: true, type, ...extra}, "*");
+    }
+    function sendResult(result) {
+      notify("streamlit:setComponentValue", {value: result, dataType: "json"});
+    }
+    function setStatus(message) {
+      status.textContent = message;
+    }
+
+    button.addEventListener("click", () => {
+      if (!recognition) return;
+      if (listening) {
+        recognition.stop();
+        return;
+      }
+      lastTranscript = "";
+      try {
+        recognition.start();
+      } catch (error) {
+        setStatus("Could not start the microphone. Try again or type your answer below.");
+        sendResult({supported: true, transcript: "", error: "Could not start speech recognition. Try again or type below."});
+      }
+    });
+
+    window.addEventListener("message", event => {
+      const data = event.data || {};
+      if (data.type !== "streamlit:render" || initialized) return;
+      initialized = true;
+      const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!Recognition) {
+        button.disabled = true;
+        setStatus("Speech recognition is not available in this browser.");
+        sendResult({supported: false, transcript: "", error: "Speech recognition is not available in this browser. Type your answer below."});
+        return;
+      }
+      recognition = new Recognition();
+      recognition.lang = (data.args && data.args.lang) || "hr-HR";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+      recognition.continuous = false;
+
+      recognition.onstart = () => {
+        listening = true;
+        button.textContent = "Stop listening";
+        setStatus("Listening… Say the Croatian phrase.");
+      };
+      recognition.onend = () => {
+        listening = false;
+        button.textContent = "🎙️ Start speaking";
+        if (!lastTranscript) setStatus("No speech detected. Try again or type your answer below.");
+        else setStatus("Speech captured.");
+      };
+      recognition.onresult = event => {
+        lastTranscript = event.results[0][0].transcript || "";
+        setStatus("Speech captured.");
+        sendResult({supported: true, transcript: lastTranscript, error: ""});
+      };
+      recognition.onerror = event => {
+        listening = false;
+        button.textContent = "🎙️ Start speaking";
+        let message = "Speech recognition failed. Try again or type your answer below.";
+        if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+          message = "Microphone access was blocked. Allow it in your browser settings, or type below.";
+        } else if (event.error === "no-speech") {
+          message = "No speech detected. Try again or type below.";
+        }
+        setStatus(message);
+        sendResult({supported: true, transcript: "", error: message});
+      };
+      sendResult({supported: true, transcript: "", error: ""});
+    });
+
+    notify("streamlit:componentReady", {apiVersion: 1});
+    notify("streamlit:setFrameHeight", {height: 112});
+  </script>
+</body>
+</html>
