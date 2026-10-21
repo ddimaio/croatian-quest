@@ -826,8 +826,11 @@ with st.sidebar:
         st.caption("Progress auto-saves to your private account.")
     st.caption(f"Signed in as {st.session_state.auth_session['user'].get('email', 'learner')}")
     def logout_callback():
+        session = st.session_state.get("auth_session")
+        if session and session.get("access_token"):
+            supabase_request("auth/v1/logout", token=session["access_token"], params={"scope": "global"})
         st.session_state.clear()
-    st.button("Log out", on_click=logout_callback, use_container_width=True)
+    st.button("Log out", key="sidebar_logout", on_click=logout_callback, use_container_width=True)
     st.markdown("---")
     st.markdown("### Add a numbered lesson")
     uploaded = st.file_uploader("Upload one lesson JSON", type=["json"], help="Lessons are added to this course for your current session.")
@@ -870,7 +873,11 @@ with st.sidebar:
 }''', language="json")
         st.caption("lesson_type: vocabulary, grammar, or review. Vocabulary/grammar lessons have exercises; vocabulary lessons need vocabulary entries; grammar lessons need grammar_note. Difficulty 1–5 should rise as numbered content lessons advance. Review lessons use the shared due-word deck and need no exercises.")
 
-st.markdown('<div class="brand"><span class="brand-mark">🇭🇷</span><span>Bok! Croatian Quest</span></div>', unsafe_allow_html=True)
+header_left, header_right = st.columns([4, 1])
+with header_left:
+    st.markdown('<div class="brand"><span class="brand-mark">🇭🇷</span><span>Bok! Croatian Quest</span></div>', unsafe_allow_html=True)
+with header_right:
+    st.button("Log out", key="main_logout", on_click=logout_callback, use_container_width=True)
 
 if st.session_state.page == "home":
     st.markdown('<div class="hero"><div class="eyebrow">A little Croatian, every day</div><h1>Dobro došli!<br>Let’s learn Croatian.</h1><p>Follow the course in order. New words return for review across every lesson.</p></div>', unsafe_allow_html=True)
