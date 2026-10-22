@@ -66,11 +66,14 @@ hr { border-color:var(--line); }
 .stButton>button:disabled, [data-testid^="stBaseButton-"]:disabled {
   background-color:#edf1ee !important; border-color:#dfe6e1 !important; color:#68756f !important; opacity:1 !important;
 }
-/* Keep button labels readable in the sidebar and when themes/browser styles override them. */
+/* Sidebar action and Streamlit's hide/show tab need explicit contrast on mobile. */
 .stButton>button, [data-testid^="stBaseButton-"], [data-testid="stFormSubmitButton"] button,
-[data-testid="stSidebar"] button {
+[data-testid="stSidebar"] button,
+[data-testid="stSidebar"] [data-testid^="stBaseButton-"] {
   color:#193b35 !important;
   -webkit-text-fill-color:#193b35 !important;
+  background-color:#ffffff !important;
+  border-color:#c9d8cd !important;
   opacity:1 !important;
   font-weight:800 !important;
 }
@@ -79,6 +82,32 @@ hr { border-color:var(--line); }
   color:inherit !important;
   -webkit-text-fill-color:currentColor !important;
   opacity:1 !important;
+}
+/* Streamlit renders the collapsed sidebar tab in the page header, outside stSidebar. */
+[data-testid="stSidebarCollapseButton"],
+[data-testid="stSidebarExpandButton"],
+[data-testid="stSidebarCollapsedControl"] button,
+[data-testid="stHeader"] button {
+  color:#193b35 !important;
+  -webkit-text-fill-color:#193b35 !important;
+  background-color:#ffffff !important;
+  border:1px solid #c9d8cd !important;
+  opacity:1 !important;
+}
+[data-testid="stSidebarCollapseButton"] svg,
+[data-testid="stSidebarExpandButton"] svg,
+[data-testid="stSidebarCollapsedControl"] svg,
+[data-testid="stHeader"] button svg {
+  fill:#193b35 !important;
+  color:#193b35 !important;
+  stroke:#193b35 !important;
+}
+[data-testid="stSidebar"] { color:#193b35 !important; }
+[data-testid="stSidebar"] [data-testid="stMetric"] *,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] *,
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {
+  color:#193b35 !important;
+  -webkit-text-fill-color:#193b35 !important;
 }
 .stButton>button[kind="primary"], [data-testid="stBaseButton-primary"] {
   color:#123624 !important;
