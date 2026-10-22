@@ -1465,6 +1465,15 @@ else:
         if st.session_state.checked is None:
             has_answer = bool(answer) if isinstance(answer, list) else bool(answer.strip())
             submitted = typed_form_submitted if typed_input_form else st.button("Check answer", type="primary", use_container_width=True, disabled=not has_answer)
+            if ex["type"] == "speak" and st.button(
+                "Skip speaking question",
+                key=f"skip_speaking_{idx}",
+                use_container_width=True,
+            ):
+                st.session_state.index += 1
+                st.session_state.checked = None
+                save_progress()
+                st.rerun()
             if submitted:
                 if not has_answer:
                     st.warning("Type an answer or complete the exercise first.")
