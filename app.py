@@ -440,6 +440,24 @@ def now_utc():
     return datetime.now(timezone.utc)
 
 
+def record_study_day():
+    """Update the persistent streak when the learner earns XP today."""
+    today = now_utc().date().isoformat()
+    last_day = st.session_state.last_activity_date
+    if last_day == today:
+        return
+    yesterday = (now_utc().date() - timedelta(days=1)).isoformat()
+    if last_day == yesterday:
+        st.session_state.day_streak += 1
+    else:
+        st.session_state.day_streak = 1
+    st.session_state.best_day_streak = max(
+        st.session_state.best_day_streak,
+        st.session_state.day_streak,
+    )
+    st.session_state.last_activity_date = today
+
+
 def due_cards():
     now = now_utc()
     return sorted([(key, card) for key, card in st.session_state.cards.items() if datetime.fromisoformat(card["due_at"]) <= now], key=lambda pair: pair[1]["due_at"])
@@ -816,6 +834,10 @@ def save_progress():
         "schema_version": 1,
         "lessons": st.session_state.lessons,
         "xp": st.session_state.xp,
+        "day_streak": st.session_state.day_streak,
+        "best_day_streak": st.session_state.best_day_streak,
+        "last_activity_date": st.session_state.last_activity_date,
+        "lesson_correct_answers": st.session_state.lesson_correct_answers,
         "completed_lessons": sorted(st.session_state.completed_lessons),
         "cards": st.session_state.cards,
         "page": st.session_state.page,
@@ -927,6 +949,26 @@ try:
 except (TypeError, ValueError):
     saved_xp = 0
 if "xp" not in st.session_state: st.session_state.xp = saved_xp
+for streak_key in ("day_streak", "best_day_streak"):
+    if streak_key not in st.session_state:
+        try:
+            st.session_state[streak_key] = max(0, int(saved_progress.get(streak_key, 0)))
+        except (TypeError, ValueError):
+            st.session_state[streak_key] = 0
+if "last_activity_date" not in st.session_state:
+    saved_activity_day = saved_progress.get("last_activity_date")
+    st.session_state.last_activity_date = (
+        saved_activity_day if isinstance(saved_activity_day, str) else None
+    )
+if "lesson_correct_answers" not in st.session_state:
+    saved_correct_answers = saved_progress.get("lesson_correct_answers")
+    st.session_state.lesson_correct_answers = (
+        saved_correct_answers
+        if isinstance(saved_correct_answers, int)
+        and not isinstance(saved_correct_answers, bool)
+        and saved_correct_answers >= 0
+        else None
+    )
 saved_completed = saved_progress.get("completed_lessons", [])
 if not isinstance(saved_completed, list): saved_completed = []
 saved_completed = [item for item in saved_completed if isinstance(item, str)]
@@ -991,6 +1033,16 @@ with st.sidebar:
     st.markdown("### Your journey")
     st.metric("⭐ Total XP", st.session_state.xp)
     st.metric("✅ Lessons finished", len(st.session_state.completed_lessons))
+    today = now_utc().date()
+    yesterday = (today - timedelta(days=1)).isoformat()
+    last_activity_day = st.session_state.last_activity_date
+    current_day_streak = (
+        st.session_state.day_streak
+        if last_activity_day in {today.isoformat(), yesterday}
+        else 0
+    )
+    st.metric("🔥 Day streak", current_day_streak)
+    st.caption(f"Personal best: {st.session_state.best_day_streak} days")
     st.metric("🧠 Words encountered", len(st.session_state.cards))
     if st.session_state.progress_save_error:
         st.warning(st.session_state.progress_save_error)
@@ -1045,6 +1097,7 @@ if st.session_state.page == "home":
                             st.session_state.lesson_id = lesson["id"]
                             st.session_state.index = 0
                             st.session_state.checked = None
+                            st.session_state.lesson_correct_answers = 0
                             st.session_state.lesson_attempts += 1
                         save_progress(); st.rerun()
                 else:
@@ -1133,10 +1186,13 @@ elif st.session_state.page == "review":
                     else:
                         st.session_state.review_correct = normalize(response) == normalize(card["hr"])
                         st.session_state.review_revealed = True
+                        if st.session_state.review_correct:
+                            st.session_state.xp += 10
+                            record_study_day()
                         save_progress(); st.rerun()
             else:
                 if st.session_state.review_correct is True:
-                    st.success("Correct! Lijepo! 🎉")
+                    st.success("Correct! +10 XP · Lijepo! 🎉")
                 elif st.session_state.review_correct is False:
                     st.error(f"Not quite — the answer is **{card['hr']}**.")
                 else:
@@ -1158,7 +1214,6 @@ elif st.session_state.page == "review":
                             else:
                                 card["interval"] = 4.0 if card["reps"] == 0 else (7.0 if card["reps"] == 1 else card["interval"] * card["ease"] * 1.3); card["ease"] = min(3.0, card["ease"] + 0.15); card["reps"] += 1
                             card["due_at"] = (now + timedelta(days=card["interval"])).isoformat()
-                            if rating != "again": st.session_state.xp += 2
                             st.session_state.review_index += 1; st.session_state.review_revealed = False; st.session_state.review_correct = None; save_progress(); st.rerun()
     if st.button("← Exit review"):
         st.session_state.page = "home"; st.session_state.active_review_lesson = None; save_progress(); st.rerun()
@@ -1174,7 +1229,13 @@ else:
     if idx >= total:
         st.markdown('<div class="hero"><div class="eyebrow">Lesson complete</div><h1>Odlično! 🎉</h1><p>New words are now in your course-wide review deck.</p></div>', unsafe_allow_html=True)
         st.balloons()
-        st.markdown(f"### +{total * 10} XP earned")
+        if st.session_state.lesson_correct_answers is not None:
+            correct_count = st.session_state.lesson_correct_answers
+            earned_xp = correct_count * 10
+            st.markdown(f"### {correct_count}/{total} correct · +{earned_xp} XP")
+        else:
+            st.markdown("### Lesson complete")
+            st.caption("Earn 10 XP for each correct answer.")
         st.progress(1.0)
         if st.button("Back to course", type="primary"):
             st.session_state.completed_lessons.add(lesson["id"])
@@ -1310,6 +1371,7 @@ else:
                 typed_input_form = True
             else:
                 answer = ""
+        st.caption("Scoring: +10 XP for each correct answer.")
         if st.session_state.checked is None:
             has_answer = bool(answer) if isinstance(answer, list) else bool(answer.strip())
             submitted = typed_form_submitted if typed_input_form else st.button("Check answer", type="primary", use_container_width=True, disabled=not has_answer)
@@ -1322,7 +1384,12 @@ else:
                     else:
                         correct = normalize(answer) == normalize(ex["answer"])
                     st.session_state.checked = {"correct": correct, "given": answer}
-                    if correct: st.session_state.xp += 10
+                    if correct:
+                        st.session_state.xp += 10
+                        if st.session_state.lesson_correct_answers is None:
+                            st.session_state.lesson_correct_answers = 0
+                        st.session_state.lesson_correct_answers += 1
+                        record_study_day()
                     save_progress(); st.rerun()
         else:
             result = st.session_state.checked
