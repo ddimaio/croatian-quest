@@ -504,6 +504,7 @@ def begin_review(lesson_id=None):
     st.session_state.review_index = 0
     st.session_state.review_revealed = False
     st.session_state.review_correct = None
+    st.session_state.review_correct_answers = 0
 
 
 def supabase_config():
@@ -852,6 +853,7 @@ def save_progress():
         "review_index": st.session_state.review_index,
         "review_revealed": st.session_state.review_revealed,
         "review_correct": st.session_state.review_correct,
+        "review_correct_answers": st.session_state.review_correct_answers,
         "active_review_lesson": st.session_state.active_review_lesson,
     }
     serialized = json.dumps(data, ensure_ascii=False, sort_keys=True)
@@ -994,6 +996,15 @@ if "review_queue" not in st.session_state: st.session_state.review_queue = saved
 if "review_index" not in st.session_state: st.session_state.review_index = saved_progress.get("review_index", 0)
 if "review_revealed" not in st.session_state: st.session_state.review_revealed = saved_progress.get("review_revealed", False)
 if "review_correct" not in st.session_state: st.session_state.review_correct = saved_progress.get("review_correct")
+if "review_correct_answers" not in st.session_state:
+    saved_review_correct = saved_progress.get("review_correct_answers", 0)
+    st.session_state.review_correct_answers = (
+        saved_review_correct
+        if isinstance(saved_review_correct, int)
+        and not isinstance(saved_review_correct, bool)
+        and saved_review_correct >= 0
+        else 0
+    )
 if "active_review_lesson" not in st.session_state: st.session_state.active_review_lesson = saved_progress.get("active_review_lesson")
 if "progress_save_error" not in st.session_state: st.session_state.progress_save_error = None
 
@@ -1142,6 +1153,8 @@ elif st.session_state.page == "review":
                     st.session_state.checked = {"correct": correct, "given": response}
                     if correct:
                         st.session_state.xp += 10
+                        st.session_state.review_correct_answers += 1
+                        record_study_day()
                     save_progress(); st.rerun()
             else:
                 if st.session_state.checked["correct"]:
@@ -1154,7 +1167,8 @@ elif st.session_state.page == "review":
                     save_progress(); st.rerun()
         else:
             st.success("Review complete — you’re all caught up for this session! 🎉")
-            st.markdown(f"### {len(queue)} cards reviewed")
+            st.markdown(f"### {st.session_state.review_correct_answers} correct · +{st.session_state.review_correct_answers * 10} XP")
+            st.caption(f"{len(queue)} review cards completed")
             if st.session_state.active_review_lesson and st.session_state.active_review_lesson not in st.session_state.completed_lessons:
                 st.session_state.completed_lessons.add(st.session_state.active_review_lesson)
                 save_progress()
@@ -1188,6 +1202,7 @@ elif st.session_state.page == "review":
                         st.session_state.review_revealed = True
                         if st.session_state.review_correct:
                             st.session_state.xp += 10
+                            st.session_state.review_correct_answers += 1
                             record_study_day()
                         save_progress(); st.rerun()
             else:
