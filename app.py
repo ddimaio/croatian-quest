@@ -72,10 +72,13 @@ hr { border-color:var(--line); }
 [data-testid="stSidebar"] [data-testid^="stBaseButton-"] {
   color:#193b35 !important;
   -webkit-text-fill-color:#193b35 !important;
-  background-color:#ffffff !important;
-  border-color:#c9d8cd !important;
   opacity:1 !important;
   font-weight:800 !important;
+}
+[data-testid="stSidebar"] button,
+[data-testid="stSidebar"] [data-testid^="stBaseButton-"] {
+  background-color:#ffffff !important;
+  border-color:#c9d8cd !important;
 }
 .stButton>button *, [data-testid^="stBaseButton-"] *, [data-testid="stFormSubmitButton"] button *,
 [data-testid="stSidebar"] button * {
