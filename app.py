@@ -66,6 +66,24 @@ hr { border-color:var(--line); }
 .stButton>button:disabled, [data-testid^="stBaseButton-"]:disabled {
   background-color:#edf1ee !important; border-color:#dfe6e1 !important; color:#68756f !important; opacity:1 !important;
 }
+/* Keep button labels readable in the sidebar and when themes/browser styles override them. */
+.stButton>button, [data-testid^="stBaseButton-"], [data-testid="stFormSubmitButton"] button,
+[data-testid="stSidebar"] button {
+  color:#193b35 !important;
+  -webkit-text-fill-color:#193b35 !important;
+  opacity:1 !important;
+  font-weight:800 !important;
+}
+.stButton>button *, [data-testid^="stBaseButton-"] *, [data-testid="stFormSubmitButton"] button *,
+[data-testid="stSidebar"] button * {
+  color:inherit !important;
+  -webkit-text-fill-color:currentColor !important;
+  opacity:1 !important;
+}
+.stButton>button[kind="primary"], [data-testid="stBaseButton-primary"] {
+  color:#123624 !important;
+  -webkit-text-fill-color:#123624 !important;
+}
 .stProgress>div>div>div { background:var(--green); }
 [data-testid="stRadio"] [role="radiogroup"] label {
   box-sizing:border-box; width:100%; min-height:56px; display:flex; align-items:center;
@@ -86,6 +104,31 @@ hr { border-color:var(--line); }
   [data-testid="stRadio"] [role="radiogroup"] label { min-height:60px; padding:12px; }
   [data-testid="stRadio"] [role="radiogroup"] label p { font-size:1.1rem !important; }
   .lesson-card { padding:16px; }
+  .stButton>button, [data-testid^="stBaseButton-"], [data-testid="stFormSubmitButton"] button,
+  [data-testid="stSidebar"] button {
+    box-sizing:border-box !important;
+    width:100% !important;
+    min-width:0 !important;
+    min-height:52px !important;
+    height:auto !important;
+    padding:10px 12px !important;
+    line-height:1.25 !important;
+    font-size:1rem !important;
+    white-space:normal !important;
+    overflow-wrap:anywhere !important;
+    text-overflow:clip !important;
+  }
+  /* Give lesson actions the full row so labels like “Review” and “Repeat” do not get clipped. */
+  [data-testid="stVerticalBlockBorderWrapper"] [data-testid="stHorizontalBlock"] {
+    display:flex !important;
+    flex-direction:column !important;
+    gap:.5rem !important;
+  }
+  [data-testid="stVerticalBlockBorderWrapper"] [data-testid="column"] {
+    width:100% !important;
+    min-width:0 !important;
+    flex:1 1 auto !important;
+  }
 }
 """
 st.markdown(CSS, unsafe_allow_html=True)
