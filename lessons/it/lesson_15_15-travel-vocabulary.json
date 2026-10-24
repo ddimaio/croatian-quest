@@ -42,8 +42,8 @@
       "type": "multiple_choice",
       "prompt": "Which word means “the ticket”?",
       "options": [
-        "Il biglietto",
         "Il treno",
+        "Il biglietto",
         "L'aeroporto"
       ],
       "answer": "Il biglietto"
@@ -91,8 +91,8 @@
       "passage": "Marta: Il treno parte oggi?\\nLuca: No, parte domani.\\nMarta: Dov'è la stazione?\\nLuca: È in piazza.",
       "prompt": "When does the train leave?",
       "options": [
-        "Tomorrow",
         "Today",
+        "Tomorrow",
         "On Monday"
       ],
       "answer": "Tomorrow"
