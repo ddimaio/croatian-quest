@@ -1,42 +1,42 @@
 {
-  "id": "it-lesson-08-review",
   "number": 8,
-  "title": "Review: café, food, and family",
+  "id": "it-lesson-08-review",
+  "title": "Review: food and family",
   "topic": "Cumulative review",
   "lesson_type": "review",
-  "difficulty": 3,
-  "level": "Early A1",
-  "description": "Bring Italian words back at spaced intervals and revisit previous dialogues.",
+  "difficulty": 2,
+  "level": "Beginner",
+  "description": "Strengthen food and family words with spaced repetition.",
   "vocabulary": [],
   "exercises": [],
   "dialogue": {
-    "context": "Order lunch and talk about family.",
+    "context": "Two friends decide what to eat.",
     "lines": [
       {
-        "speaker": "Cameriera",
-        "text": "Buongiorno! Cosa desiderate?"
+        "speaker": "Marta",
+        "text": "Ho la pasta e l'insalata."
       },
       {
         "speaker": "Luca",
-        "text": "Vorrei la pasta e un'acqua."
+        "text": "Io prendo la pizza."
       },
       {
-        "speaker": "Anna",
-        "text": "Io vorrei un'insalata. Ho fame!"
+        "speaker": "Marta",
+        "text": "Vuoi del pane?"
       },
       {
-        "speaker": "Cameriera",
-        "text": "Perfetto. Il conto alla fine."
+        "speaker": "Luca",
+        "text": "Sì, grazie. La mia famiglia ama la pizza."
       }
     ],
     "question": {
-      "prompt": "What does Luca order to drink?",
+      "prompt": "What does Luca choose?",
       "options": [
-        "Water",
-        "Coffee",
-        "Tea"
+        "Pizza",
+        "Pasta",
+        "Salad"
       ],
-      "answer": "Water"
+      "answer": "Pizza"
     }
   }
 }
