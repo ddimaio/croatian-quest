@@ -673,7 +673,42 @@ def refresh_auth_session():
     return True
 
 
+def choose_course(course_code):
+    st.session_state.selected_course = course_code
+    st.session_state.course_selection_touched = True
+
+
+def course_selector(location):
+    selected = st.session_state.get("selected_course", "hr")
+    st.markdown(f"**{location} · Choose a course**")
+    left, right = st.columns(2)
+    with left:
+        st.button(
+            "🇭🇷 Croatian",
+            key=f"{location}_course_hr",
+            type="primary" if selected == "hr" else "secondary",
+            use_container_width=True,
+            on_click=choose_course,
+            args=("hr",),
+        )
+    with right:
+        st.button(
+            "🇮🇹 Italian",
+            key=f"{location}_course_it",
+            type="primary" if selected == "it" else "secondary",
+            use_container_width=True,
+            on_click=choose_course,
+            args=("it",),
+        )
+
+
 def show_auth_page():
+    if "selected_course" not in st.session_state:
+        st.session_state.selected_course = "hr"
+        st.session_state.course_selection_touched = False
+    course_selector("login")
+    if st.session_state.selected_course == "it":
+        st.info("Italian is selected. Italian lessons are not in the course yet; your Croatian lessons and progress remain available when you switch back.")
     st.markdown('<div class="hero"><div class="eyebrow">Croatian Quest</div><h1>Your own learning journey.</h1><p>Create an account or sign in to keep your course progress private and synced.</p></div>', unsafe_allow_html=True)
     if st.session_state.get("auth_message"):
         st.info(st.session_state.pop("auth_message"))
@@ -908,6 +943,7 @@ def save_progress():
     """Save course progress to the signed-in learner's private database row."""
     data = {
         "schema_version": 1,
+        "selected_course": st.session_state.get("selected_course", "hr"),
         "lessons": st.session_state.lessons,
         "xp": st.session_state.xp,
         "day_streak": st.session_state.day_streak,
@@ -1005,6 +1041,19 @@ authenticate_user()
 if "_saved_progress" not in st.session_state:
     st.session_state["_saved_progress"] = load_user_progress()
 saved_progress = st.session_state._saved_progress
+if "selected_course" not in st.session_state:
+    st.session_state.selected_course = (
+        saved_progress.get("selected_course", "hr")
+        if isinstance(saved_progress, dict)
+        else "hr"
+    )
+    st.session_state.course_selection_touched = False
+elif not st.session_state.get("course_selection_touched", False):
+    st.session_state.selected_course = (
+        saved_progress.get("selected_course", "hr")
+        if isinstance(saved_progress, dict)
+        else "hr"
+    )
 if "lessons" not in st.session_state:
     st.session_state.lessons = restore_progress(saved_progress)
 
@@ -1115,6 +1164,9 @@ if not isinstance(st.session_state.page, str) or st.session_state.page not in {"
     st.session_state.page = "home"
 
 with st.sidebar:
+    course_selector("sidebar")
+    if st.session_state.selected_course == "it":
+        st.info("Italian lessons are not available yet.")
     st.markdown('<div class="brand"><span class="brand-mark">🇭🇷</span><span>Bok! Croatian Quest</span></div>', unsafe_allow_html=True)
     st.markdown("### Your journey")
     st.metric("⭐ Total XP", st.session_state.xp)
@@ -1151,7 +1203,10 @@ with header_left:
 with header_right:
     st.button("Log out", key="main_logout", on_click=logout_callback, use_container_width=True)
 
-if st.session_state.page == "home":
+if st.session_state.selected_course == "it":
+    st.title("🇮🇹 Italian course")
+    st.info("Italian has been added as a course choice. Italian lesson content has not been added yet. Switch to 🇭🇷 Croatian to continue your existing course.")
+elif st.session_state.page == "home":
     st.markdown('<div class="hero"><div class="eyebrow">A little Croatian, every day</div><h1>Dobro došli!<br>Let’s learn Croatian.</h1><p>Follow the course in order. New words return for review across every lesson.</p></div>', unsafe_allow_html=True)
     due = due_cards()
     col1, col2, col3 = st.columns(3)
