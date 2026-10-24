@@ -76,7 +76,8 @@
     },
     {
       "type": "speak",
-      "prompt": "Order the meal: Vorrei una pizza e un'insalata."
+      "prompt": "Order the meal: Vorrei una pizza e un'insalata.",
+      "answer": "Vorrei una pizza e un'insalata."
     },
     {
       "type": "comprehension",
