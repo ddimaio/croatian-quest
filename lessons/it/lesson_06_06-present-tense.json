@@ -1,0 +1,95 @@
+{
+  "id": "it-lesson-06-present-tense",
+  "number": 6,
+  "title": "What we do",
+  "topic": "Present tense: parlare and avere",
+  "lesson_type": "grammar",
+  "difficulty": 3,
+  "level": "Beginner → early A1",
+  "description": "Use common present-tense verbs to say what you speak, have, and like.",
+  "grammar_note": "Regular -are verbs use -o for io (parlo), -i for tu (parli), and -a for lui/lei (parla). Avere is irregular: ho, hai, ha. Non comes before the verb to make a sentence negative: Non parlo inglese.",
+  "vocabulary": [
+    {
+      "hr": "Parlo italiano",
+      "en": "I speak Italian"
+    },
+    {
+      "hr": "Parli inglese?",
+      "en": "Do you speak English?"
+    },
+    {
+      "hr": "Ho",
+      "en": "I have"
+    },
+    {
+      "hr": "Hai",
+      "en": "You have"
+    },
+    {
+      "hr": "Mi piace",
+      "en": "I like"
+    },
+    {
+      "hr": "Non capisco",
+      "en": "I don't understand"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I speak Italian",
+      "answer": "Parlo italiano"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Choose the correct form: “You have a book.”",
+      "options": [
+        "Hai un libro",
+        "Ho un libro",
+        "Ha un libro"
+      ],
+      "answer": "Hai un libro"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: Io ___ (parlare) italiano.",
+      "answer": "parlo"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Non capisco",
+      "answer": "I don't understand"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: “I like pasta.”",
+      "words": [
+        "la",
+        "Mi",
+        "pasta.",
+        "piace"
+      ],
+      "answer": [
+        "Mi",
+        "piace",
+        "la",
+        "pasta."
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Say in Italian: Parlo italiano, ma non capisco tutto."
+    },
+    {
+      "type": "comprehension",
+      "passage": "Paolo: Parli inglese?\\nSara: No, parlo italiano. Ho un libro in italiano.\\nPaolo: Capisci tutto?\\nSara: No, non capisco tutto!",
+      "prompt": "What language does Sara speak?",
+      "options": [
+        "Italian",
+        "English",
+        "French"
+      ],
+      "answer": "Italian"
+    }
+  ]
+}
