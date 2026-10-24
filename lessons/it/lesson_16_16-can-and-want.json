@@ -86,9 +86,9 @@
       "passage": "Viaggiatrice: Buongiorno. Quanto costa un biglietto per Roma?\\nImpiegato: Costa venti euro.\\nViaggiatrice: Posso pagare con carta?\\nImpiegato: Sì, certo.",
       "prompt": "How much is the ticket?",
       "options": [
-        "Twenty euros",
         "Ten euros",
-        "Thirty euros"
+        "Thirty euros",
+        "Twenty euros"
       ],
       "answer": "Twenty euros"
     }
