@@ -32,9 +32,9 @@
     "question": {
       "prompt": "What does Luca do today?",
       "options": [
-        "He works",
         "He studies at the café",
-        "He travels"
+        "He travels",
+        "He works"
       ],
       "answer": "He works"
     }
