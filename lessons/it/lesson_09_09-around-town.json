@@ -1,93 +1,97 @@
 {
-  "id": "it-lesson-09-around-town",
   "number": 9,
-  "title": "In città",
-  "topic": "Places and directions",
+  "id": "it-lesson-09-around-town",
+  "title": "At home",
+  "topic": "Rooms and everyday objects",
   "lesson_type": "vocabulary",
-  "difficulty": 3,
-  "level": "Early A1",
-  "description": "Ask where places are and understand simple directions.",
+  "difficulty": 2,
+  "level": "Beginner → early A1",
+  "description": "Learn familiar rooms and objects using the articles you have seen.",
   "vocabulary": [
     {
-      "hr": "La stazione",
-      "en": "The station"
+      "hr": "La casa",
+      "en": "The house"
     },
     {
-      "hr": "La piazza",
-      "en": "The square"
+      "hr": "La cucina",
+      "en": "The kitchen"
     },
     {
-      "hr": "La strada",
-      "en": "The street"
+      "hr": "La camera",
+      "en": "The bedroom"
     },
     {
-      "hr": "A destra",
-      "en": "To the right"
+      "hr": "Il bagno",
+      "en": "The bathroom"
     },
     {
-      "hr": "A sinistra",
-      "en": "To the left"
+      "hr": "Il tavolo",
+      "en": "The table"
     },
     {
-      "hr": "Dov'è…?",
-      "en": "Where is…?"
+      "hr": "Una sedia",
+      "en": "A chair"
     }
   ],
   "exercises": [
     {
-      "type": "translate_en_to_hr",
-      "prompt": "Where is the station?",
-      "answer": "Dov'è la stazione?"
-    },
-    {
       "type": "multiple_choice",
-      "prompt": "What does “A sinistra” mean?",
+      "prompt": "Which word means “kitchen”?",
       "options": [
-        "To the left",
-        "To the right",
-        "Straight ahead"
+        "La cucina",
+        "La camera",
+        "Il bagno"
       ],
-      "answer": "To the left"
+      "answer": "La cucina"
     },
     {
-      "type": "fill_blank",
-      "prompt": "Complete: La stazione è a ___ (right).",
-      "answer": "destra"
+      "type": "translate_en_to_hr",
+      "prompt": "The bedroom",
+      "answer": "La camera"
     },
     {
       "type": "translate_hr_to_en",
-      "prompt": "La piazza",
-      "answer": "The square"
+      "prompt": "Il bagno",
+      "answer": "The bathroom"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: La ___ (the house)",
+      "answer": "casa"
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “Where is the station?”",
+      "prompt": "Build: “The table is in the kitchen.”",
       "words": [
-        "stazione?",
-        "Dov'è",
-        "la"
+        "cucina.",
+        "nella",
+        "è",
+        "Il",
+        "tavolo"
       ],
       "answer": [
-        "Dov'è",
-        "la",
-        "stazione?"
+        "Il",
+        "tavolo",
+        "è",
+        "nella",
+        "cucina."
       ]
     },
     {
       "type": "speak",
-      "prompt": "Ask for directions: Scusi, dov'è la stazione?",
-      "answer": "Scusi, dov'è la stazione?"
+      "prompt": "Say: La sedia è in casa.",
+      "answer": "La sedia è in casa."
     },
     {
       "type": "comprehension",
-      "passage": "Turista: Scusi, dov'è la stazione?\\nPaolo: Vada sempre dritto, poi a destra.\\nTurista: La stazione è vicino alla piazza?\\nPaolo: Sì, è accanto alla piazza.",
-      "prompt": "Where is the station?",
+      "passage": "Anna: La cucina è grande.\\nLuca: Dov'è il tavolo?\\nAnna: Il tavolo è nella cucina, vicino alla sedia.",
+      "prompt": "Where is the table?",
       "options": [
-        "Next to the square",
-        "To the left of the square",
-        "Far from the square"
+        "In the kitchen",
+        "In the bedroom",
+        "In the bathroom"
       ],
-      "answer": "Next to the square"
+      "answer": "In the kitchen"
     }
   ]
 }
