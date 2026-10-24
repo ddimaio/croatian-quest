@@ -39,9 +39,9 @@
       "type": "multiple_choice",
       "prompt": "Choose the phrase for “There are two chairs.”",
       "options": [
-        "Ci sono due sedie",
         "C'è una sedia",
-        "È una sedia"
+        "È una sedia",
+        "Ci sono due sedie"
       ],
       "answer": "Ci sono due sedie"
     },
@@ -88,9 +88,9 @@
       "passage": "Anna: Cosa c'è nella camera?\\nLuca: C'è un letto e ci sono due sedie.\\nAnna: Dov'è il libro?\\nLuca: Il libro è sul tavolo.",
       "prompt": "Where is the book?",
       "options": [
-        "On the table",
         "In the kitchen",
-        "Next to the bed"
+        "Next to the bed",
+        "On the table"
       ],
       "answer": "On the table"
     }
