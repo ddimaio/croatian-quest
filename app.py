@@ -427,7 +427,7 @@ def validate_lesson(data):
     if not isinstance(vocab, list): errors.append("‘vocabulary’ must be an array."); vocab = []
     for i, word in enumerate(vocab, 1):
         if not isinstance(word, dict) or not all(isinstance(word.get(k), str) and word[k].strip() for k in ("hr", "en")):
-            errors.append(f"Vocabulary item {i} needs Croatian ‘hr’ and English ‘en’ strings.")
+            errors.append(f"Vocabulary item {i} needs target-language ‘hr’ and English ‘en’ strings.")
     exercises = data.get("exercises", [])
     if not isinstance(exercises, list): errors.append("‘exercises’ must be an array."); exercises = []
     if data.get("lesson_type") in ("vocabulary", "grammar") and not exercises: errors.append("Vocabulary and grammar lessons need at least one exercise.")
@@ -463,7 +463,7 @@ def validate_lesson(data):
                 or not isinstance(line.get("text"), str) or not line["text"].strip()
                 for line in lines
             ):
-                errors.append("Each dialogue line needs a ‘speaker’ and Croatian ‘text’.")
+                errors.append("Each dialogue line needs a ‘speaker’ and course-language ‘text’.")
             question = dialogue.get("question")
             if not isinstance(question, dict):
                 errors.append("A dialogue needs one related ‘question’ object.")
@@ -693,7 +693,8 @@ def choose_course(course_code):
 
 def course_selector(location):
     selected = st.session_state.get("selected_course", "hr")
-    st.markdown(f"**{location} · Choose a course**")
+    selector_heading = "Choose your course" if location == "login" else "Switch course"
+    st.markdown(f"**{selector_heading}**")
     left, right = st.columns(2)
     with left:
         st.button(
@@ -1421,7 +1422,7 @@ elif st.session_state.page == "review":
                         save_progress(); st.rerun()
             else:
                 if st.session_state.review_correct is True:
-                    st.success("Correct! +10 XP · Lijepo! 🎉")
+                    st.success(f"Correct! +10 XP · {'Ben fatto!' if active_course == 'it' else 'Lijepo!'} 🎉")
                 elif st.session_state.review_correct is False:
                     st.error(f"Not quite — the answer is **{card['hr']}**.")
                 else:
