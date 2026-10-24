@@ -1,0 +1,96 @@
+{
+  "number": 16,
+  "id": "it-lesson-16-can-and-want",
+  "title": "What you can and want to do",
+  "topic": "Potere and volere + infinitive",
+  "lesson_type": "grammar",
+  "difficulty": 4,
+  "level": "A1",
+  "description": "Use can and want with familiar verbs and travel vocabulary.",
+  "grammar_note": "Potere means “can”: posso (I can), puoi (you can). Volere means “to want”: voglio (I want), vuoi (you want). Follow either verb with an infinitive: posso parlare (I can speak), voglio viaggiare (I want to travel).",
+  "vocabulary": [
+    {
+      "hr": "Posso…?",
+      "en": "Can I…?"
+    },
+    {
+      "hr": "Puoi aiutarmi?",
+      "en": "Can you help me?"
+    },
+    {
+      "hr": "Voglio viaggiare",
+      "en": "I want to travel"
+    },
+    {
+      "hr": "Vuoi…?",
+      "en": "Do you want…?"
+    },
+    {
+      "hr": "Quanto costa?",
+      "en": "How much does it cost?"
+    },
+    {
+      "hr": "Posso pagare?",
+      "en": "Can I pay?"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Can I pay?",
+      "answer": "Posso pagare?"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "What does “Voglio viaggiare” mean?",
+      "options": [
+        "I want to travel",
+        "I can help",
+        "I am arriving"
+      ],
+      "answer": "I want to travel"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: ___ aiutarmi? (Can you help me?)",
+      "answer": "Puoi"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Quanto costa?",
+      "answer": "How much does it cost?"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: “Can I buy a ticket?”",
+      "words": [
+        "un",
+        "Posso",
+        "biglietto?",
+        "comprare"
+      ],
+      "answer": [
+        "Posso",
+        "comprare",
+        "un",
+        "biglietto?"
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Ask politely: Puoi aiutarmi, per favore?",
+      "answer": "Puoi aiutarmi, per favore?"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Viaggiatrice: Buongiorno. Quanto costa un biglietto per Roma?\\nImpiegato: Costa venti euro.\\nViaggiatrice: Posso pagare con carta?\\nImpiegato: Sì, certo.",
+      "prompt": "How much is the ticket?",
+      "options": [
+        "Twenty euros",
+        "Ten euros",
+        "Thirty euros"
+      ],
+      "answer": "Twenty euros"
+    }
+  ]
+}
