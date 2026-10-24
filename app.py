@@ -1214,9 +1214,35 @@ elif st.session_state.page == "home":
         with col: st.markdown(f'<div class="stat"><div class="stat-num">{value}</div><div class="stat-label">{label}</div></div>', unsafe_allow_html=True)
     if due and st.button(f"🧠 Review {len(due)} due words", type="primary", use_container_width=True):
         begin_review(); save_progress(); st.rerun()
-    st.markdown("\n### Course path")
     lessons = sorted(st.session_state.lessons.values(), key=lambda x: x["number"])
-    for lesson in lessons:
+    next_lesson = next(
+        (
+            lesson for lesson in lessons
+            if lesson["id"] not in st.session_state.completed_lessons
+            and lesson_is_unlocked(lesson, lessons, st.session_state.completed_lessons)
+        ),
+        None,
+    )
+    if "show_all_lessons" not in st.session_state:
+        st.session_state.show_all_lessons = False
+    if st.button(
+        "Hide lessons" if st.session_state.show_all_lessons else "Show all lessons",
+        key="toggle_all_lessons",
+        use_container_width=True,
+    ):
+        st.session_state.show_all_lessons = not st.session_state.show_all_lessons
+        st.rerun()
+
+    if st.session_state.show_all_lessons:
+        st.markdown("\\n### All lessons")
+        lessons_to_show = lessons
+    else:
+        st.markdown("\\n### Next lesson")
+        lessons_to_show = [next_lesson] if next_lesson else []
+        if next_lesson is None:
+            st.success("You’ve completed every lesson in this course!")
+
+    for lesson in lessons_to_show:
         complete = lesson["id"] in st.session_state.completed_lessons
         lesson_unlocked = lesson_is_unlocked(lesson, lessons, st.session_state.completed_lessons)
         types = {"vocabulary":"📚 Vocabulary", "grammar":"🧩 Grammar", "review":"🔁 Spaced repetition"}
