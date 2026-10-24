@@ -1,0 +1,42 @@
+{
+  "id": "it-lesson-04-review",
+  "number": 4,
+  "title": "Review: first conversations",
+  "topic": "Greetings, introductions, and café words",
+  "lesson_type": "review",
+  "difficulty": 2,
+  "level": "Beginner",
+  "description": "Review Italian words from all completed units using spaced repetition.",
+  "vocabulary": [],
+  "exercises": [],
+  "dialogue": {
+    "context": "Review a first meeting at a café.",
+    "lines": [
+      {
+        "speaker": "Anna",
+        "text": "Buongiorno! Mi chiamo Anna. E tu?"
+      },
+      {
+        "speaker": "Luca",
+        "text": "Sono Luca. Piacere!"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Vorrei un cappuccino, per favore."
+      },
+      {
+        "speaker": "Luca",
+        "text": "Anch'io. Il conto, per favore."
+      }
+    ],
+    "question": {
+      "prompt": "What would Anna like?",
+      "options": [
+        "A cappuccino",
+        "A tea",
+        "An espresso"
+      ],
+      "answer": "A cappuccino"
+    }
+  }
+}
