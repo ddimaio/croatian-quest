@@ -17,7 +17,7 @@
 <body>
   <div class="panel">
     <button id="speak" type="button">🎙️ Start speaking</button>
-    <span id="status" role="status" aria-live="polite">Preparing Croatian speech recognition…</span>
+    <span id="status" role="status" aria-live="polite">Preparing speech recognition…</span>
   </div>
   <div class="hint">Allow microphone access when your browser asks.</div>
   <script>
@@ -27,6 +27,7 @@
     let recognition = null;
     let listening = false;
     let lastTranscript = "";
+    let languageName = "Croatian";
 
     function notify(type, extra = {}) {
       window.parent.postMessage({isStreamlitMessage: true, type, ...extra}, "*");
@@ -66,6 +67,8 @@
       }
       recognition = new Recognition();
       recognition.lang = (data.args && data.args.lang) || "hr-HR";
+      languageName = recognition.lang.startsWith("it") ? "Italian" : "Croatian";
+      setStatus(`Ready for ${languageName} speech.`);
       recognition.interimResults = false;
       recognition.maxAlternatives = 1;
       recognition.continuous = false;
@@ -73,7 +76,7 @@
       recognition.onstart = () => {
         listening = true;
         button.textContent = "Stop listening";
-        setStatus("Listening… Say the Croatian phrase.");
+        setStatus(`Listening… Say the ${languageName} phrase.`);
       };
       recognition.onend = () => {
         listening = false;
