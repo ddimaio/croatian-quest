@@ -84,7 +84,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Marta: Ho la pasta e l'insalata.\\nLuca: Io prendo la pizza.\\nMarta: Vuoi un po' di pane?\\nLuca: Sì, grazie.",
+      "passage": "Marta: Ho la pasta e l'insalata.\nLuca: Io prendo la pizza.\nMarta: Vuoi un po' di pane?\nLuca: Sì, grazie.",
       "prompt": "What does Luca choose?",
       "options": [
         "Pizza",
