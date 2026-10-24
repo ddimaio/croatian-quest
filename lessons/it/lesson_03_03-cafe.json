@@ -61,7 +61,7 @@
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “Un caffè, per favore.”",
+      "prompt": "Build a polite café order: “An espresso, please.”",
       "words": [
         "favore.",
         "Un",
