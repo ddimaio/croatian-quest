@@ -1,97 +1,91 @@
 {
-  "id": "it-lesson-07-family",
   "number": 7,
-  "title": "La mia famiglia",
-  "topic": "Family and possessives",
+  "id": "it-lesson-07-family",
+  "title": "My family",
+  "topic": "Close family members",
   "lesson_type": "vocabulary",
-  "difficulty": 3,
-  "level": "Early A1",
-  "description": "Talk about close family members and use simple possessives.",
+  "difficulty": 2,
+  "level": "Beginner",
+  "description": "Learn the names of close family members.",
   "vocabulary": [
     {
       "hr": "La famiglia",
-      "en": "Family"
+      "en": "The family"
     },
     {
       "hr": "La madre",
-      "en": "Mother"
+      "en": "The mother"
     },
     {
       "hr": "Il padre",
-      "en": "Father"
+      "en": "The father"
     },
     {
       "hr": "Il fratello",
-      "en": "Brother"
+      "en": "The brother"
     },
     {
       "hr": "La sorella",
-      "en": "Sister"
+      "en": "The sister"
     },
     {
-      "hr": "Mio fratello",
-      "en": "My brother"
+      "hr": "I genitori",
+      "en": "The parents"
     }
   ],
   "exercises": [
     {
       "type": "translate_en_to_hr",
-      "prompt": "My brother",
-      "answer": "Mio fratello"
+      "prompt": "The sister",
+      "answer": "La sorella"
     },
     {
       "type": "multiple_choice",
-      "prompt": "What does “La sorella” mean?",
+      "prompt": "What does “I genitori” mean?",
       "options": [
-        "The sister",
-        "The mother",
-        "The family"
+        "The parents",
+        "The brothers",
+        "The children"
       ],
-      "answer": "The sister"
+      "answer": "The parents"
     },
     {
       "type": "fill_blank",
-      "prompt": "Complete: Mio ___ (father)",
+      "prompt": "Complete: Il ___ (the father)",
       "answer": "padre"
     },
     {
       "type": "translate_hr_to_en",
-      "prompt": "La mia famiglia",
-      "answer": "My family"
+      "prompt": "La madre",
+      "answer": "The mother"
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “My sister is called Giulia.”",
+      "prompt": "Build: “The family.”",
       "words": [
-        "Giulia.",
-        "chiama",
-        "Mia",
-        "si",
-        "sorella"
+        "famiglia.",
+        "La"
       ],
       "answer": [
-        "Mia",
-        "sorella",
-        "si",
-        "chiama",
-        "Giulia."
+        "La",
+        "famiglia."
       ]
     },
     {
       "type": "speak",
-      "prompt": "Introduce your family: Questa è la mia famiglia.",
-      "answer": "Questa è la mia famiglia."
+      "prompt": "Say: La mia famiglia.",
+      "answer": "La mia famiglia."
     },
     {
       "type": "comprehension",
-      "passage": "Giulia: Questa è la mia famiglia. Mio padre si chiama Paolo e mia madre si chiama Anna.\\nLuca: Hai fratelli?\\nGiulia: Sì, ho un fratello. Si chiama Marco.",
-      "prompt": "What is the brother's name?",
+      "passage": "Giulia: Questa è la mia famiglia. Mia madre si chiama Anna e mio padre si chiama Paolo.\\nLuca: Hai fratelli?\\nGiulia: Sì, ho una sorella. Si chiama Sara.",
+      "prompt": "What is the sister's name?",
       "options": [
-        "Marco",
-        "Paolo",
-        "Luca"
+        "Sara",
+        "Anna",
+        "Giulia"
       ],
-      "answer": "Marco"
+      "answer": "Sara"
     }
   ]
 }
