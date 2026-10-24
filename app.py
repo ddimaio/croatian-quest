@@ -355,6 +355,11 @@ STARTER_COURSE = [{'id': 'lesson-01-greetings',
   'exercises': []}]
 EXERCISE_TYPES = {"multiple_choice", "translate_en_to_hr", "translate_hr_to_en", "fill_blank", "reorder_words", "comprehension", "speak"}
 LESSON_TYPES = {"vocabulary", "grammar", "review"}
+COURSES = {
+    "hr": {"name": "Croatian", "flag": "🇭🇷", "locale": "hr-HR", "voice": "hr-HR-GabrijelaNeural"},
+    "it": {"name": "Italian", "flag": "🇮🇹", "locale": "it-IT", "voice": "it-IT-IsabellaNeural"},
+}
+ITALIAN_STARTER_COURSE = []
 
 
 def normalize(text):
@@ -362,12 +367,13 @@ def normalize(text):
 
 
 @st.cache_data(show_spinner=False)
-def pronunciation_audio(text):
-    """Create Croatian MP3 audio on the server and cache it across reruns."""
+def pronunciation_audio(text, course_code="hr"):
+    """Create course-language MP3 audio on the server and cache it across reruns."""
     if edge_tts is None:
-        raise RuntimeError("Install project requirements to enable Croatian audio.")
+        raise RuntimeError("Install project requirements to enable pronunciation audio.")
+    voice = COURSES.get(course_code, COURSES["hr"])["voice"]
     async def generate():
-        speech = edge_tts.Communicate(text, voice="hr-HR-GabrijelaNeural", rate="-15%")
+        speech = edge_tts.Communicate(text, voice=voice, rate="-15%")
         audio = bytearray()
         async for chunk in speech.stream():
             if chunk["type"] == "audio":
@@ -378,16 +384,18 @@ def pronunciation_audio(text):
 
 
 def pronunciation_button(text, key):
+    course_code = st.session_state.get("selected_course", "hr")
+    language = COURSES.get(course_code, COURSES["hr"])["name"]
     try:
-        with st.spinner("Preparing Croatian audio…"):
-            audio = pronunciation_audio(str(text))
+        with st.spinner(f"Preparing {language} audio…"):
+            audio = pronunciation_audio(str(text), course_code)
         if not audio:
             raise RuntimeError("The speech service returned empty audio.")
     except Exception:
         if edge_tts is None:
-            st.caption("Croatian audio needs the project dependencies. Run `python -m pip install -r requirements.txt` and restart the app.")
+            st.caption("Pronunciation audio needs the project dependencies. Run `python -m pip install -r requirements.txt` and restart the app.")
         else:
-            st.caption("Croatian audio is temporarily unavailable. Check the app server’s internet connection and try again.")
+            st.caption(f"{language} audio is temporarily unavailable. Check the app server’s internet connection and try again.")
         return
 
     audio_data = base64.b64encode(audio).decode("ascii")
@@ -470,9 +478,12 @@ def validate_lesson(data):
     return errors
 
 
-def load_course_lesson_files():
-    """Add numbered lesson JSON files committed in the lessons folder to the starter course."""
+def load_course_lesson_files(course_code="hr"):
+    """Load numbered JSON lessons for one language course."""
+    starter_course = STARTER_COURSE if course_code == "hr" else ITALIAN_STARTER_COURSE
     lessons_dir = Path(__file__).parent / "lessons"
+    if course_code == "it":
+        lessons_dir = lessons_dir / "it"
     for lesson_path in sorted(lessons_dir.glob("lesson_*.json")):
         try:
             lesson = json.loads(lesson_path.read_text(encoding="utf-8"))
@@ -482,22 +493,21 @@ def load_course_lesson_files():
             continue
         existing_index = next(
             (
-                index for index, existing in enumerate(STARTER_COURSE)
+                index for index, existing in enumerate(starter_course)
                 if existing["id"] == lesson.get("id")
                 or existing["number"] == lesson["number"]
             ),
             None,
         )
         if existing_index is None:
-            STARTER_COURSE.append(lesson)
-        elif STARTER_COURSE[existing_index]["id"] == lesson.get("id"):
-            # The JSON file is the source of truth for numbered lessons, including
-            # newly added dialogue exercises.
-            STARTER_COURSE[existing_index] = lesson
-    STARTER_COURSE.sort(key=lambda item: item["number"])
+            starter_course.append(lesson)
+        elif starter_course[existing_index]["id"] == lesson.get("id"):
+            starter_course[existing_index] = lesson
+    starter_course.sort(key=lambda item: item["number"])
 
 
-load_course_lesson_files()
+load_course_lesson_files("hr")
+load_course_lesson_files("it")
 
 
 def check_difficulty_order(lesson):
@@ -674,6 +684,9 @@ def refresh_auth_session():
 
 
 def choose_course(course_code):
+    current_course = st.session_state.get("selected_course", "hr")
+    if current_course != course_code and "lessons" in st.session_state and "_course_progress_map" in st.session_state:
+        save_progress()
     st.session_state.selected_course = course_code
     st.session_state.course_selection_touched = True
 
@@ -707,9 +720,8 @@ def show_auth_page():
         st.session_state.selected_course = "hr"
         st.session_state.course_selection_touched = False
     course_selector("login")
-    if st.session_state.selected_course == "it":
-        st.info("Italian is selected. Italian lessons are not in the course yet; your Croatian lessons and progress remain available when you switch back.")
-    st.markdown('<div class="hero"><div class="eyebrow">Croatian Quest</div><h1>Your own learning journey.</h1><p>Create an account or sign in to keep your course progress private and synced.</p></div>', unsafe_allow_html=True)
+    course = COURSES.get(st.session_state.selected_course, COURSES["hr"])
+    st.markdown(f'<div class="hero"><div class="eyebrow">{course["flag"]} {course["name"]} Quest</div><h1>Your own learning journey.</h1><p>Create an account or sign in to keep your course progress private and synced.</p></div>', unsafe_allow_html=True)
     if st.session_state.get("auth_message"):
         st.info(st.session_state.pop("auth_message"))
     login_tab, signup_tab, reset_tab = st.tabs(["Log in", "Create account", "Forgot password"])
@@ -940,7 +952,7 @@ def load_user_progress():
 
 
 def save_progress():
-    """Save course progress to the signed-in learner's private database row."""
+    """Save the active language course without mixing course progress."""
     data = {
         "schema_version": 1,
         "selected_course": st.session_state.get("selected_course", "hr"),
@@ -967,14 +979,22 @@ def save_progress():
         "review_correct_answers": st.session_state.review_correct_answers,
         "active_review_lesson": st.session_state.active_review_lesson,
     }
-    serialized = json.dumps(data, ensure_ascii=False, sort_keys=True)
+    course_code = st.session_state.get("selected_course", "hr")
+    course_progress = st.session_state.setdefault("_course_progress_map", {})
+    course_progress[course_code] = data
+    stored_progress = {
+        "schema_version": 2,
+        "selected_course": course_code,
+        "course_progress": course_progress,
+    }
+    serialized = json.dumps(stored_progress, ensure_ascii=False, sort_keys=True)
     if st.session_state.get("_last_saved_progress") == serialized:
         return
     session = st.session_state.get("auth_session")
     if not session or not refresh_auth_session():
         st.session_state.progress_save_error = "Your session expired. Sign in again to save progress."
         return
-    payload = {"user_id": session["user"]["id"], "progress": data}
+    payload = {"user_id": session["user"]["id"], "progress": stored_progress}
     response = supabase_request(
         "rest/v1/learner_progress",
         method="POST",
@@ -990,9 +1010,10 @@ def save_progress():
     st.session_state.progress_save_error = None
 
 
-def restore_progress(saved):
-    """Merge bundled, saved, and server-uploaded lessons into the course."""
-    lessons = {lesson["id"]: lesson for lesson in STARTER_COURSE}
+def restore_progress(saved, course_code="hr"):
+    """Merge one course's bundled, saved, and server-uploaded lessons."""
+    starter_course = STARTER_COURSE if course_code == "hr" else ITALIAN_STARTER_COURSE
+    lessons = {lesson["id"]: lesson for lesson in starter_course}
 
     def merge_lesson(lesson_id, lesson):
         if not isinstance(lesson_id, str) or not isinstance(lesson, dict) or lesson.get("id") != lesson_id:
@@ -1013,6 +1034,8 @@ def restore_progress(saved):
             merge_lesson(lesson_id, lesson)
 
     lesson_dir = Path(__file__).parent / "lessons"
+    if course_code == "it":
+        lesson_dir = lesson_dir / "it"
     if lesson_dir.is_dir():
         for lesson_path in sorted(lesson_dir.glob("*.json")):
             try:
@@ -1040,26 +1063,62 @@ handle_default_recovery_callback()
 authenticate_user()
 if "_saved_progress" not in st.session_state:
     st.session_state["_saved_progress"] = load_user_progress()
-saved_progress = st.session_state._saved_progress
+raw_saved_progress = st.session_state._saved_progress
+if not isinstance(raw_saved_progress, dict):
+    raw_saved_progress = {}
+if "_course_progress_map" not in st.session_state:
+    stored_courses = raw_saved_progress.get("course_progress")
+    if isinstance(stored_courses, dict):
+        st.session_state["_course_progress_map"] = stored_courses
+    elif raw_saved_progress:
+        # Existing accounts have one Croatian progress blob; preserve it on migration.
+        st.session_state["_course_progress_map"] = {"hr": raw_saved_progress}
+    else:
+        st.session_state["_course_progress_map"] = {}
 if "selected_course" not in st.session_state:
+    stored_selection = raw_saved_progress.get("selected_course", "hr")
     st.session_state.selected_course = (
-        saved_progress.get("selected_course", "hr")
-        if isinstance(saved_progress, dict)
+        stored_selection
+        if stored_selection in st.session_state["_course_progress_map"] or stored_selection == "hr"
         else "hr"
     )
     st.session_state.course_selection_touched = False
 elif not st.session_state.get("course_selection_touched", False):
+    stored_selection = raw_saved_progress.get("selected_course", "hr")
     st.session_state.selected_course = (
-        saved_progress.get("selected_course", "hr")
-        if isinstance(saved_progress, dict)
+        stored_selection
+        if stored_selection in st.session_state["_course_progress_map"] or stored_selection == "hr"
         else "hr"
     )
+
+active_course = st.session_state.selected_course
+if "_active_course" not in st.session_state:
+    st.session_state["_active_course"] = active_course
+elif st.session_state["_active_course"] != active_course:
+    course_state_keys = (
+        "lessons", "xp", "day_streak", "best_day_streak", "last_activity_date",
+        "lesson_correct_answers", "completed_lessons", "cards", "page", "lesson_id",
+        "lesson_attempts", "ordering_words", "index", "checked", "hint_counts",
+        "review_queue", "review_index", "review_revealed", "review_correct",
+        "review_correct_answers", "active_review_lesson", "show_all_lessons",
+    )
+    for state_key in course_state_keys:
+        st.session_state.pop(state_key, None)
+    for widget_key in list(st.session_state.keys()):
+        if isinstance(widget_key, str) and widget_key.startswith(("answer_", "choice_", "review_dialogue_choice_")):
+            st.session_state.pop(widget_key, None)
+    st.session_state["_active_course"] = active_course
+    st.session_state["_last_saved_progress"] = None
+
+saved_progress = st.session_state["_course_progress_map"].get(active_course, {})
+if not isinstance(saved_progress, dict):
+    saved_progress = {}
 if "lessons" not in st.session_state:
-    st.session_state.lessons = restore_progress(saved_progress)
+    st.session_state.lessons = restore_progress(saved_progress, active_course)
 
 # Streamlit can keep an existing browser session alive during a redeploy.
 # Refresh bundled lesson content on each run while keeping learner progress separate.
-for bundled_lesson in STARTER_COURSE:
+for bundled_lesson in (STARTER_COURSE if active_course == "hr" else ITALIAN_STARTER_COURSE):
     existing_number = next(
         (
             current for current in st.session_state.lessons.values()
@@ -1203,11 +1262,10 @@ with header_left:
 with header_right:
     st.button("Log out", key="main_logout", on_click=logout_callback, use_container_width=True)
 
-if st.session_state.selected_course == "it":
-    st.title("🇮🇹 Italian course")
-    st.info("Italian has been added as a course choice. Italian lesson content has not been added yet. Switch to 🇭🇷 Croatian to continue your existing course.")
-elif st.session_state.page == "home":
-    st.markdown('<div class="hero"><div class="eyebrow">A little Croatian, every day</div><h1>Dobro došli!<br>Let’s learn Croatian.</h1><p>Follow the course in order. New words return for review across every lesson.</p></div>', unsafe_allow_html=True)
+if st.session_state.page == "home":
+    course = COURSES.get(active_course, COURSES["hr"])
+    welcome = "Benvenuto! Impariamo l’italiano." if active_course == "it" else "Dobro došli! Let’s learn Croatian."
+    st.markdown(f'<div class="hero"><div class="eyebrow">{course["flag"]} A little {course["name"]}, every day</div><h1>{welcome}</h1><p>Follow the course in order. New words return for review across every lesson.</p></div>', unsafe_allow_html=True)
     due = due_cards()
     col1, col2, col3 = st.columns(3)
     for col, value, label in [(col1, str(st.session_state.xp), "TOTAL XP"), (col2, str(len(st.session_state.lessons)), "NUMBERED LESSONS"), (col3, str(len(due)), "WORDS DUE")]:
@@ -1284,7 +1342,7 @@ elif st.session_state.page == "review":
         active_lesson = st.session_state.lessons.get(st.session_state.active_review_lesson)
         dialogue = active_lesson.get("dialogue") if active_lesson else None
         if dialogue and st.session_state.index == 0:
-            st.markdown("### 💬 Short conversation in Croatian")
+            st.markdown(f"### 💬 Short conversation in {COURSES.get(active_course, COURSES['hr'])['name']}")
             st.caption(dialogue["context"])
             st.markdown(
                 '<div class="lesson-card">' +
@@ -1340,15 +1398,16 @@ elif st.session_state.page == "review":
             st.caption(f"Card {idx + 1} of {len(queue)} · Previously learned across the course")
             st.markdown(f'<div class="lesson-card"><div class="eyebrow">What does this mean?</div><div class="prompt">{html.escape(card["en"])}</div></div>', unsafe_allow_html=True)
             typing_mode = review_uses_typing(card)
-            st.caption("Type the Croatian word" if typing_mode else "Choose the Croatian word")
+            target_language = COURSES.get(active_course, COURSES["hr"])["name"]
+            st.caption(f"Type the {target_language} word" if typing_mode else f"Choose the {target_language} word")
             if not st.session_state.review_revealed:
                 if typing_mode:
                     with st.form(f"review_answer_form_{idx}"):
-                        response = st.text_input("Your answer", key=f"answer_review_{idx}", label_visibility="collapsed", placeholder="Type in Croatian…")
+                        response = st.text_input("Your answer", key=f"answer_review_{idx}", label_visibility="collapsed", placeholder=f"Type in {target_language}…")
                         submitted = st.form_submit_button("Check answer", type="primary", use_container_width=True)
                 else:
                     options = review_choices(key, card, st.session_state.cards, idx)
-                    response = st.radio("Choose the Croatian translation", options, key=f"choice_review_{idx}", label_visibility="collapsed")
+                    response = st.radio(f"Choose the {target_language} translation", options, key=f"choice_review_{idx}", label_visibility="collapsed")
                     submitted = st.button("Check answer", key=f"check_review_{idx}", type="primary", use_container_width=True)
                 if submitted:
                     if not response.strip():
@@ -1417,13 +1476,13 @@ else:
         st.markdown(f"Question {idx + 1} of {total}")
         st.progress(idx / total)
         prompt_map = {
-            "translate_en_to_hr": ("Translate to Croatian", f"How do you say ‘{ex['prompt']}’ in Croatian?"),
+            "translate_en_to_hr": (f"Translate to {COURSES[active_course]['name']}", f"How do you say ‘{ex['prompt']}’ in {COURSES[active_course]['name']}?"),
             "translate_hr_to_en": ("Translate to English", f"What does ‘{ex['prompt']}’ mean?"),
             "multiple_choice": ("Choose the right answer", ex["prompt"]),
             "fill_blank": ("Fill in the blank", ex["prompt"]),
             "comprehension": ("Read and understand", ex["prompt"]),
             "reorder_words": ("Arrange the words", ex["prompt"]),
-            "speak": ("Speak in Croatian", ex["prompt"])
+            "speak": (f"Speak in {COURSES[active_course]['name']}", ex["prompt"])
         }
         label, prompt = prompt_map[ex["type"]]
         st.markdown(f'<span class="pill">{label}</span>', unsafe_allow_html=True)
@@ -1449,7 +1508,7 @@ else:
                     else:
                         turns.append(f'<div class="dialogue-turn">{html.escape(line)}</div>')
                 st.markdown(
-                    '<div class="lesson-card"><div class="eyebrow">🎭 Final mini-dialogue · Croatian</div>'
+                    f'<div class="lesson-card"><div class="eyebrow">🎭 Final mini-dialogue · {COURSES[active_course]["name"]}</div>'
                     + "".join(turns)
                     + '</div>',
                     unsafe_allow_html=True,
@@ -1497,7 +1556,7 @@ else:
             answer = st.radio("Choose one", ex["options"], key=f"choice_{idx}", label_visibility="collapsed", disabled=st.session_state.checked is not None)
         elif ex["type"] == "speak":
             speech_key = f"speech-{st.session_state.lesson_id}-{st.session_state.lesson_attempts}-{idx}"
-            speech_result = speech_component(lang="hr-HR", key=speech_key)
+            speech_result = speech_component(lang=COURSES[active_course]["locale"], key=speech_key)
             speech_result = speech_result if isinstance(speech_result, dict) else {}
             transcript = str(speech_result.get("transcript", "")).strip()
             if transcript:
@@ -1508,7 +1567,7 @@ else:
                 if st.session_state.checked is None:
                     with st.form(f"typed_speech_form_{idx}"):
                         answer = st.text_input(
-                            "Type the Croatian phrase instead",
+                            f"Type the {COURSES[active_course]['name']} phrase instead",
                             key=f"answer_{st.session_state.lesson_id}_{st.session_state.lesson_attempts}_{idx}",
                             placeholder="Type your answer…",
                         )
@@ -1518,7 +1577,7 @@ else:
                     answer = ""
             else:
                 answer = transcript
-            st.caption("Speech recognition availability depends on your browser. You can type if it is unavailable.")
+            st.caption(f"Speech recognition availability for {COURSES[active_course]['name']} depends on your browser. You can type if it is unavailable.")
             if st.session_state.checked is None:
                 def skip_speaking_question():
                     st.session_state.index += 1
