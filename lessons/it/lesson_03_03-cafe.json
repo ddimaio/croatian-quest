@@ -82,7 +82,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Cliente: Buongiorno! Un caffè, per favore.\\nBarista: Certo.\\nCliente: Grazie. Il conto, per favore.\\nBarista: Ecco a Lei.",
+      "passage": "Cliente: Buongiorno! Un caffè, per favore.\nBarista: Certo.\nCliente: Grazie. Il conto, per favore.\nBarista: Ecco a Lei.",
       "prompt": "What does the customer order?",
       "options": [
         "A tea",
