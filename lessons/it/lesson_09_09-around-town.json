@@ -75,7 +75,8 @@
     },
     {
       "type": "speak",
-      "prompt": "Ask for directions: Scusi, dov'è la stazione?"
+      "prompt": "Ask for directions: Scusi, dov'è la stazione?",
+      "answer": "Scusi, dov'è la stazione?"
     },
     {
       "type": "comprehension",
