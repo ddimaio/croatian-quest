@@ -65,10 +65,12 @@
       "prompt": "Build: “I am Luca.”",
       "words": [
         "Luca.",
-        "Sono"
+        "Io",
+        "sono"
       ],
       "answer": [
-        "Sono",
+        "Io",
+        "sono",
         "Luca."
       ]
     },
