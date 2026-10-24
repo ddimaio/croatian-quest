@@ -84,9 +84,9 @@
       "passage": "Paolo: Parli inglese?\\nSara: No, parlo italiano. Ho un libro in italiano.\\nPaolo: Hai una sorella?\\nSara: Sì, ho una sorella.",
       "prompt": "What language does Sara speak?",
       "options": [
-        "Italian",
         "English",
-        "French"
+        "French",
+        "Italian"
       ],
       "answer": "Italian"
     }
