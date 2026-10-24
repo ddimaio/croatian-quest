@@ -84,7 +84,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Anna: La cucina è grande.\\nLuca: Dov'è il tavolo?\\nAnna: Il tavolo è nella cucina, vicino alla sedia.",
+      "passage": "Anna: La cucina è grande.\nLuca: Dov'è il tavolo?\nAnna: Il tavolo è nella cucina, vicino alla sedia.",
       "prompt": "Where is the table?",
       "options": [
         "In the bedroom",
