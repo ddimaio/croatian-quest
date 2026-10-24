@@ -1,0 +1,42 @@
+{
+  "id": "it-lesson-08-review",
+  "number": 8,
+  "title": "Review: café, food, and family",
+  "topic": "Cumulative review",
+  "lesson_type": "review",
+  "difficulty": 3,
+  "level": "Early A1",
+  "description": "Bring Italian words back at spaced intervals and revisit previous dialogues.",
+  "vocabulary": [],
+  "exercises": [],
+  "dialogue": {
+    "context": "Order lunch and talk about family.",
+    "lines": [
+      {
+        "speaker": "Cameriera",
+        "text": "Buongiorno! Cosa desiderate?"
+      },
+      {
+        "speaker": "Luca",
+        "text": "Vorrei la pasta e un'acqua."
+      },
+      {
+        "speaker": "Anna",
+        "text": "Io vorrei un'insalata. Ho fame!"
+      },
+      {
+        "speaker": "Cameriera",
+        "text": "Perfetto. Il conto alla fine."
+      }
+    ],
+    "question": {
+      "prompt": "What does Luca order to drink?",
+      "options": [
+        "Water",
+        "Coffee",
+        "Tea"
+      ],
+      "answer": "Water"
+    }
+  }
+}
