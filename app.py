@@ -1234,10 +1234,10 @@ elif st.session_state.page == "home":
         st.rerun()
 
     if st.session_state.show_all_lessons:
-        st.markdown("\\n### All lessons")
+        st.markdown("\n### All lessons")
         lessons_to_show = lessons
     else:
-        st.markdown("\\n### Next lesson")
+        st.markdown("\n### Next lesson")
         lessons_to_show = [next_lesson] if next_lesson else []
         if next_lesson is None:
             st.success("You’ve completed every lesson in this course!")
