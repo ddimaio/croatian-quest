@@ -1,40 +1,40 @@
 {
-  "id": "it-lesson-04-review",
   "number": 4,
+  "id": "it-lesson-04-review",
   "title": "Review: first conversations",
-  "topic": "Greetings, introductions, and café words",
+  "topic": "Greetings, names, and café words",
   "lesson_type": "review",
-  "difficulty": 2,
+  "difficulty": 1,
   "level": "Beginner",
-  "description": "Review Italian words from all completed units using spaced repetition.",
+  "description": "Review familiar words before moving to new themes.",
   "vocabulary": [],
   "exercises": [],
   "dialogue": {
-    "context": "Review a first meeting at a café.",
+    "context": "Meet someone and order a simple drink.",
     "lines": [
       {
         "speaker": "Anna",
-        "text": "Buongiorno! Mi chiamo Anna. E tu?"
+        "text": "Buongiorno! Mi chiamo Anna."
       },
       {
         "speaker": "Luca",
-        "text": "Sono Luca. Piacere!"
+        "text": "Ciao, Anna! Sono Luca. Piacere!"
       },
       {
         "speaker": "Anna",
-        "text": "Vorrei un cappuccino, per favore."
+        "text": "Un cappuccino, per favore."
       },
       {
         "speaker": "Luca",
-        "text": "Anch'io. Il conto, per favore."
+        "text": "Anch'io. Grazie!"
       }
     ],
     "question": {
-      "prompt": "What would Anna like?",
+      "prompt": "What does Anna order?",
       "options": [
         "A cappuccino",
-        "A tea",
-        "An espresso"
+        "An espresso",
+        "A tea"
       ],
       "answer": "A cappuccino"
     }
