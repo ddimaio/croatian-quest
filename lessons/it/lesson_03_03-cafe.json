@@ -1,0 +1,94 @@
+{
+  "id": "it-lesson-03-cafe",
+  "number": 3,
+  "title": "Al bar",
+  "topic": "Drinks and ordering",
+  "lesson_type": "vocabulary",
+  "difficulty": 2,
+  "level": "Beginner",
+  "description": "Order a drink politely at an Italian café.",
+  "vocabulary": [
+    {
+      "hr": "Un caffè",
+      "en": "An espresso"
+    },
+    {
+      "hr": "Un cappuccino",
+      "en": "A cappuccino"
+    },
+    {
+      "hr": "Un tè",
+      "en": "A tea"
+    },
+    {
+      "hr": "Un'acqua",
+      "en": "A water"
+    },
+    {
+      "hr": "Vorrei",
+      "en": "I would like"
+    },
+    {
+      "hr": "Il conto",
+      "en": "The bill"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I would like a cappuccino",
+      "answer": "Vorrei un cappuccino"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "What is “Il conto, per favore”?",
+      "options": [
+        "The bill, please",
+        "A coffee, please",
+        "A glass of water"
+      ],
+      "answer": "The bill, please"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Un tè",
+      "answer": "A tea"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: Vorrei un ___ (espresso)",
+      "answer": "caffè"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build the order: “Vorrei un'acqua, per favore.”",
+      "words": [
+        "per",
+        "un'acqua,",
+        "Vorrei",
+        "favore."
+      ],
+      "answer": [
+        "Vorrei",
+        "un'acqua,",
+        "per",
+        "favore."
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Order in Italian: Vorrei un caffè, per favore."
+    },
+    {
+      "type": "comprehension",
+      "passage": "Cliente: Buongiorno! Vorrei un cappuccino, per favore.\\nBarista: Certo. Desidera altro?\\nCliente: No, grazie. Il conto, per favore.\\nBarista: Ecco a Lei.",
+      "prompt": "What does the customer order?",
+      "options": [
+        "A cappuccino",
+        "An espresso",
+        "A tea"
+      ],
+      "answer": "A cappuccino"
+    }
+  ]
+}
