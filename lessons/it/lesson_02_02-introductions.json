@@ -1,0 +1,91 @@
+{
+  "id": "it-lesson-02-introductions",
+  "number": 2,
+  "title": "Mi chiamo…",
+  "topic": "Names and essere",
+  "lesson_type": "grammar",
+  "difficulty": 1,
+  "level": "Beginner",
+  "description": "Introduce yourself and ask someone’s name.",
+  "grammar_note": "Mi chiamo means “my name is” (literally, “I call myself”). Essere means “to be”: sono = I am, sei = you are. Italian often omits the subject pronoun because the verb ending identifies the person.",
+  "vocabulary": [
+    {
+      "hr": "Mi chiamo",
+      "en": "My name is"
+    },
+    {
+      "hr": "Come ti chiami?",
+      "en": "What is your name?"
+    },
+    {
+      "hr": "Sono",
+      "en": "I am"
+    },
+    {
+      "hr": "Sei",
+      "en": "You are"
+    },
+    {
+      "hr": "Piacere",
+      "en": "Nice to meet you"
+    },
+    {
+      "hr": "Di dove sei?",
+      "en": "Where are you from?"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "My name is Anna",
+      "answer": "Mi chiamo Anna"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "What does “Piacere” mean?",
+      "options": [
+        "Nice to meet you",
+        "Good evening",
+        "Where are you from?"
+      ],
+      "answer": "Nice to meet you"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: Mi ___ Marco. (My name is Marco.)",
+      "answer": "chiamo"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Di dove sei?",
+      "answer": "Where are you from?"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: “I am Luca.”",
+      "words": [
+        "Luca.",
+        "Sono"
+      ],
+      "answer": [
+        "Sono",
+        "Luca."
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Say in Italian: Mi chiamo Anna. Piacere!"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Anna: Ciao! Come ti chiami?\\nLuca: Mi chiamo Luca. E tu?\\nAnna: Sono Anna. Piacere!\\nLuca: Piacere!",
+      "prompt": "What is the boy’s name?",
+      "options": [
+        "Luca",
+        "Marco",
+        "Anna"
+      ],
+      "answer": "Luca"
+    }
+  ]
+}
