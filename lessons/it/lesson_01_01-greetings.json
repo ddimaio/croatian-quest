@@ -1,0 +1,95 @@
+{
+  "id": "it-lesson-01-greetings",
+  "number": 1,
+  "title": "Ciao! First greetings",
+  "topic": "Greetings and politeness",
+  "lesson_type": "vocabulary",
+  "difficulty": 1,
+  "level": "Beginner",
+  "description": "Say hello, goodbye, and use essential polite expressions.",
+  "vocabulary": [
+    {
+      "hr": "Ciao",
+      "en": "Hi / bye"
+    },
+    {
+      "hr": "Buongiorno",
+      "en": "Good morning / good day"
+    },
+    {
+      "hr": "Buonasera",
+      "en": "Good evening"
+    },
+    {
+      "hr": "Arrivederci",
+      "en": "Goodbye"
+    },
+    {
+      "hr": "Grazie",
+      "en": "Thank you"
+    },
+    {
+      "hr": "Per favore",
+      "en": "Please"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "How do you say “Thank you” in Italian?",
+      "options": [
+        "Grazie",
+        "Prego",
+        "Ciao",
+        "Arrivederci"
+      ],
+      "answer": "Grazie"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Good evening",
+      "answer": "Buonasera"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "Per favore",
+      "answer": "Please"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: Buon___ (good day)",
+      "answer": "giorno"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build the polite request: “Un caffè, per favore.”",
+      "words": [
+        "favore.",
+        "Un",
+        "per",
+        "caffè,"
+      ],
+      "answer": [
+        "Un",
+        "caffè,",
+        "per",
+        "favore."
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Say in Italian: Ciao, buongiorno!"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Anna: Buongiorno!\\nLuca: Ciao, Anna!\\nAnna: Grazie. Arrivederci!\\nLuca: Ciao!",
+      "prompt": "What does Luca say at the end?",
+      "options": [
+        "Ciao",
+        "Grazie",
+        "Buonasera"
+      ],
+      "answer": "Ciao"
+    }
+  ]
+}
