@@ -62,7 +62,7 @@
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “Ciao, Anna! Buongiorno, Luca!”",
+      "prompt": "Build the greeting: “Hi, Anna! Good morning, Luca!”",
       "words": [
         "Luca!",
         "Buongiorno,",
