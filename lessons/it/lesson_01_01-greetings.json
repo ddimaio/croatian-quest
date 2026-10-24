@@ -38,9 +38,9 @@
       "type": "multiple_choice",
       "prompt": "How do you say “Thank you” in Italian?",
       "options": [
-        "Grazie",
         "Prego",
         "Ciao",
+        "Grazie",
         "Arrivederci"
       ],
       "answer": "Grazie"
@@ -62,14 +62,18 @@
     },
     {
       "type": "reorder_words",
-      "prompt": "Build the greeting: “Buongiorno, Anna!”",
+      "prompt": "Build: “Ciao, Anna! Buongiorno, Luca!”",
       "words": [
+        "Luca!",
+        "Buongiorno,",
         "Anna!",
-        "Buongiorno,"
+        "Ciao,"
       ],
       "answer": [
+        "Ciao,",
+        "Anna!",
         "Buongiorno,",
-        "Anna!"
+        "Luca!"
       ]
     },
     {
@@ -82,9 +86,9 @@
       "passage": "Anna: Buongiorno!\\nLuca: Ciao, Anna!\\nAnna: Grazie. Arrivederci!\\nLuca: Ciao!",
       "prompt": "What does Luca say at the end?",
       "options": [
-        "Ciao",
         "Grazie",
-        "Buonasera"
+        "Buonasera",
+        "Ciao"
       ],
       "answer": "Ciao"
     }
