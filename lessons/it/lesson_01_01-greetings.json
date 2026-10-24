@@ -78,7 +78,8 @@
     },
     {
       "type": "speak",
-      "prompt": "Say in Italian: Ciao, buongiorno!"
+      "prompt": "Say in Italian: Ciao, buongiorno!",
+      "answer": "Ciao, buongiorno!"
     },
     {
       "type": "comprehension",
