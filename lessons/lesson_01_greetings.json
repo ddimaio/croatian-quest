@@ -73,7 +73,7 @@
     },
     {
       "type": "reorder_words",
-      "prompt": "Build the greeting: ‘Dobar dan, Ana.’",
+      "prompt": "Build the Croatian greeting: “Good day, Ana.”",
       "words": [
         "dan,",
         "Ana.",
