@@ -32,8 +32,8 @@
     "question": {
       "prompt": "What does Luca choose?",
       "options": [
-        "Pizza",
         "Pasta",
+        "Pizza",
         "Salad"
       ],
       "answer": "Pizza"
