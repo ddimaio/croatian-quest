@@ -1,12 +1,12 @@
 {
-  "id": "it-lesson-01-greetings",
   "number": 1,
+  "id": "it-lesson-01-greetings",
   "title": "Ciao! First greetings",
   "topic": "Greetings and politeness",
   "lesson_type": "vocabulary",
   "difficulty": 1,
   "level": "Beginner",
-  "description": "Say hello, goodbye, and use essential polite expressions.",
+  "description": "Learn the most common greetings and polite words first.",
   "vocabulary": [
     {
       "hr": "Ciao",
@@ -62,18 +62,14 @@
     },
     {
       "type": "reorder_words",
-      "prompt": "Build the polite request: “Un caffè, per favore.”",
+      "prompt": "Build the greeting: “Buongiorno, Anna!”",
       "words": [
-        "favore.",
-        "Un",
-        "per",
-        "caffè,"
+        "Anna!",
+        "Buongiorno,"
       ],
       "answer": [
-        "Un",
-        "caffè,",
-        "per",
-        "favore."
+        "Buongiorno,",
+        "Anna!"
       ]
     },
     {
