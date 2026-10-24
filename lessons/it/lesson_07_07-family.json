@@ -80,7 +80,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Giulia: Questa è la mia famiglia. Mia madre si chiama Anna e mio padre si chiama Paolo.\\nLuca: Hai fratelli?\\nGiulia: Sì, ho una sorella. Si chiama Sara.",
+      "passage": "Giulia: Questa è la mia famiglia. Mia madre si chiama Anna e mio padre si chiama Paolo.\nLuca: Hai fratelli?\nGiulia: Sì, ho una sorella. Si chiama Sara.",
       "prompt": "What is the sister's name?",
       "options": [
         "Anna",
