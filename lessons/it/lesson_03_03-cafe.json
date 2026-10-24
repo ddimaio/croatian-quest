@@ -1,12 +1,12 @@
 {
-  "id": "it-lesson-03-cafe",
   "number": 3,
-  "title": "Al bar",
-  "topic": "Drinks and ordering",
+  "id": "it-lesson-03-cafe",
+  "title": "At the café",
+  "topic": "Common drinks and polite orders",
   "lesson_type": "vocabulary",
-  "difficulty": 2,
+  "difficulty": 1,
   "level": "Beginner",
-  "description": "Order a drink politely at an Italian café.",
+  "description": "Recognize everyday café words and order using polite chunks.",
   "vocabulary": [
     {
       "hr": "Un caffè",
@@ -25,71 +25,71 @@
       "en": "A water"
     },
     {
-      "hr": "Vorrei",
-      "en": "I would like"
-    },
-    {
       "hr": "Il conto",
       "en": "The bill"
+    },
+    {
+      "hr": "Il conto, per favore",
+      "en": "The bill, please"
     }
   ],
   "exercises": [
     {
-      "type": "translate_en_to_hr",
-      "prompt": "I would like a cappuccino",
-      "answer": "Vorrei un cappuccino"
-    },
-    {
       "type": "multiple_choice",
-      "prompt": "What is “Il conto, per favore”?",
+      "prompt": "What does “Il conto, per favore” mean?",
       "options": [
         "The bill, please",
         "A coffee, please",
-        "A glass of water"
+        "A tea, please"
       ],
       "answer": "The bill, please"
     },
     {
+      "type": "translate_en_to_hr",
+      "prompt": "An espresso",
+      "answer": "Un caffè"
+    },
+    {
       "type": "translate_hr_to_en",
-      "prompt": "Un tè",
-      "answer": "A tea"
+      "prompt": "Un cappuccino",
+      "answer": "A cappuccino"
     },
     {
       "type": "fill_blank",
-      "prompt": "Complete: Vorrei un ___ (espresso)",
-      "answer": "caffè"
+      "prompt": "Complete: Un ___ (tea)",
+      "answer": "tè"
     },
     {
       "type": "reorder_words",
-      "prompt": "Build the order: “Vorrei un'acqua, per favore.”",
+      "prompt": "Build: “Un caffè, per favore.”",
       "words": [
+        "favore.",
+        "Un",
         "per",
-        "un'acqua,",
-        "Vorrei",
-        "favore."
+        "caffè,"
       ],
       "answer": [
-        "Vorrei",
-        "un'acqua,",
+        "Un",
+        "caffè,",
         "per",
         "favore."
       ]
     },
     {
       "type": "speak",
-      "prompt": "Order in Italian: Vorrei un caffè, per favore.",
-      "answer": "Vorrei un caffè, per favore."
+      "prompt": "Order politely: Un cappuccino, per favore.",
+      "answer": "Un cappuccino, per favore."
     },
     {
       "type": "comprehension",
-      "passage": "Cliente: Buongiorno! Vorrei un cappuccino, per favore.\\nBarista: Certo. Desidera altro?\\nCliente: No, grazie. Il conto, per favore.\\nBarista: Ecco a Lei.",
+      "passage": "Cliente: Buongiorno! Un caffè, per favore.\\nBarista: Certo.\\nCliente: Grazie. Il conto, per favore.\\nBarista: Ecco a Lei.",
       "prompt": "What does the customer order?",
       "options": [
-        "A cappuccino",
         "An espresso",
-        "A tea"
+        "A tea",
+        "A cappuccino"
       ],
-      "answer": "A cappuccino"
+      "answer": "An espresso"
     }
   ]
 }
