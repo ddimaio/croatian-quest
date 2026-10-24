@@ -74,7 +74,8 @@
     },
     {
       "type": "speak",
-      "prompt": "Say in Italian: Mi chiamo Anna. Piacere!"
+      "prompt": "Say in Italian: Mi chiamo Anna. Piacere!",
+      "answer": "Mi chiamo Anna. Piacere!"
     },
     {
       "type": "comprehension",
