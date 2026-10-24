@@ -79,7 +79,8 @@
     },
     {
       "type": "speak",
-      "prompt": "Introduce your family: Questa è la mia famiglia."
+      "prompt": "Introduce your family: Questa è la mia famiglia.",
+      "answer": "Questa è la mia famiglia."
     },
     {
       "type": "comprehension",
