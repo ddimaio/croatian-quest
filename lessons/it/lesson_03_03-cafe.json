@@ -38,8 +38,8 @@
       "type": "multiple_choice",
       "prompt": "What does “Il conto, per favore” mean?",
       "options": [
-        "The bill, please",
         "A coffee, please",
+        "The bill, please",
         "A tea, please"
       ],
       "answer": "The bill, please"
@@ -85,8 +85,8 @@
       "passage": "Cliente: Buongiorno! Un caffè, per favore.\\nBarista: Certo.\\nCliente: Grazie. Il conto, per favore.\\nBarista: Ecco a Lei.",
       "prompt": "What does the customer order?",
       "options": [
-        "An espresso",
         "A tea",
+        "An espresso",
         "A cappuccino"
       ],
       "answer": "An espresso"
