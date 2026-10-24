@@ -1,0 +1,93 @@
+{
+  "id": "it-lesson-05-food",
+  "number": 5,
+  "title": "A tavola",
+  "topic": "Food and ordering",
+  "lesson_type": "vocabulary",
+  "difficulty": 2,
+  "level": "Beginner",
+  "description": "Name familiar foods and order a simple meal.",
+  "vocabulary": [
+    {
+      "hr": "Il pane",
+      "en": "Bread"
+    },
+    {
+      "hr": "La pasta",
+      "en": "Pasta"
+    },
+    {
+      "hr": "La pizza",
+      "en": "Pizza"
+    },
+    {
+      "hr": "L'insalata",
+      "en": "Salad"
+    },
+    {
+      "hr": "Il formaggio",
+      "en": "Cheese"
+    },
+    {
+      "hr": "Ho fame",
+      "en": "I am hungry"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "Which Italian word means “bread”?",
+      "options": [
+        "Il pane",
+        "La pasta",
+        "Il formaggio",
+        "L'insalata"
+      ],
+      "answer": "Il pane"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "I am hungry",
+      "answer": "Ho fame"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "La pizza",
+      "answer": "Pizza"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: La ___ (pasta)",
+      "answer": "pasta"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: “Vorrei la pasta.”",
+      "words": [
+        "la",
+        "Vorrei",
+        "pasta."
+      ],
+      "answer": [
+        "Vorrei",
+        "la",
+        "pasta."
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Order the meal: Vorrei una pizza e un'insalata."
+    },
+    {
+      "type": "comprehension",
+      "passage": "Cameriere: Buonasera! Cosa desidera?\\nMarta: Ho fame. Vorrei la pasta e un'insalata.\\nCameriere: E da bere?\\nMarta: Un'acqua, grazie.",
+      "prompt": "What food does Marta order?",
+      "options": [
+        "Pasta and salad",
+        "Pizza and cheese",
+        "Bread and pasta"
+      ],
+      "answer": "Pasta and salad"
+    }
+  ]
+}
