@@ -32,8 +32,8 @@
     "question": {
       "prompt": "When does the train leave?",
       "options": [
-        "Tomorrow",
         "Today",
+        "Tomorrow",
         "This evening"
       ],
       "answer": "Tomorrow"
