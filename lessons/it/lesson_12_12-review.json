@@ -1,0 +1,42 @@
+{
+  "id": "it-lesson-12-review",
+  "number": 12,
+  "title": "Review: home and daily life",
+  "topic": "Rooms, routines, and common verbs",
+  "lesson_type": "review",
+  "difficulty": 3,
+  "level": "Early A1",
+  "description": "Consolidate the words and patterns from the home and daily-life units.",
+  "vocabulary": [],
+  "exercises": [],
+  "dialogue": {
+    "context": "Talk about the house and daily routine.",
+    "lines": [
+      {
+        "speaker": "Anna",
+        "text": "Buongiorno! Cosa fai la mattina?"
+      },
+      {
+        "speaker": "Luca",
+        "text": "Studio. In casa c'è un tavolo e ci sono due sedie."
+      },
+      {
+        "speaker": "Anna",
+        "text": "Lavori oggi?"
+      },
+      {
+        "speaker": "Luca",
+        "text": "Sì, lavoro oggi. Domani riposo."
+      }
+    ],
+    "question": {
+      "prompt": "What does Luca do today?",
+      "options": [
+        "He works",
+        "He studies at the café",
+        "He travels"
+      ],
+      "answer": "He works"
+    }
+  }
+}
