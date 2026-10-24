@@ -47,8 +47,8 @@
       "type": "multiple_choice",
       "prompt": "What does “A sinistra” mean?",
       "options": [
-        "To the left",
         "To the right",
+        "To the left",
         "Straight ahead"
       ],
       "answer": "To the left"
