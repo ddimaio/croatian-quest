@@ -1,0 +1,92 @@
+{
+  "id": "it-lesson-09-around-town",
+  "number": 9,
+  "title": "In città",
+  "topic": "Places and directions",
+  "lesson_type": "vocabulary",
+  "difficulty": 3,
+  "level": "Early A1",
+  "description": "Ask where places are and understand simple directions.",
+  "vocabulary": [
+    {
+      "hr": "La stazione",
+      "en": "The station"
+    },
+    {
+      "hr": "La piazza",
+      "en": "The square"
+    },
+    {
+      "hr": "La strada",
+      "en": "The street"
+    },
+    {
+      "hr": "A destra",
+      "en": "To the right"
+    },
+    {
+      "hr": "A sinistra",
+      "en": "To the left"
+    },
+    {
+      "hr": "Dov'è…?",
+      "en": "Where is…?"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Where is the station?",
+      "answer": "Dov'è la stazione?"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "What does “A sinistra” mean?",
+      "options": [
+        "To the left",
+        "To the right",
+        "Straight ahead"
+      ],
+      "answer": "To the left"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: La stazione è a ___ (right).",
+      "answer": "destra"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "La piazza",
+      "answer": "The square"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: “Where is the station?”",
+      "words": [
+        "stazione?",
+        "Dov'è",
+        "la"
+      ],
+      "answer": [
+        "Dov'è",
+        "la",
+        "stazione?"
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Ask for directions: Scusi, dov'è la stazione?"
+    },
+    {
+      "type": "comprehension",
+      "passage": "Turista: Scusi, dov'è la stazione?\\nPaolo: Vada sempre dritto, poi a destra.\\nTurista: La stazione è vicino alla piazza?\\nPaolo: Sì, è accanto alla piazza.",
+      "prompt": "Where is the station?",
+      "options": [
+        "Next to the square",
+        "To the left of the square",
+        "Far from the square"
+      ],
+      "answer": "Next to the square"
+    }
+  ]
+}
