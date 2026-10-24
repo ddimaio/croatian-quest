@@ -1,13 +1,13 @@
 {
-  "id": "it-lesson-02-introductions",
   "number": 2,
-  "title": "Mi chiamo…",
-  "topic": "Names and essere",
+  "id": "it-lesson-02-introductions",
+  "title": "Names and introductions",
+  "topic": "Names and the verb essere",
   "lesson_type": "grammar",
   "difficulty": 1,
   "level": "Beginner",
-  "description": "Introduce yourself and ask someone’s name.",
-  "grammar_note": "Mi chiamo means “my name is” (literally, “I call myself”). Essere means “to be”: sono = I am, sei = you are. Italian often omits the subject pronoun because the verb ending identifies the person.",
+  "description": "Introduce yourself with a few useful, high-frequency phrases.",
+  "grammar_note": "Mi chiamo means “my name is”. Sono means “I am” and sei means “you are”. Italian often leaves out io and tu because the verb form shows who is speaking.",
   "vocabulary": [
     {
       "hr": "Mi chiamo",
@@ -65,18 +65,18 @@
       "prompt": "Build: “I am Luca.”",
       "words": [
         "Luca.",
-        "Io",
-        "sono"
+        "Sono",
+        "io"
       ],
       "answer": [
-        "Io",
-        "sono",
+        "Sono",
+        "io",
         "Luca."
       ]
     },
     {
       "type": "speak",
-      "prompt": "Say in Italian: Mi chiamo Anna. Piacere!",
+      "prompt": "Introduce yourself: Mi chiamo Anna. Piacere!",
       "answer": "Mi chiamo Anna. Piacere!"
     },
     {
