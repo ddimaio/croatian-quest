@@ -15,7 +15,7 @@ try:
 except ImportError:  # Keep the course usable until optional audio dependencies are installed.
     edge_tts = None
 
-st.set_page_config(page_title="Bok! — Croatian Quest", page_icon="🇭🇷", layout="centered")
+st.set_page_config(page_title="Bok! — Language Quest", page_icon="🌍", layout="centered")
 word_order_component = st.components.v1.declare_component(
     "croatian_word_order", path=str(Path(__file__).parent / "components" / "word_order")
 )
@@ -1079,7 +1079,7 @@ if "selected_course" not in st.session_state:
     stored_selection = raw_saved_progress.get("selected_course", "hr")
     st.session_state.selected_course = (
         stored_selection
-        if stored_selection in st.session_state["_course_progress_map"] or stored_selection == "hr"
+        if stored_selection in COURSES and (stored_selection in st.session_state["_course_progress_map"] or stored_selection == "hr")
         else "hr"
     )
     st.session_state.course_selection_touched = False
@@ -1087,7 +1087,7 @@ elif not st.session_state.get("course_selection_touched", False):
     stored_selection = raw_saved_progress.get("selected_course", "hr")
     st.session_state.selected_course = (
         stored_selection
-        if stored_selection in st.session_state["_course_progress_map"] or stored_selection == "hr"
+        if stored_selection in COURSES and (stored_selection in st.session_state["_course_progress_map"] or stored_selection == "hr")
         else "hr"
     )
 
@@ -1306,7 +1306,7 @@ if st.session_state.page == "home":
         with st.container(border=True):
             left, right = st.columns([4, 1])
             with left:
-                mark = "✅" if complete else ("🔒" if not lesson_unlocked else "🇭🇷")
+                mark = "✅" if complete else ("🔒" if not lesson_unlocked else COURSES[active_course]["flag"])
                 st.markdown(f"#### {mark} {lesson['number']:02d} · {lesson['title']}")
                 st.caption(f"{lesson['topic']} · {types[lesson['lesson_type']]} · Difficulty {lesson['difficulty']}/5")
                 if lesson.get("description"): st.write(lesson["description"])
@@ -1456,7 +1456,8 @@ else:
     if lesson.get("grammar_note"):
         with st.expander("Grammar note", expanded=True): st.write(lesson["grammar_note"])
     if idx >= total:
-        st.markdown('<div class="hero"><div class="eyebrow">Lesson complete</div><h1>Odlično! 🎉</h1><p>New words are now in your course-wide review deck.</p></div>', unsafe_allow_html=True)
+        lesson_cheer = "Ottimo!" if active_course == "it" else "Odlično!"
+        st.markdown(f'<div class="hero"><div class="eyebrow">Lesson complete</div><h1>{lesson_cheer} 🎉</h1><p>New words are now in your course-wide review deck.</p></div>', unsafe_allow_html=True)
         st.balloons()
         if st.session_state.lesson_correct_answers is not None:
             correct_count = st.session_state.lesson_correct_answers
