@@ -1224,9 +1224,8 @@ if not isinstance(st.session_state.page, str) or st.session_state.page not in {"
 
 with st.sidebar:
     course_selector("sidebar")
-    if st.session_state.selected_course == "it":
-        st.info("Italian lessons are not available yet.")
-    st.markdown('<div class="brand"><span class="brand-mark">🇭🇷</span><span>Bok! Croatian Quest</span></div>', unsafe_allow_html=True)
+    sidebar_course = COURSES.get(active_course, COURSES["hr"])
+    st.markdown(f'<div class="brand"><span class="brand-mark">{sidebar_course["flag"]}</span><span>{sidebar_course["name"]} Quest</span></div>', unsafe_allow_html=True)
     st.markdown("### Your journey")
     st.metric("⭐ Total XP", st.session_state.xp)
     st.metric("✅ Lessons finished", len(st.session_state.completed_lessons))
@@ -1258,7 +1257,7 @@ with st.sidebar:
 
 header_left, header_right = st.columns([4, 1])
 with header_left:
-    st.markdown('<div class="brand"><span class="brand-mark">🇭🇷</span><span>Bok! Croatian Quest</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="brand"><span class="brand-mark">{COURSES[active_course]["flag"]}</span><span>{COURSES[active_course]["name"]} Quest</span></div>', unsafe_allow_html=True)
 with header_right:
     st.button("Log out", key="main_logout", on_click=logout_callback, use_container_width=True)
 
