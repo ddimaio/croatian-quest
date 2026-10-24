@@ -85,7 +85,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Anna: Cosa c'è nella camera?\\nLuca: C'è un letto e ci sono due sedie.\\nAnna: Dov'è il libro?\\nLuca: Il libro è sul tavolo.",
+      "passage": "Anna: Cosa c'è nella camera?\nLuca: C'è un letto e ci sono due sedie.\nAnna: Dov'è il libro?\nLuca: Il libro è sul tavolo.",
       "prompt": "Where is the book?",
       "options": [
         "In the kitchen",
