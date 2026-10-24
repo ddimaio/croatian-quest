@@ -1,0 +1,97 @@
+{
+  "number": 11,
+  "id": "it-lesson-11-daily-routine",
+  "title": "Daily routine words",
+  "topic": "Time and everyday activities",
+  "lesson_type": "vocabulary",
+  "difficulty": 3,
+  "level": "Early A1",
+  "description": "Add common activity and time words after learning basic present-tense forms.",
+  "vocabulary": [
+    {
+      "hr": "Oggi",
+      "en": "Today"
+    },
+    {
+      "hr": "Domani",
+      "en": "Tomorrow"
+    },
+    {
+      "hr": "La mattina",
+      "en": "The morning"
+    },
+    {
+      "hr": "Ogni giorno",
+      "en": "Every day"
+    },
+    {
+      "hr": "Studiare",
+      "en": "To study"
+    },
+    {
+      "hr": "Lavorare",
+      "en": "To work"
+    },
+    {
+      "hr": "Mangiare",
+      "en": "To eat"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "What does “Ogni giorno” mean?",
+      "options": [
+        "Every day",
+        "Tomorrow",
+        "In the evening"
+      ],
+      "answer": "Every day"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "Today",
+      "answer": "Oggi"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "La mattina",
+      "answer": "The morning"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: ___ (tomorrow)",
+      "answer": "Domani"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: “I study every day.”",
+      "words": [
+        "giorno.",
+        "ogni",
+        "Studio"
+      ],
+      "answer": [
+        "Studio",
+        "ogni",
+        "giorno."
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Say: Lavoro la mattina.",
+      "answer": "Lavoro la mattina."
+    },
+    {
+      "type": "comprehension",
+      "passage": "Marco: Cosa fai la mattina?\\nAnna: Studio e lavoro.\\nMarco: E domani?\\nAnna: Domani mangio con la mia famiglia.",
+      "prompt": "What does Anna do tomorrow?",
+      "options": [
+        "She eats with her family",
+        "She studies at the café",
+        "She works in the morning"
+      ],
+      "answer": "She eats with her family"
+    }
+  ]
+}
