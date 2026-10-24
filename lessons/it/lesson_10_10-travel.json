@@ -78,7 +78,8 @@
     },
     {
       "type": "speak",
-      "prompt": "Ask for help: Puoi aiutarmi, per favore?"
+      "prompt": "Ask for help: Puoi aiutarmi, per favore?",
+      "answer": "Puoi aiutarmi, per favore?"
     },
     {
       "type": "comprehension",
