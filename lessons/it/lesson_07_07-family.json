@@ -1,0 +1,96 @@
+{
+  "id": "it-lesson-07-family",
+  "number": 7,
+  "title": "La mia famiglia",
+  "topic": "Family and possessives",
+  "lesson_type": "vocabulary",
+  "difficulty": 3,
+  "level": "Early A1",
+  "description": "Talk about close family members and use simple possessives.",
+  "vocabulary": [
+    {
+      "hr": "La famiglia",
+      "en": "Family"
+    },
+    {
+      "hr": "La madre",
+      "en": "Mother"
+    },
+    {
+      "hr": "Il padre",
+      "en": "Father"
+    },
+    {
+      "hr": "Il fratello",
+      "en": "Brother"
+    },
+    {
+      "hr": "La sorella",
+      "en": "Sister"
+    },
+    {
+      "hr": "Mio fratello",
+      "en": "My brother"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "My brother",
+      "answer": "Mio fratello"
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "What does “La sorella” mean?",
+      "options": [
+        "The sister",
+        "The mother",
+        "The family"
+      ],
+      "answer": "The sister"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: Mio ___ (father)",
+      "answer": "padre"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "La mia famiglia",
+      "answer": "My family"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: “My sister is called Giulia.”",
+      "words": [
+        "Giulia.",
+        "si",
+        "mia",
+        "chiama",
+        "Sorella"
+      ],
+      "answer": [
+        "Sorella",
+        "mia",
+        "si",
+        "chiama",
+        "Giulia."
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Introduce your family: Questa è la mia famiglia."
+    },
+    {
+      "type": "comprehension",
+      "passage": "Giulia: Questa è la mia famiglia. Mio padre si chiama Paolo e mia madre si chiama Anna.\\nLuca: Hai fratelli?\\nGiulia: Sì, ho un fratello. Si chiama Marco.",
+      "prompt": "What is the brother's name?",
+      "options": [
+        "Marco",
+        "Paolo",
+        "Luca"
+      ],
+      "answer": "Marco"
+    }
+  ]
+}
