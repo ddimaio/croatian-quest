@@ -85,7 +85,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Anna: Ho un libro e una sedia.\\nLuca: La sedia è in casa?\\nAnna: Sì, la sedia è in casa.",
+      "passage": "Anna: Ho un libro e una sedia.\nLuca: La sedia è in casa?\nAnna: Sì, la sedia è in casa.",
       "prompt": "What does Anna have?",
       "options": [
         "A table and a book",
