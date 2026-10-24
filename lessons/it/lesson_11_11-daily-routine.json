@@ -84,7 +84,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Marco: Cosa fai la mattina?\\nAnna: Studio e lavoro.\\nMarco: E domani?\\nAnna: Domani mangio con la mia famiglia.",
+      "passage": "Marco: Cosa fai la mattina?\nAnna: Studio e lavoro.\nMarco: E domani?\nAnna: Domani mangio con la mia famiglia.",
       "prompt": "What does Anna do tomorrow?",
       "options": [
         "She eats with her family",
