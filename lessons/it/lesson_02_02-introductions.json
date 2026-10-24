@@ -81,7 +81,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Anna: Ciao! Come ti chiami?\\nLuca: Mi chiamo Luca. E tu?\\nAnna: Sono Anna. Piacere!\\nLuca: Piacere!",
+      "passage": "Anna: Ciao! Come ti chiami?\nLuca: Mi chiamo Luca. E tu?\nAnna: Sono Anna. Piacere!\nLuca: Piacere!",
       "prompt": "What is the boy’s name?",
       "options": [
         "Luca",
