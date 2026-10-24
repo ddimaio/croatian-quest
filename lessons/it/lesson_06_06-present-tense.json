@@ -39,8 +39,8 @@
       "type": "multiple_choice",
       "prompt": "Which means “a house”?",
       "options": [
-        "Una casa",
         "Un libro",
+        "Una casa",
         "La sedia"
       ],
       "answer": "Una casa"
@@ -62,14 +62,20 @@
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “A book.”",
+      "prompt": "Build: “The house and the chair.”",
       "words": [
-        "libro.",
-        "Un"
+        "sedia.",
+        "La",
+        "e",
+        "casa",
+        "la"
       ],
       "answer": [
-        "Un",
-        "libro."
+        "La",
+        "casa",
+        "e",
+        "la",
+        "sedia."
       ]
     },
     {
@@ -82,8 +88,8 @@
       "passage": "Anna: Ho un libro e una sedia.\\nLuca: La sedia è in casa?\\nAnna: Sì, la sedia è in casa.",
       "prompt": "What does Anna have?",
       "options": [
-        "A book and a chair",
         "A table and a book",
+        "A book and a chair",
         "A house and a chair"
       ],
       "answer": "A book and a chair"
