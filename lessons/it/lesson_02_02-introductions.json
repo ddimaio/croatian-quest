@@ -44,8 +44,8 @@
       "type": "multiple_choice",
       "prompt": "What does “Piacere” mean?",
       "options": [
-        "Nice to meet you",
         "Good evening",
+        "Nice to meet you",
         "Where are you from?"
       ],
       "answer": "Nice to meet you"
