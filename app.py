@@ -1482,7 +1482,7 @@ else:
             "multiple_choice": ("Choose the right answer", ex["prompt"]),
             "fill_blank": ("Fill in the blank", ex["prompt"]),
             "comprehension": ("Read and understand", ex["prompt"]),
-            "reorder_words": ("Arrange the words", ex["prompt"]),
+            "reorder_words": (f"Arrange the {COURSES[active_course]['name']} words", ex["prompt"]),
             "speak": (f"Speak in {COURSES[active_course]['name']}", ex["prompt"])
         }
         label, prompt = prompt_map[ex["type"]]
