@@ -1,96 +1,92 @@
 {
-  "id": "it-lesson-06-present-tense",
   "number": 6,
-  "title": "What we do",
-  "topic": "Present tense: parlare and avere",
+  "id": "it-lesson-06-present-tense",
+  "title": "Il and la: Italian noun articles",
+  "topic": "Masculine and feminine nouns",
   "lesson_type": "grammar",
-  "difficulty": 3,
-  "level": "Beginner → early A1",
-  "description": "Use common present-tense verbs to say what you speak, have, and like.",
-  "grammar_note": "Regular -are verbs use -o for io (parlo), -i for tu (parli), and -a for lui/lei (parla). Avere is irregular: ho, hai, ha. Non comes before the verb to make a sentence negative: Non parlo inglese.",
+  "difficulty": 2,
+  "level": "Beginner",
+  "description": "Learn the basic articles that appear with everyday Italian nouns.",
+  "grammar_note": "Italian nouns have grammatical gender. Many common masculine nouns use il with the (il libro) and un for a (un libro). Many common feminine nouns use la and una (la casa, una casa). Learn each noun together with its article; there are other patterns and exceptions.",
   "vocabulary": [
     {
-      "hr": "Parlo italiano",
-      "en": "I speak Italian"
+      "hr": "Il libro",
+      "en": "The book"
     },
     {
-      "hr": "Parli inglese?",
-      "en": "Do you speak English?"
+      "hr": "La casa",
+      "en": "The house"
     },
     {
-      "hr": "Ho",
-      "en": "I have"
+      "hr": "Un libro",
+      "en": "A book"
     },
     {
-      "hr": "Hai",
-      "en": "You have"
+      "hr": "Una casa",
+      "en": "A house"
     },
     {
-      "hr": "Mi piace",
-      "en": "I like"
+      "hr": "Il tavolo",
+      "en": "The table"
     },
     {
-      "hr": "Non capisco",
-      "en": "I don't understand"
+      "hr": "La sedia",
+      "en": "The chair"
     }
   ],
   "exercises": [
     {
-      "type": "translate_en_to_hr",
-      "prompt": "I speak Italian",
-      "answer": "Parlo italiano"
-    },
-    {
       "type": "multiple_choice",
-      "prompt": "Choose the correct form: “You have a book.”",
+      "prompt": "Which means “a house”?",
       "options": [
-        "Hai un libro",
-        "Ho un libro",
-        "Ha un libro"
+        "Una casa",
+        "Un libro",
+        "La sedia"
       ],
-      "answer": "Hai un libro"
+      "answer": "Una casa"
     },
     {
-      "type": "fill_blank",
-      "prompt": "Complete: Io ___ (parlare) italiano.",
-      "answer": "parlo"
+      "type": "translate_en_to_hr",
+      "prompt": "The book",
+      "answer": "Il libro"
     },
     {
       "type": "translate_hr_to_en",
-      "prompt": "Non capisco",
-      "answer": "I don't understand"
+      "prompt": "Un tavolo",
+      "answer": "A table"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: ___ sedia (the chair)",
+      "answer": "La"
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “I like pasta.”",
+      "prompt": "Build: “A book.”",
       "words": [
-        "la",
-        "Mi",
-        "pasta.",
-        "piace"
+        "libro.",
+        "Un"
       ],
       "answer": [
-        "Mi",
-        "piace",
-        "la",
-        "pasta."
+        "Un",
+        "libro."
       ]
     },
     {
       "type": "speak",
-      "prompt": "Say in Italian: Parlo italiano, ma non capisco tutto.",
-      "answer": "Parlo italiano, ma non capisco tutto."
+      "prompt": "Say: Una casa e un tavolo.",
+      "answer": "Una casa e un tavolo."
     },
     {
       "type": "comprehension",
-      "passage": "Paolo: Parli inglese?\\nSara: No, parlo italiano. Ho un libro in italiano.\\nPaolo: Capisci tutto?\\nSara: No, non capisco tutto!",
-      "prompt": "What language does Sara speak?",
+      "passage": "Anna: Ho un libro e una sedia.\\nLuca: La sedia è in casa?\\nAnna: Sì, la sedia è in casa.",
+      "prompt": "What does Anna have?",
       "options": [
-        "Italian",
-        "English",
-        "French"
+        "A book and a chair",
+        "A table and a book",
+        "A house and a chair"
       ],
-      "answer": "Italian"
+      "answer": "A book and a chair"
     }
   ]
 }
