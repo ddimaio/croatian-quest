@@ -61,13 +61,15 @@
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “The family.”",
+      "prompt": "Build: “My family.”",
       "words": [
         "famiglia.",
+        "mia",
         "La"
       ],
       "answer": [
         "La",
+        "mia",
         "famiglia."
       ]
     },
@@ -81,9 +83,9 @@
       "passage": "Giulia: Questa è la mia famiglia. Mia madre si chiama Anna e mio padre si chiama Paolo.\\nLuca: Hai fratelli?\\nGiulia: Sì, ho una sorella. Si chiama Sara.",
       "prompt": "What is the sister's name?",
       "options": [
-        "Sara",
         "Anna",
-        "Giulia"
+        "Giulia",
+        "Sara"
       ],
       "answer": "Sara"
     }
