@@ -1,12 +1,12 @@
 {
-  "id": "it-lesson-05-food",
   "number": 5,
-  "title": "A tavola",
-  "topic": "Food and ordering",
+  "id": "it-lesson-05-food",
+  "title": "Everyday food",
+  "topic": "Common food words",
   "lesson_type": "vocabulary",
   "difficulty": 2,
   "level": "Beginner",
-  "description": "Name familiar foods and order a simple meal.",
+  "description": "Build a useful set of common food words.",
   "vocabulary": [
     {
       "hr": "Il pane",
@@ -29,66 +29,69 @@
       "en": "Cheese"
     },
     {
-      "hr": "Ho fame",
-      "en": "I am hungry"
+      "hr": "Il gelato",
+      "en": "Ice cream"
     }
   ],
   "exercises": [
     {
       "type": "multiple_choice",
-      "prompt": "Which Italian word means “bread”?",
+      "prompt": "Which phrase means “ice cream”?",
       "options": [
+        "Il gelato",
         "Il pane",
-        "La pasta",
-        "Il formaggio",
-        "L'insalata"
+        "La pasta"
       ],
-      "answer": "Il pane"
+      "answer": "Il gelato"
     },
     {
       "type": "translate_en_to_hr",
-      "prompt": "I am hungry",
-      "answer": "Ho fame"
+      "prompt": "Bread",
+      "answer": "Il pane"
     },
     {
       "type": "translate_hr_to_en",
-      "prompt": "La pizza",
-      "answer": "Pizza"
+      "prompt": "L'insalata",
+      "answer": "Salad"
     },
     {
       "type": "fill_blank",
-      "prompt": "Complete: La ___ (pasta)",
-      "answer": "pasta"
+      "prompt": "Complete: La ___ (pizza)",
+      "answer": "pizza"
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “Vorrei la pasta.”",
+      "prompt": "Build: “La pizza e il pane.”",
       "words": [
-        "la",
-        "Vorrei",
-        "pasta."
+        "pane.",
+        "e",
+        "La",
+        "il",
+        "pizza"
       ],
       "answer": [
-        "Vorrei",
-        "la",
-        "pasta."
+        "La",
+        "pizza",
+        "e",
+        "il",
+        "pane."
       ]
     },
     {
       "type": "speak",
-      "prompt": "Order the meal: Vorrei una pizza e un'insalata.",
-      "answer": "Vorrei una pizza e un'insalata."
+      "prompt": "Say the foods: La pasta e il formaggio.",
+      "answer": "La pasta e il formaggio."
     },
     {
       "type": "comprehension",
-      "passage": "Cameriere: Buonasera! Cosa desidera?\\nMarta: Ho fame. Vorrei la pasta e un'insalata.\\nCameriere: E da bere?\\nMarta: Un'acqua, grazie.",
-      "prompt": "What food does Marta order?",
+      "passage": "Marta: Ho la pasta e l'insalata.\\nLuca: Io prendo la pizza.\\nMarta: Vuoi un po' di pane?\\nLuca: Sì, grazie.",
+      "prompt": "What does Luca choose?",
       "options": [
-        "Pasta and salad",
-        "Pizza and cheese",
-        "Bread and pasta"
+        "Pizza",
+        "Pasta",
+        "Salad"
       ],
-      "answer": "Pasta and salad"
+      "answer": "Pizza"
     }
   ]
 }
