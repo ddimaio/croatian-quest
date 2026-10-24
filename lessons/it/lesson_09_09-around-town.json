@@ -38,8 +38,8 @@
       "type": "multiple_choice",
       "prompt": "Which word means “kitchen”?",
       "options": [
-        "La cucina",
         "La camera",
+        "La cucina",
         "Il bagno"
       ],
       "answer": "La cucina"
@@ -87,8 +87,8 @@
       "passage": "Anna: La cucina è grande.\\nLuca: Dov'è il tavolo?\\nAnna: Il tavolo è nella cucina, vicino alla sedia.",
       "prompt": "Where is the table?",
       "options": [
-        "In the kitchen",
         "In the bedroom",
+        "In the kitchen",
         "In the bathroom"
       ],
       "answer": "In the kitchen"
