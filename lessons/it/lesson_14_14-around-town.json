@@ -84,7 +84,7 @@
     },
     {
       "type": "comprehension",
-      "passage": "Turista: Scusi, dov'è la stazione?\\nPaolo: Sempre dritto, poi a destra.\\nTurista: È vicino alla piazza?\\nPaolo: Sì, accanto alla piazza.",
+      "passage": "Turista: Scusi, dov'è la stazione?\nPaolo: Sempre dritto, poi a destra.\nTurista: È vicino alla piazza?\nPaolo: Sì, accanto alla piazza.",
       "prompt": "Where is the station?",
       "options": [
         "Next to the square",
