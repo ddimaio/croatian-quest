@@ -11,11 +11,11 @@
     .word { display: flex; align-items: center; gap: 8px; min-width: 0; max-width: 100%; min-height: 48px; padding: 5px 7px 5px 12px; border: 1px solid #c9ebd2; border-radius: 12px; background: #fff; cursor: grab; }
     .word.dragging { opacity: .45; }
     .word span { flex: 1; min-width: 0; overflow-wrap: anywhere; white-space: normal; user-select: none; }
-    .move { flex: none; border: 0; border-radius: 9px; min-width: 40px; height: 40px; background: #e4f8e9; color: #193b35; font-size: 20px; cursor: pointer; touch-action: manipulation; }
+    .move { flex: none; border: 0; border-radius: 9px; min-width: 40px; height: 40px; background: #e4f8e9; color: #193b35; font-size: 20px; cursor: pointer; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
     .move:disabled { opacity: .4; cursor: default; }
     @media (max-width: 520px) {
       .words { display: grid; grid-template-columns: minmax(0, 1fr); }
-      .word { width: 100%; }
+      .word { width: 100%; cursor: default; }
     }
   </style>
 </head>
@@ -57,13 +57,16 @@
         text.textContent = item.text;
         row.appendChild(text);
         const up = document.createElement("button");
-        up.className = "move"; up.type = "button"; up.textContent = "↑"; up.title = "Move left"; up.disabled = index === 0;
+        up.className = "move"; up.type = "button"; up.textContent = "↑"; up.title = "Move left"; up.setAttribute("aria-label", "Move word left one place"); up.disabled = index === 0;
+        up.addEventListener("pointerdown", event => event.stopPropagation());
         up.addEventListener("click", event => { event.stopPropagation(); move(index, index - 1); });
         const down = document.createElement("button");
-        down.className = "move"; down.type = "button"; down.textContent = "↓"; down.title = "Move right"; down.disabled = index === items.length - 1;
+        down.className = "move"; down.type = "button"; down.textContent = "↓"; down.title = "Move right"; down.setAttribute("aria-label", "Move word right one place"); down.disabled = index === items.length - 1;
+        down.addEventListener("pointerdown", event => event.stopPropagation());
         down.addEventListener("click", event => { event.stopPropagation(); move(index, index + 1); });
         row.append(up, down);
         row.addEventListener("dragstart", event => {
+          if (event.target.closest("button")) { event.preventDefault(); return; }
           dragged = index; row.classList.add("dragging");
           event.dataTransfer.effectAllowed = "move";
           event.dataTransfer.setData("text/plain", String(index));
