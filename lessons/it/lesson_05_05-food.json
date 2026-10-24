@@ -61,7 +61,7 @@
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “La pizza e il pane.”",
+      "prompt": "Build the phrase: “The pizza and the bread.”",
       "words": [
         "pane.",
         "e",
