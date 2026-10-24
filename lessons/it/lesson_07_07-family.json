@@ -64,14 +64,14 @@
       "prompt": "Build: “My sister is called Giulia.”",
       "words": [
         "Giulia.",
-        "si",
-        "mia",
         "chiama",
-        "Sorella"
+        "Mia",
+        "si",
+        "sorella"
       ],
       "answer": [
-        "Sorella",
-        "mia",
+        "Mia",
+        "sorella",
         "si",
         "chiama",
         "Giulia."
