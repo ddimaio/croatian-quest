@@ -1,0 +1,101 @@
+{
+  "number": 15,
+  "id": "it-lesson-15-travel-vocabulary",
+  "title": "Getting around",
+  "topic": "Transport and travel words",
+  "lesson_type": "vocabulary",
+  "difficulty": 3,
+  "level": "Early A1",
+  "description": "Recognize common words for local travel before learning to make requests.",
+  "vocabulary": [
+    {
+      "hr": "Il treno",
+      "en": "The train"
+    },
+    {
+      "hr": "L'autobus",
+      "en": "The bus"
+    },
+    {
+      "hr": "Il biglietto",
+      "en": "The ticket"
+    },
+    {
+      "hr": "La stazione",
+      "en": "The station"
+    },
+    {
+      "hr": "L'aeroporto",
+      "en": "The airport"
+    },
+    {
+      "hr": "Oggi",
+      "en": "Today"
+    },
+    {
+      "hr": "Domani",
+      "en": "Tomorrow"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "prompt": "Which word means “the ticket”?",
+      "options": [
+        "Il biglietto",
+        "Il treno",
+        "L'aeroporto"
+      ],
+      "answer": "Il biglietto"
+    },
+    {
+      "type": "translate_en_to_hr",
+      "prompt": "The bus",
+      "answer": "L'autobus"
+    },
+    {
+      "type": "translate_hr_to_en",
+      "prompt": "La stazione",
+      "answer": "The station"
+    },
+    {
+      "type": "fill_blank",
+      "prompt": "Complete: Il ___ (the train)",
+      "answer": "treno"
+    },
+    {
+      "type": "reorder_words",
+      "prompt": "Build: “The train is at the station.”",
+      "words": [
+        "stazione.",
+        "alla",
+        "è",
+        "treno",
+        "Il"
+      ],
+      "answer": [
+        "Il",
+        "treno",
+        "è",
+        "alla",
+        "stazione."
+      ]
+    },
+    {
+      "type": "speak",
+      "prompt": "Say: Il treno è alla stazione.",
+      "answer": "Il treno è alla stazione."
+    },
+    {
+      "type": "comprehension",
+      "passage": "Marta: Il treno parte oggi?\\nLuca: No, parte domani.\\nMarta: Dov'è la stazione?\\nLuca: È in piazza.",
+      "prompt": "When does the train leave?",
+      "options": [
+        "Tomorrow",
+        "Today",
+        "On Monday"
+      ],
+      "answer": "Tomorrow"
+    }
+  ]
+}
