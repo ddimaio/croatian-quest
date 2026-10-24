@@ -1,96 +1,94 @@
 {
-  "id": "it-lesson-10-travel",
   "number": 10,
-  "title": "Travel plans",
-  "topic": "Modal verbs and travel",
+  "id": "it-lesson-10-travel",
+  "title": "Everyday present-tense verbs",
+  "topic": "Parlare and avere",
   "lesson_type": "grammar",
-  "difficulty": 4,
-  "level": "A1",
-  "description": "Use potere and volere to ask for help and talk about travel plans.",
-  "grammar_note": "Potere means “can / to be able to” (posso = I can, puoi = you can). Volere means “to want” (voglio = I want, vuoi = you want). These verbs are followed by an infinitive: Posso andare? = Can I go?",
+  "difficulty": 3,
+  "level": "Early A1",
+  "description": "Use common verb forms to talk about yourself and other people.",
+  "grammar_note": "For many regular -are verbs, io uses -o (parlo), tu uses -i (parli), and lui/lei uses -a (parla). Avere is irregular: ho (I have), hai (you have), ha (he/she has). The subject pronoun is often left out.",
   "vocabulary": [
     {
-      "hr": "Posso…?",
-      "en": "Can I…?"
+      "hr": "Parlo italiano",
+      "en": "I speak Italian"
     },
     {
-      "hr": "Puoi aiutarmi?",
-      "en": "Can you help me?"
+      "hr": "Parli inglese?",
+      "en": "Do you speak English?"
     },
     {
-      "hr": "Voglio andare",
-      "en": "I want to go"
+      "hr": "Ho un libro",
+      "en": "I have a book"
     },
     {
-      "hr": "Il biglietto",
-      "en": "The ticket"
+      "hr": "Hai una casa",
+      "en": "You have a house"
     },
     {
-      "hr": "Il treno",
-      "en": "The train"
+      "hr": "Ha una sorella",
+      "en": "He/she has a sister"
     },
     {
-      "hr": "Quanto costa?",
-      "en": "How much does it cost?"
+      "hr": "Lavoro",
+      "en": "I work"
     }
   ],
   "exercises": [
     {
       "type": "translate_en_to_hr",
-      "prompt": "How much does the ticket cost?",
-      "answer": "Quanto costa il biglietto?"
+      "prompt": "I speak Italian",
+      "answer": "Parlo italiano"
     },
     {
       "type": "multiple_choice",
-      "prompt": "What does “Voglio andare” mean?",
+      "prompt": "Choose “You have a book.”",
       "options": [
-        "I want to go",
-        "I can help",
-        "I am arriving"
+        "Hai un libro",
+        "Ho un libro",
+        "Ha un libro"
       ],
-      "answer": "I want to go"
+      "answer": "Hai un libro"
     },
     {
       "type": "fill_blank",
-      "prompt": "Complete: ___ aiutarmi? (Can you help me?)",
-      "answer": "Puoi"
+      "prompt": "Complete: Io ___ italiano. (I speak Italian.)",
+      "answer": "parlo"
     },
     {
       "type": "translate_hr_to_en",
-      "prompt": "Il treno",
-      "answer": "The train"
+      "prompt": "Lavoro",
+      "answer": "I work"
     },
     {
       "type": "reorder_words",
-      "prompt": "Build: “Can I buy a ticket?”",
+      "prompt": "Build: “She has a sister.”",
       "words": [
-        "un",
-        "Posso",
-        "biglietto?",
-        "comprare"
+        "sorella.",
+        "una",
+        "Ha"
       ],
       "answer": [
-        "Posso",
-        "comprare",
-        "un",
-        "biglietto?"
+        "Ha",
+        "una",
+        "sorella."
       ]
     },
     {
       "type": "speak",
-      "prompt": "Ask for help: Puoi aiutarmi, per favore?",
-      "answer": "Puoi aiutarmi, per favore?"
+      "prompt": "Say: Parlo italiano e lavoro.",
+      "answer": "Parlo italiano e lavoro."
     },
     {
       "type": "comprehension",
-      "passage": "Viaggiatrice: Buongiorno. Quanto costa un biglietto per Roma?\\nImpiegato: Costa venti euro.\\nViaggiatrice: Posso pagare con carta?\\nImpiegato: Sì, certo.",
-      "prompt": "How much is the ticket?",
+      "passage": "Paolo: Parli inglese?\\nSara: No, parlo italiano. Ho un libro in italiano.\\nPaolo: Hai una sorella?\\nSara: Sì, ho una sorella.",
+      "prompt": "What language does Sara speak?",
       "options": [
-        "Twenty euros",
-        "Ten euros",
-        "Thirty euros"
+        "Italian",
+        "English",
+        "French"
       ],
-      "answer": "Twenty euros"
+      "answer": "Italian"
     }
   ]
 }
