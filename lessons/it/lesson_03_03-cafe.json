@@ -77,7 +77,8 @@
     },
     {
       "type": "speak",
-      "prompt": "Order in Italian: Vorrei un caffè, per favore."
+      "prompt": "Order in Italian: Vorrei un caffè, per favore.",
+      "answer": "Vorrei un caffè, per favore."
     },
     {
       "type": "comprehension",
